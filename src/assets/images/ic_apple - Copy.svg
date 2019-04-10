@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>apple</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-1.6%" y="-17.1%" width="103.1%" height="134.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M12.6972656,9.37207031 C12.6914063,8.296875 13.1777344,7.48535155 14.1621094,6.8876953 C13.6113281,6.09960936 12.7792969,5.66601561 11.6806641,5.58105467 C10.640625,5.49902342 9.50390625,6.18749999 9.08789063,6.18749999 C8.6484375,6.18749999 7.64062499,5.61035155 6.84960936,5.61035155 C5.21484373,5.63671873 3.47753903,6.91406249 3.47753903,9.51269532 C3.47753903,10.2802734 3.61816404,11.0742188 3.89941404,11.8916016 C4.27441404,12.9667969 5.62792967,15.6035157 7.04003905,15.5595703 C7.77832031,15.5419922 8.29980468,15.0351563 9.26074219,15.0351563 C10.1923828,15.0351563 10.6757813,15.5595703 11.4990234,15.5595703 C12.9228516,15.5390625 14.147461,13.1425781 14.5048828,12.0644531 C12.5947266,11.1650391 12.6972656,9.42773438 12.6972656,9.37207031 Z M11.0390625,4.56152342 C11.8388672,3.61230466 11.765625,2.74804684 11.7421875,2.43749997 C11.0361328,2.47851559 10.21875,2.91796872 9.75292969,3.45996091 C9.24023438,4.04003904 8.93847656,4.75781248 9.00292969,5.56640623 C9.76757813,5.62499998 10.4648438,5.23242186 11.0390625,4.56152342 Z" id="path-2"></path>
+    </defs>
+    <g id="Avasa-1200" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Extra-large-≥1200px" transform="translate(-1119.000000, -59.000000)">
+            <g id="Group-26" filter="url(#filter-1)" transform="translate(750.000000, 48.000000)">
+                <g id="start--button-copy" transform="translate(276.000000, 0.000000)">
+                    <g id="Group">
+                        <g id="Group-3">
+                            <g id="Group-25" transform="translate(9.000000, 10.000000)">
+                                <g id="apple" transform="translate(83.000000, 0.000000)">
+                                    <mask id="mask-3" fill="white">
+                                        <use xlink:href="#path-2"></use>
+                                    </mask>
+                                    <g fill-rule="nonzero"></g>
+                                    <g id="🎨-color" stroke-width="1" fill-rule="evenodd" mask="url(#mask-3)" fill="#49C6DE">
+                                        <rect id="🎨-Color" fill-rule="nonzero" x="0" y="0" width="18" height="18"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

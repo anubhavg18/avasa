@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path" d="M21.667,3H5.333A2.34,2.34,0,0,0,3,5.333V21.667A2.34,2.34,0,0,0,5.333,24H21.667A2.34,2.34,0,0,0,24,21.667V5.333A2.34,2.34,0,0,0,21.667,3Zm-10.5,16.333L5.333,13.724l1.633-1.571,4.2,4.038,8.867-8.526,1.633,1.571-10.5,10.1Z" transform="translate(-3 -3)" fill="#009789" clip-rule="evenodd"/>
+    </clipPath>
+  </defs>
+  <g id="checkbox" transform="translate(0.349 0.349)">
+    <rect id="check_box_off" width="27.651" height="27.651" fill="none"/>
+    <g id="checkbox-2" data-name="checkbox" transform="translate(-0.349 -0.349)">
+      <rect id="check_box_off-2" data-name="check_box_off" width="28" height="28" fill="none"/>
+      <g id="check_box_on_light" transform="translate(3.5 3.5)" clip-path="url(#clip-path)">
+        <g id="Group_30" data-name="Group 30">
+          <g id="Group_308" data-name="Group 308">
+            <g id="Group_307" data-name="Group 307" opacity="0.54">
+              <g id="Group_306" data-name="Group 306">
+                <g id="Group_305" data-name="Group 305" transform="translate(0 0)">
+                  <g id="Group_304" data-name="Group 304" transform="translate(0 0)">
+                    <g id="Group_303" data-name="Group 303" transform="translate(0 0)">
+                      <g id="Group_302" data-name="Group 302" transform="translate(0 0)">
+                        <path id="Path_87" data-name="Path 87" d="M21.667-18.667V-2.333H5.333V-18.667Zm0-2.333H5.333A2.34,2.34,0,0,0,3-18.667V-2.333A2.34,2.34,0,0,0,5.333,0H21.667A2.34,2.34,0,0,0,24-2.333V-18.667A2.34,2.34,0,0,0,21.667-21Z" transform="translate(-3 21)" fill-rule="evenodd"/>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

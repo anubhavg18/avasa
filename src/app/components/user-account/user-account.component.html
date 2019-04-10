@@ -1,0 +1,25 @@
+<app-profilesidebar></app-profilesidebar>
+  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2">
+      <div class="row">
+        <div class="setting-detail">
+          <div class="about-me-column clearfix">
+            <h3>Account Information</h3>
+            <form>
+              <div class="account-info-box">
+                <div class="input-effect">
+                    <input class="effect-16"  name="userEmail" [(ngModel)]="userEmail" required type="text" placeholder="">
+                    <label>E-mail:</label>
+                    <span class="focus-border"></span>
+                </div><!-- input-effect -->
+                <div class="input-effect">
+                    <input class="effect-16" name="userpass" [(ngModel)]="userpass" required type="Password" placeholder="">
+                    <label>Password:</label>
+                    <span class="focus-border"></span>
+                </div><!-- input-effect -->
+              </div>
+              <button class="btn-changes" (click)="updatepass()">Edit</button>
+            </form>
+          </div><!-- about-me -->
+        </div>
+      </div>
+  </div>

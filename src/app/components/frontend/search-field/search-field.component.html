@@ -1,0 +1,33 @@
+ <div class="search-box">
+  <form [formGroup]="searchForm" (ngSubmit)="commuteDetails()" (keydown.enter)="$event.preventDefault()">
+    <div class="column-search">
+          <button type="button" ><img src="assets/images/ic_search.svg"></button>
+          <input type="text"  placeholder="Find properties within" disabled>
+        </div>
+        <div class="column-min">
+      <select class='form-control'  formControlName="maxCommuteTime" [ngClass]="{ 'is-invalid': submitted && f.maxCommuteTime.errors }" >
+        <option *ngFor="let commuteTime1 of commuteTime"  [value]="commuteTime1" >{{ commuteTime1 }}</option>
+      </select>
+      <div *ngIf="submitted && f.maxCommuteTime.errors" class="invalid-feedback">
+        <div *ngIf="f.maxCommuteTime.errors.required">Please enter your commute time</div>
+      </div>
+        </div>
+        <div class="column-to">
+          <span>to</span>
+        </div>
+        <div class="column-detail">
+          <input type="text" class="form-control" placeholder="e.g. Shoreditch High Street" #search formControlName="search"  [ngClass]="{ 'is-invalid': submitted && f.search.errors }">
+        <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+       </agm-map>
+       <div *ngIf="submitted && f.search.errors" class="invalid-feedback">
+      <div *ngIf="f.search.errors.required">Please enter location</div>
+    </div>
+    </div>
+        <div class="column-button">
+        <button type="submit" class="search-btn" >Begin Search</button>
+        
+        </div>
+  </form>
+</div> 
+

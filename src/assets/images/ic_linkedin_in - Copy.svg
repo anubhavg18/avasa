@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<title>linkedin-in</title>
+<desc>Created with Sketch.</desc>
+<g id="linkedin-in">
+	<defs>
+		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+		</filter>
+	</defs>
+	<mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24" id="mask-2">
+		<g filter="url(#Adobe_OpacityMaskFilter)">
+			<path id="path-1" fill="#FFFFFF" d="M7.148,19.5H3.52V7.816h3.629V19.5z M5.332,6.223c-1.16,0-2.102-0.961-2.102-2.121
+				S4.172,2,5.332,2s2.102,0.941,2.102,2.102S6.492,6.223,5.332,6.223z M20.73,19.5h-3.621v-5.688c0-1.355-0.027-3.094-1.887-3.094
+				c-1.887,0-2.176,1.473-2.176,2.996V19.5H9.422V7.816h3.48V9.41h0.051c0.484-0.918,1.668-1.887,3.434-1.887
+				c3.672,0,4.348,2.418,4.348,5.559V19.5H20.73z"/>
+		</g>
+	</mask>
+	<g id="_xD83C__xDFA8_-color" mask="url(#mask-2)">
+		<rect id="_xD83C__xDFA8_-Color" fill="#49C6DE" width="24" height="24"/>
+	</g>
+</g>
+</svg>

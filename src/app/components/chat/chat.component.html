@@ -1,0 +1,28 @@
+ <!-- CSS Reset -->
+<link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+
+<!-- Milligram CSS minified -->
+<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+<button class="" (click)="openChat()">{{button_name}}</button>
+
+<div class="chatform" *ngIf="show_chatlist">
+	<div class="chatlist" #chatlist style="height: 200px;">
+		<ng-container *ngFor="let msg of messages">
+				<div class="message" [ngClass]="{ 'from': msg.sentBy === 'bot', 'to': msg.sentBy === 'user' }">
+				{{ msg.content }}
+				<i class="fa fa-clock-o" aria-hidden="true"></i> 
+				<span class="timestamp">at {{msg.timestamp | date : 'HH:mm' }}</span>
+				</div>
+		</ng-container>
+	</div>
+	
+	<form  (onsubmit)="sendMessage()" class="chatcontrol">
+	  	<div class="input-group mb-3">
+		  <input type="text" class="form-control chatinput" placeholder="Enter your Message" name="content" aria-label="Enter your Message" aria-describedby="Enter your Message" [(ngModel)]="message.content" />
+		  <div class="input-group-append">
+		    <button class="btn btn-primary sendbtn" (click)="sendMessage()" type="submit">Send</button>
+		  </div>
+		</div>
+	</form>
+</div>

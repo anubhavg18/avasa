@@ -1,0 +1,597 @@
+<!-- start header -->
+<div class="blog-city-guide header">
+	<div class="header-in">
+		<div class="container">
+			<div class="clearfix">
+				<!-- logo -->
+				<div class="logo col-12 col-md-2 col-lg-2">
+					<a routerLink="/"><img src="assets/images/logo.svg" alt="AWASA"></a>
+				</div>
+				<!--logo -->
+				<!-- navigation -->
+				<div class="navigation col-12 col-md-10 col-lg-10">
+					<!-- nav-link -->
+					<div class="nav-link" id="nav-link">
+						<a href="#"><img src="assets/images/ic_nav_link.svg"></a>
+					</div>
+					<!-- nav-link -->
+					<div class="nav-box" id="nav-box">
+						<!-- nav-link -->
+						<div class="nav-link" id="nav-link2">
+							<a href="#"><img src="assets/images/ic_nav_close.svg"></a>
+						</div>
+						<!-- nav-link -->
+						<!-- app_download_link -->
+						<!-- <div class="app_download_link">
+							<ul>
+								<li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_apple.svg" alt="apple"></a></li>
+								<li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_android.svg" alt="android"></a></li>
+							</ul>
+							<span>Get the App</span>
+						</div> -->
+						<div class="app_download_link">
+							<ul>
+								<li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+								<li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+							</ul>
+						</div>
+						<!-- app_download_link -->
+						<ul>
+							<li><a routerLink="/home-search" title="Search">Search</a></li>
+							<li><a routerLink="/sherpa" title="Sherpa">Sherpa</a></li>
+							<li><a routerLink="#blog" title="Our blog">Our blog</a>
+								<ul>
+									<li><a routerLink="/area-guides" title="City Guide">Area Guides</a></li>
+									<li><a routerLink="/sherpa-tips" title="Sherpa tips">Sherpa Tips</a></li>
+								</ul>
+							</li>
+							<li><a href="#" title="About">About</a>
+								<ul>
+									<li><a routerLink="/how-it-works" title="How it works">How it Works</a></li>
+									<li><a routerLink="/proptech-startup" title="Our Story">Our Story</a></li>
+								</ul>
+							</li>
+							<li><a routerLink="/login" title="Login" *ngIf="!loggedIn">Log In</a></li>
+							<li><a href="#" (click)="logout($event)" *ngIf="loggedIn" title="Login">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- navigation -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end header -->
+<!-- start banner -->
+<div class="privacy-statements banner">
+	<!-- search-info -->
+	<div class="search-info">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<h2>Terms of Use</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- search-info -->
+</div>
+<!-- end banner -->
+<!-- start privacy-statements-content -->
+<div class="privacy-statements-content">
+	<div class="container">
+		<table>
+			<tbody>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">1</strong></td>
+					<td style="border:none" class="subheadings1"><p>WHO, WHAT AND WHERE</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">1.1</strong></td>
+					<td style="border:none"><p>URBAN PROPTECH LIMITED (Company number 10083530) of 71-75 Shelton Street, Covent Garden, London, United Kingdom, WC2H 9JQ(<strong class="textblack">UP</strong>) grants you a non-exclusive, limited and revocable licence to use and access anyUrban Collectivemobile application (<strong class="textblack">App</strong>), websites (including http://theurbancollective.io/) and services (together, the <strong class="textblack">Platform</strong>) subject to these terms and conditions (<strong class="textblack">Terms</strong>).</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">1.2</strong></td>
+					<td style="border:none"><p>We provide the Platform to assist prospective tenants (<strong class="textblack">Tenants</strong>) to locate rental properties (<strong class="textblack">Properties</strong>) and engage skilled professionals (<strong class="textblack">Sherpas</strong>) to facilitate and arrange paid searches (<strong class="textblack">Searches</strong>) and for Tenants to inspect and view Properties (<strong class="textblack">Viewing</strong>) and ultimately rent Properties (<strong class="textblack">Rentals</strong>).</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">1.3</strong></td>
+					<td style="border:none"><p>In these Terms, “us”, “we” and “our” refer to<strong class="textblack">UP</strong> and references to “you” and “your” is to the user of the Platform.  These Terms apply differently to Sherpas, Tenants and other users, including specific terms and conditions which only apply to users registered as Sherpas and Tenants respectively.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">1.4</strong></td>
+					<td style="border:none"><p>By accessing or using the Platform you agree to be bound by these Terms. If you do not agree with these Terms you must immediately stop using the Platform.  You are required to comply with the Stripe Terms & Conditions <LINK>, which are incorporated by reference in these Terms.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">1.5</strong></td>
+					<td style="border:none"><p>These Terms were first published on 15 June 2017. You agree that we may change, update or otherwise amend the Platform and these Terms at our absolute discretion.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">2</strong></td>
+					<td style="border:none" class="subheadings1"><p>PLATFORM &SEARCHES</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">2.1</strong></td>
+					<td style="border:none"><p>The Tenant will be guided on the Platform through the steps required for Searches, including to: (i) Provide the necessary specifications for the Searches; (ii) Curate, evaluate and shortlist Properties; (iii) Arrange Viewings and complete Rentals.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">2.2</strong></td>
+					<td style="border:none"><p>The Platform will be subject to frequent and possibly substantial changes as we look to make improvements to the Searches and/or related features. We reserve the right to withdraw or amend the Platform and any related services without notice and you agree that we are not liable for any loss or damage that you or any other person incurs by not being able to access the Platform or Searches.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">2.3</strong></td>
+					<td style="border:none"><p>As a Sherpa or Tenant respectively, youcontract with and authorise usto book Searches, take payment and contractually commit Sherpas and Tenantssubject to these Terms.These Terms apply to any contract between theTenantand the Sherpafor the provision of Searches.The Tenantand Sherpamay enforce any of these Terms against the other party directly in respect of the Searches.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">2.4</strong></td>
+					<td style="border:none"><p>We do not accept any responsibility or legal liability whatsoever for any act or omission of the Sherpa or the Tenant arising from or in connection with the Searches.Although we may assist with the resolution of any complaint or dispute relating to the Searches, you acknowledge that any legal recourse arising from or in connection with the Searches, whether for breach of contract or otherwise, is against the Tenant or Sherpa (as applicable) and not against us, notwithstanding anything to the contrary in these Terms or on the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">2.5</strong></td>
+					<td style="border:none"><p>You must cooperate with us and comply with all reasonable requirements, including provision of the required information and documents relating to the Searches.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">3</strong></td>
+					<td style="border:none" class="subheadings1"><p>TENANT REGISTRATION</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">3.1</strong></td>
+					<td style="border:none"><p>We may accept, reject, suspend or remove your registration as a Tenant in our absolute discretion.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">3.2</strong></td>
+					<td style="border:none"><p>To use the Platform and book Searches you must register as Tenant and provide us with your full name,email, phone number and address, and pay the Fees and any other charges agreed between you and us.You must provide us with accurate personal and contact information. You will only represent yourself and will not create false aliases or impersonate any other person (with or without their consent) while using the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">4</strong></td>
+					<td style="border:none" class="subheadings1"><p>SHERPAREGISTRATION & STATUS</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">4.1</strong></td>
+					<td style="border:none"><p>We may accept, reject, suspendor remove registration of a Sherpa in our absolute discretion.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">4.2</strong></td>
+					<td style="border:none"><p>Each Sherpa acknowledges that UPand the Tenantsrely on the accuracy and completeness of information provided by the Sherpas during the registration process. The Sherpa acknowledges that such information will be made publicly available and must notify us of any changes. We are not responsible for verifying, editing or monitoring such information. Upon demand from any Tenant, Sherpas must be able to provide evidence of their qualifications and experience.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">4.3</strong></td>
+					<td style="border:none"><p>Sherpas may be engaged by UP as independent contractors (and not an employee of UP), in which case each Sherpa warrants and represents that:</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>All information provided to us is accurate, complete and not misleading;</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>Sherpa has the relevant qualifications and experience to perform the Searches.</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>Sherpa has the necessary immigration status to perform the Searches;</p></td>
+								</tr>
+								<tr>
+									<td>(d)</td>
+									<td><p>Sherpa will only represent himself (or such other person with full and unrestricted consent) and will not create false aliases or impersonate any other person (without their consent) while using the Platform; and</p></td>
+								</tr>
+								<tr>
+									<td>(e)</td>
+									<td><p>Sherpa shall be fully responsible for any tax and national insurance and social security contributions and any other liability, deduction, contribution, assessment or claim arising from or made in connection with these Terms or the Searches. The Sherpa shall indemnify us against all reasonable costs and expenses and any tax, penalty, fine or interest incurred or payable in connection with or in consequence of any such liability, deduction, contribution, assessment or claim, other than where such liability, deduction, contribution, assessment or claim arises out of our negligence or wilful default. We may at its option satisfy such indemnity (whether in whole or in part) by way of deduction from the payments due to be paid to it under these Terms.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">4.4</strong></td>
+					<td style="border:none"><p>Subject always to applicable laws and regulations, Sherpas are entitled to have an economic relationship and entitlement to commissions payable by the listing agent or landlord relating to any Viewings and/or Properties. Tenants may require disclosure of relevant information from the Sherpa.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">5</strong></td>
+					<td style="border:none" class="subheadings1"><p>PROPERTIES & CONTENT</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.1</strong></td>
+					<td style="border:none"><p>Properties are listed on the Platform in good faith and based on information provided by third party real estate agents and landlords, and may not have been verified. We do not accept any responsibility or legal liability whatsoever for the currency, accuracy, completeness or otherwise relating to the Properties, including for any links included within the Properties to third party websites.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.2</strong></td>
+					<td style="border:none"><p>The Platform and all content and information published on, sent via or in connection with the Services (including discussion posts, profile information and links, assets/images and other content) is published for informational purposes only. We make no representations as to the accuracy or completeness of any content included on the Platform. We will not be liable for any losses, injuries, or damages from the display or use of the content of the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.3</strong></td>
+					<td style="border:none"><p>You are solely responsible for all activity on the Platform, your communications and any content(User Content) is accurate, complete, honest and genuine. Youwarrant and represent for User Content (including any photos, assets/images, films, videos, texts and other intellectual property) that you have unrestricted authority to use the content on the Platform in accordance with these Terms without infringement of third party rights</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.4</strong></td>
+					<td style="border:none"><p>You grant us an irrevocable, non-exclusive royalty-free global and unrestricted license to use, represent, reproduce and exploit such User Content for all purposes related to the Services (including reasonable marketing and promotional use). You acknowledge that such User Content may be made publicly available and that we are not responsible for editing or monitoring such information. We nevertheless reserve the right to delete any such information in our absolute discretion.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.5</strong></td>
+					<td style="border:none"><p>We are under no legal obligation to monitor any content, data or information transmitted by users via or stored on the Platform. Our only obligations are to (i) hold your personal data, which is subject to an obligation of confidentiality and treated in compliance with the laws and regulations relating to personal data, in accordance with our Privacy Policy, and (iii) remove all clearly illegal content which has been effectively brought to our attention.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.6</strong></td>
+					<td style="border:none"><p>We may include sponsored content and advertisements on the Platform, including near your content and communications, without compensation to any user.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">5.7</strong></td>
+					<td style="border:none"><p>We reserve the right to delete any such content in our absolute discretion and may modify the format, layout, language, size and metadata of such content without changing the meaning of your expression.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">6</strong></td>
+					<td style="border:none" class="subheadings1"><p>TERMS OF SERVICE</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">6.1</strong></td>
+					<td style="border:none"><p>Searches & Viewings</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>All Searchesspecified on the Platform are subject to availability and are subject to change at any time. We may accept or reject any Searches at our own discretion.</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>We do not guarantee that a Tenantwill be able to complete any Viewings. Nor do we guarantee any specific outcomes from dealings withSherpas.</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>The Tenant is responsible for being familiar with the details of each Search. Should the Tenant wish to cancel any Searches they must do so within the Cancellation Period (defined below).</p></td>
+								</tr>
+								<tr>
+									<td>(d)</td>
+									<td><p>We may reject or cancel any Search or Viewing at any time, including if we discover an error in the price or specifications of the Searches or Properties. We may give the Tenantthe choice to vary the Search.</p></td>
+								</tr>
+								<tr>
+									<td>(e)</td>
+									<td><p>The Tenantshall be notified of each Viewingvia the Platform and has sole responsibility for monitoring their account on the Platformfor new and/or cancelled Viewings. The Sherpa may cancelanyViewing at their own discretion if the Sherpa raises a concern as to legitimacy or safety.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">6.2</strong></td>
+					<td style="border:none"><p class="subheadings1">Fees &Payment</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>All fees payable for the Searches(Fees) are set out on the Platform and, unless otherwise indicated, are inclusive of VAT and subject to change at any time.</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>Unless specified otherwise via the Platform, payments of the Fees for Sherpa servicesmust be made 50% in advance using the nominated payment gateway or services provider (initially Stripe) (subject to applicable terms and conditions) by credit card or any other payment method specified on the Platform. Surcharges may apply for certain payment methods (such assurcharges for the use of non-EU cards).</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>Tenants will pre-authorise the charging of their card for the balance payment of the Fees when booking the Searches. Balance payment will only be taken from the card upon securing the property / signing the lease documentation. The Tenantwarrants that there are sufficient funds on the relevant credit or debit card, andshall be responsible for paying any fees and surcharges.</p></td>
+								</tr>
+								<tr>
+									<td>(d)</td>
+									<td><p>If any amount due remains unpaid, we may charge additional administration costs and interest (both before and after judgment) on the amount unpaid at the rate for the time being that would be applicable if the debt were a qualifying debt under the LatePayment of Commercial Debts (Interest) Act 1998.</p></td>
+								</tr>
+								<tr>
+									<td>(e)</td>
+									<td><p>You agree to pay any duties or taxes with respect to the Searches.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">6.3</strong></td>
+					<td style="border:none" ><p class="subheadings1">Cancellation Policy</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>For Searches provided by Sherpa, should a Tenant wish to cancel any Search, the Tenant must do so 24 hours or more in advance of the first Viewing (Cancellation Period) to get a full refund. Cancellations made less than 24 hours before the Viewing will be entitled to 50% refund; while no refund shall be due if the Tenant is not present for a scheduled Viewing or cancels the Search after the Viewing.</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>Should a Sherpa not be able to complete a Viewing due to unforeseen circumstances (such as unavailability of the property / estate agent / landlord / current tenant, sickness etc.) they must cancel the Viewing on the Platform as soon as they become aware that it cannot be completed and make reasonable efforts to ensure that both the Tenant and we are fully apprised of the situation. If the Sherpa cancels a Viewing less than 24 hours in advance of the Viewing or if the Sherpa does not attend any Viewing, the Tenant shall be notified via the Platform of their option to accept an alternative Viewing.</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>If the Tenant chooses to cancel the Search instead of rescheduling the Viewing or changing the Sherpa, we shall inform the Sherpa of such change promptly and the Sherpa shall reimburse any advance payment received from us. The reimbursement shall be made within 7 business days after such cancelled Search. We may, at our sole discretion adjust such amount in future Searches with the Sherpa in the next 30 days.</p></td>
+								</tr>
+								<tr>
+									<td>(d)</td>
+									<td><p>We reserve the right to amend our cancellation charges policy at any time.</p></td>
+								</tr>
+								<tr>
+									<td>(e)</td>
+									<td><p>This cancellation and refund policy does not affect anyrights at law, including under the Consumer Protection Act 1987, which cannot be excluded or limited.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">6.4</strong></td>
+					<td style="border:none"><span class="subheadings1">Viewings</span>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>The Sherpa is responsible for organising and arranging Viewing of the Properties, following any booking on the Platform or made outside the platform by us on behalf of the tenant. Whilst every effort will be made by Sherpas to attend at the time of the Viewing and comply with all reasonable requests relating to the Searches, we cannot guarantee arrival times, including where delay is caused by factors outside our control (such as weather, traffic, equipment failure, accident or illness). Sherpas must endeavour to inform Tenants of any delay to a Viewing.</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>Tenantsand Sherpas must treat one another courteously and lawfully, and provide all reasonable co-operation and assistance to enable them to effectively perform the Search.The Sherpa shall perform the Searches in accordance with industry standards and shall comply with all applicable laws and regulations.</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>You agree to communicate within 24 hours of any Viewingany and all complaints or grievance relating to the Searches to us and comply with any policies on the Platform as may be varied from time to time. You authorise us to deal on your behalf to resolve any complaint or grievance and agree not to communicate any settlement without our approval.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">7</strong></td>
+					<td style="border:none" class="subheadings1"><p>CONDITIONS OF USE</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">7.1</strong></td>
+					<td style="border:none"><p>It is a condition of use that:</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>You are over the age of 18 (or a Tenant over the age of 13 and using the Platform under the supervision of a parent or legal guardian</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>you have authority to use the payment method used to complete any Viewing.</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>you register on the Platform for any Searches.</p></td>
+								</tr>
+								<tr>
+									<td>(d)</td>
+									<td><p>you only use the Platform for lawful purposes.</p></td>
+								</tr>
+								<tr>
+									<td>(e)</td>
+									<td><p>you do not engage in any defamatory, improper, indecent or offensive behaviour.</p></td>
+								</tr>
+								<tr>
+									<td>(f)</td>
+									<td><p>you are not breaking any local, state, national or international law in your relevant jurisdiction by accessing this Platform.</p></td>
+								</tr>
+								<tr>
+									<td>(g)</td>
+									<td><p>you will treat the Platform and its users with respect and will not partake in any conduct that could be considered bullying, harassment, degradation, insulting or otherwise demeaning to the human standard of any other person (as determined by us).</p></td>
+								</tr>
+								<tr>
+									<td>(h)</td>
+									<td><p>you must provide us with accurate personal and contact information. You will only represent yourself and will not create false aliases or impersonate any other person (with or without their consent) while using the Platform; and</p></td>
+								</tr>
+								<tr>
+									<td>(i)</td>
+									<td><p>(i)	you do not breach any of the Terms.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">7.2</strong></td>
+					<td style="border:none"><p>You are responsible for all content and information published on or sent via the Platform and warrant that information is accurate and honest. You acknowledge that such content will be made publicly available and that we are not responsible for editing or monitoring such content. We reserve the right to delete any such content and information in our absolute discretion.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">7.3</strong></td>
+					<td style="border:none"><p>By using the Platform, you warrant and represent that you will not directly or indirectly circumvent the Platform and that all Searches will be bookedand conducted in accordance with these Terms. Without limitation, Tenants and Sherpas must not contact each other directly or bookSearchesbetween the two of them outside of the Platform for a period of 6 months after the later of any Viewing or 3 months after engagement with any Sherpa.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">7.4</strong></td>
+					<td style="border:none"><p>Youagree and warrant that you will not solicit a user of the Platform to join another competing mobile application, website or services</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">7.5</strong></td>
+					<td style="border:none"><p>You indemnify us for any loss or damage we suffer as a result of your breach of this clause.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">8</strong></td>
+					<td style="border:none" class="subheadings1"><p>ACCESS & AVAILABILITY</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">8.1</strong></td>
+					<td style="border:none"><p>In order to use the App, you are required to have a compatible mobile phone and the necessary minimum system specifications identified on the website and/or AppStore (including Apple iOS). The App software may be upgraded to add or remove support for new functions and services.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">8.2</strong></td>
+					<td style="border:none"><p>You acknowledge that we are not required to keep the Platform available for your use and we make no warranties or guarantees, implied or express, as to the ongoing availability of the Platform or Searches.We accept no responsibility for the unavailability of this Platform, or any offer of Searches found on the Platform, and you agree that we are not liable for any loss or damage that you or any other person incurs by not being able to access the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">9</strong></td>
+					<td style="border:none" class="subheadings1"><p>INTELLECTUAL PROPERTY</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">9.1</strong></td>
+					<td style="border:none"><p>The Platform and all content on the Platform (including any logos, colour and font specifications, source code, usage data, ideas, enhancements, feature requests, suggestions or other information provided by the Tenant or any Sherpa) is the copyright and property of Urban Proptech Limited and can be used for any purpose relating to the Platform or the business of UP. Without our express written permission, you shall not copy the Platform for your own commercial purposes, including:</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>(a)</td>
+									<td><p>replicate or use the details and profiles of any Sherpa or Tenant;</p></td>
+								</tr>
+								<tr>
+									<td>(b)</td>
+									<td><p>replicate all or part of the Platform in anyway; or</p></td>
+								</tr>
+								<tr>
+									<td>(c)</td>
+									<td><p>incorporate all or part of the Platform in any other webpage, website, platform, application or other digital or non-digital format.</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">9.2</strong></td>
+					<td style="border:none"><p>We havethe moral and registered rights in our trademarks (whether or not registered, including logos, get up and service marks) and you shall not copy, alter, use or otherwise deal in the marks without our prior written consent.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">9.3</strong></td>
+					<td style="border:none"><p>You hereby grant us and our affiliates a worldwide, perpetual, irrevocable, transferable, sublicensable, royalty-free license to use, modify, copy, distribute and incorporate into the Platform your business name(s), trademarks, service marks or logos) or other intellectual property you share with us in connection with the Platform and for marketing and promotional purposes in connection with our business.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">10</strong></td>
+					<td style="border:none" class="subheadings1"><p>THIRD PARTY LINKS, SERVICES & ADVERTISING</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.1</strong></td>
+					<td style="border:none"><p>The Platform may contain links, information and advertising from businesses, people, websites and applications, hosted, published or operated by third parties (Third Parties). You consent to such marketing and receiving this information as part of your use of the Platform and acknowledge that we do not control Third Parties.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.2</strong></td>
+					<td style="border:none"><p>We have implemented interactive communication tools, which enable users of the Platform to communicate using the Platform. The related comments and messages which are published on the Platform must comply with these Terms. Without limitation, we reserve the right to: (i) issue certain warnings on the Platform following repeated complaints formulated by unsatisfied users; and (ii) in exceptional circumstances, rate any service provider, based on objective criteria and taking into account the data available from this service.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.3</strong></td>
+					<td style="border:none"><p>We have also developed tools which enable the users to share certain information from the Platform on websites, social networks and blogs which are published by third parties, provided that this type of communication and sharing for promotional purposes, to the exclusion of any commercial use or for any promotional use which is not connected with the Platform or our marketing activities. You may not post any hypertext links on another user’s page or on the forums, if such links send the user to websites whose contents violate these Terms.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.4</strong></td>
+					<td style="border:none"><p>If after receiving written notice to remove any link, you do not comply with any request for removal or otherwise ensure compliance with these Terms, we reserve the right to delete the link or related User Content and/or delete your Account.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.5</strong></td>
+					<td style="border:none"><p>The use of hypertext links and/or hyperlinks, which directs individuals to our Platform, is expressly authorised strictly for the promotion of the Platform and prevent confusion with third party websites. Without limitation, we prohibit users from using techniques known as "framing", "inline linking" and "deep-linking" for the non-authorised exact reproduction of the contents of the Platform and integration on webpages published by third parties.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">10.6</strong></td>
+					<td style="border:none"><p>We are not responsible for any information transmitted by Third Parties or liable for any reliance you make upon the websites, information or statements conveyed by Third Parties (or in relation to your dealings with Third Parties), nor are we responsible for the accuracy of any advertisements.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">11</strong></td>
+					<td style="border:none" class="subheadings1"><p>LIMITATION OF LIABILITY & INDEMNITY</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.1</strong></td>
+					<td style="border:none"><p>You agree that you use the Platformand attend any Searches entirely at your own risk.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.2</strong></td>
+					<td style="border:none"><p>You acknowledge that we are not responsible for any Searches, the conduct or activities of any Tenant or Sherpaand that we are not liable for such under any circumstances (including for any physical injury or death for which the Sherpa or Tenant is respectively liable).</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.3</strong></td>
+					<td style="border:none"><p>Sherpas are self employed and are solely responsible for the quality and outcome of the Searches. We act as an agent to introduce the parties and we accept no liability whatsoever in relation to anySearches.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.4</strong></td>
+					<td style="border:none"><p>If you are provided with a username and password to access the Platform, it is your responsibility to keep your username and password secure and you indemnify us for any loss or damage we suffer as a result of unauthorised access to your account. You are solely responsible for the use of your account, irrespective of who is utilising it, whether with or without your permission.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.5</strong></td>
+					<td style="border:none"><p>You acknowledge that in using the Platform and in relation to the supply of Searches you do not rely on any statement, representation, assurance or warranty (whether made innocently or negligently) that is not set out in these Terms.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.6</strong></td>
+					<td style="border:none"><p>You agree to indemnify us for any loss, damage, cost or expense that we may suffer or incur as a result of or in connection with your use of or conduct in connection with the Platform and any Searches or Viewing including any breach by you of these Terms.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.7</strong></td>
+					<td style="border:none"><p>In no circumstances will we be liable for any direct, incidental, consequential or indirect damages, loss or corruption of data, loss of profits, goodwill, bargain or opportunity, loss of anticipated savings or any other similar or analogous loss resulting from your access to, or use of, or inability to use the Platform or any content, or in any way relating to the Searches (or the provision or non-provision of Service), whether based on warranty, contract, tort, negligence, in equity or any other legal theory, and whether or not we knew or should have known of the possibility of such damage, to business interruption of any type, whether in tort, contract or otherwise</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.8</strong></td>
+					<td style="border:none"><p>Certain rights and remedies may be available under the Sale of Goods Act 1979 or the Consumer Protection Act 1987 or similar legislation in other jurisdictions and may not be permitted to be excluded, restricted or modified. Apart from those that cannot be excluded, we and our related entities exclude all conditions and warranties that may be implied by law. To the extent permitted by law, our liability for breach of any implied warranty or condition that cannot be excluded is restricted, at our option, to the re-performance of Searches or payment of the total value of the relevantViewing. (or Sherpa Service?)</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">11.9</strong></td>
+					<td style="border:none"><p>In all circumstances, you agree that any liability of UP shall not exceed the total Fee you paidfor the Search.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">12</strong></td>
+					<td style="border:none" class="subheadings1"><p>PRIVACY POLICY & COOKIE POLICY</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">12.1</strong></td>
+					<td style="border:none"><p>You accept our Privacy Policy and Cookie Policy and agree that you will not do anything that shall compromise our compliance with the Privacy Policy and Cookie Policy nor do anything contrary to the Privacy Policy or Cookie Policy insofar as your use of the Platform is concerned.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">12.2</strong></td>
+					<td style="border:none"><p>We may amend the Privacy Policy and Cookie Policy without notice and at our absolute discretion, and by continuing to use the Platform you accept such changes.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">13</strong></td>
+					<td style="border:none" class="subheadings1"><p>TERMINATION</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">13.1</strong></td>
+					<td style="border:none"><p>We may end the agreement formed by the Terms immediately by giving you written notice. It is not essential to provide reasons for the termination. Where theseTerms have been terminated you must immediately cease using the Platform or Searches.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">13.2</strong></td>
+					<td style="border:none"><p>Sherpas and Tenants may terminate their use of the Platform at any time. Provided that for Sherpas there are no Viewings scheduled and that for both Sherpas and Tenants there are no Fees left outstanding.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">13.3</strong></td>
+					<td style="border:none"><p>Your use of the Platform may be cancelled at any time, for any reason, on a temporary or permanent basis. You must immediately cease using the Platform should you receive a notice cancelling your licence to use the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">14</strong></td>
+					<td style="border:none" class="subheadings1"><p>NOTICES& FEEDBACK</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">14.1</strong></td>
+					<td style="border:none"><p>You can contact our service team by email (marketing@theurbancollective.io).You can direct notices, enquiries, complaints and so forth to us byusingany other details published on the Platform. We will notify you of a change of details by publishing new details on the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">14.2</strong></td>
+					<td style="border:none"><p>We will send you notices and other correspondence to the email address that you submit to the Platform, or that you notify us of. It is your responsibility to update your contact details as they change.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">14.3</strong></td>
+					<td style="border:none"><p>We would appreciate your feedback on the Platform. Please notify us of all bugs, glitches, lack of functionality or other problems on the Platform and share your ideas for enhancements that come to your attention. You agree that all feedback, information or testimonials that you provide may be used in any marketing materials for the promotion of the Platform.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">14.4</strong></td>
+					<td style="border:none"><p>When you publicly talk and write about the Platform, please take into account that the Platform is subject to change and refrain from publishing full reviews, public tests, screenshots or anything else that might unfaithfully represent the Platform. Of course, we would prefer if you provide any constructive criticism to us directly.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">14.5</strong></td>
+					<td style="border:none"><p>A consent, notice or communication under these Terms is effective if it is sent as an electronic communication (having the meaning given to that term in Electronic Communications Act 2000 and the Electronic Signatures Regulations 2002) unless required to be physically delivered under law.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack font-size">15</strong></td>
+					<td style="border:none" class="subheadings1"><p>GENERAL</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.1</strong></td>
+					<td style="border:none"><p>We may assign or otherwise create any interest in their rights under these Terms by giving you written notice.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.2</strong></td>
+					<td style="border:none"><p>Wemay at ourabsolute discretion amend theseTerms at any time, which shall become effective by giving you notice.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.3</strong></td>
+					<td style="border:none"><p>Any provision of these Terms, which are considered invalid or unenforceable is ineffective to the extent of the invalidity or unenforceability without affecting the remaining clauses of these Terms. The parties will negotiate in good faith to replace any ineffective provision with a provision which is valid and enforceable and consistent with the intention of these Terms, so far as is reasonably practicable.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.4</strong></td>
+					<td style="border:none"><p>These Terms form part of an e-commerce transaction and the parties agree that these Terms shall be accepted electronically and the agreement to these Terms is formed and validly entered into electronically.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.5</strong></td>
+					<td style="border:none"><p>The termination of these Terms does not affect the parties’ rights in respect of periods before the termination of these Terms.</p></td>
+				</tr>
+				<tr>
+					<td style="border:none"><strong class="textblack ">15.6</strong></td>
+					<td style="border:none"><p>These Terms and any non-contractual obligations arising therefrom are governed by the laws of England and Wales and you submit to the exclusive jurisdiction of the courts in England.</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- end privacy-statements-content -->
+<app-footer></app-footer>

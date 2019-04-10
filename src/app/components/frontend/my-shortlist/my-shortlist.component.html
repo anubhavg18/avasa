@@ -1,0 +1,180 @@
+
+<div  class="google-map-box">
+    <div #gmap  id="map"></div>
+</div>
+<app-header1></app-header1>
+
+  <!-- <div class="map-column-left">
+    <ul>
+      <li class="notActive" id="openItem1"><a (click)="openItem('1')">View List</a></li>
+      <li class="notActive" id="openItem2"><a (click)="openItem('2')">Edit</a></li>
+      <li class="notActive" id="openItem3"><a (click)="openItem('3')">Sort</a></li>
+    </ul>
+  </div> -->
+  <div class="map-column-left" *ngIf="uiState !== 'viewFullDetails'">
+      
+      <ul *ngIf="uiState==='searchProperty'">
+        <li class="notActive" *ngIf="listingViewState === 'viewMap'"><a href="javascipt:void" (click)="toggleListingView()">View List</a></li>
+        <li class="notActive" *ngIf="listingViewState === 'viewList'"><a href="javascipt:void" (click)="toggleListingView()">View Map</a></li>
+        <li class="notActive"><a href="javascipt:void" (click)="openItem('2')">Edit</a></li>
+        <li class="notActive"><a href="javascipt:void" (click)="openItem('3')">Sort</a></li>
+      </ul>
+
+      <ul *ngIf="uiState==='viewSelectedListings'">
+        <li class="notActive" *ngIf="listingViewState === 'viewMap'"><a href="javascipt:void"
+              (click)="toggleListingView()">View List</a></li>
+        <li class="notActive" *ngIf="listingViewState === 'viewList'"><a href="javascipt:void"
+              (click)="toggleListingView()">View Map</a></li>
+        <li class="notActive">
+           <a href="javascipt:void" (click)="showEditOptions = !showEditOptions">Edit</a>
+           <label *ngIf="showEditOptions">
+              <input type="radio" name="editradiogroup" value="commute" (change)="editSearchCriteria('commute')"> Commute
+           </label>
+           <label *ngIf="showEditOptions">
+              <input type="radio" name="editradiogroup" value="filter" (change)="editSearchCriteria('filter')"> Filter
+           </label>
+           <label *ngIf="showEditOptions">
+              <input type="radio" name="editradiogroup" value="preferred_area" (change)="editSearchCriteria('preferred_area')"> Preferred Area
+           </label>
+        </li>
+  
+        <li class="notActive" *ngIf="listingViewState === 'viewList'">
+           <a href="javascipt:void" (click)="showSortMenu = !showSortMenu">Sort</a>
+           <label *ngIf="showSortMenu">
+              <input type="radio" name="radiogroup" value="highest_rice" (change)="sortListings('highest_price')"> Highest
+              Price
+           </label>
+           <label *ngIf="showSortMenu">
+              <input type="radio" name="radiogroup" value="lowest_rice" (change)="sortListings('lowest_price')"> Lowest
+              Price
+           </label>
+           <label *ngIf="showSortMenu">
+              <input type="radio" name="radiogroup" value="recent" (change)="sortListings('most_recent')"> Most Recent
+           </label>
+        </li>
+     </ul>
+    </div>  
+
+  <div class="map-property-list" *ngIf="listingViewState === 'viewMap' && uiState === 'viewSelectedListings'">
+    <div>
+    <div class="owl-carousel owl-theme">
+      <div class="item" *ngFor="let eachListing of shortlistProperty" (click)="carouselClickProperty(eachListing)">
+        <div  (click)="carouselClickProperty(eachListing)">
+        <!-- <a href="#" class="cross-btn"><i class="fa fa-times"></i></a> -->
+        <div class="imgb"><img src="{{eachListing.imageUrl}}" alt="property"></div>
+        <div class="txtb">
+          
+          <h4>{{eachListing.bedroom}} Bed- {{eachListing.bathroom}} Bath</h4>
+          
+          <p><strong>£{{eachListing.price}}/</strong> month
+            <span>Commute Time</span>
+          </p>
+          <ul>
+            <li><a (click)="viewFullDetails(eachListing)">Full details</a></li>
+            <li><p>{{eachListing.address}}</p></li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+
+
+  <div class="map-property-list-view" *ngIf="listingViewState === 'viewList' && uiState === 'viewSelectedListings'" >
+    <div class="map-property-list-view-in">
+      <div class="property-list-detail clearfix">
+        <div class="property-col-li clearfix" *ngFor="let eachListing of shortlistProperty">
+        <div class="img-box">
+          <img src="{{eachListing.imageUrl}}" alt="property">
+          <h3 [innerHtml]="eachListing.displayable_address">{{eachListing.address}}</h3>
+        </div><!-- img-box -->
+        <div class="txtb">
+          <div class="column-left">
+            <h4><strong>£{{eachListing.price}}/</strong>month</h4>
+            <p class="ic-train">Oakwood Station - 0.3 miles away</p>
+            <!-- <p>Listed by</p>
+            <p>{{eachListing.agent_name}}</p>
+            <p>{{eachListing.agent_address}}</p>
+            <p>{{eachListing.agent_phone}}</p> -->
+            <p><sub>Added 3 Days Ago</sub></p>
+          </div>
+          <div class="column-right">
+            <h4>{{eachListing.bedroom}} Bed- {{eachListing.bathroom}} Bath</h4>
+            <p class="ic-train" [innerHtml]="eachListing.displayable_address"></p>
+            <div class="gap">
+              <div>
+                  
+                <p [innerHtml]="eachListing.description"></p>
+                <!-- <p>detached house available</p>
+                <p>in Oakwood, N14......<a href="#">show more</a></p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="map-property-detail" *ngIf="uiState === 'viewFullDetails'">
+    <div class="map-property-detail-in">
+       <button (click)="hideFullDetails()" class="back-arrow"></button>
+     <div class="slider-box">
+       <h3>{{shortlistProperty.address}}</h3>
+       <div id="slider" class="flexslider slider ">
+             <ul class="slides">
+                 <li>
+                   <img src="images/banner3.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner4.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner5.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner6.jpg" />
+               </li>
+             </ul>
+           </div>
+           <div id="carousel" class="flexslider thumbnail">
+             <ul class="slides">
+                 <li>
+                   <img src="images/banner3.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner4.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner5.jpg" />
+               </li>
+               <li>
+                   <img src="images/banner6.jpg" />
+               </li>
+             </ul>
+           </div>
+     </div><!-- slider-box -->
+     <div class="txtb">
+       <div class="row">
+         <div class="col-md-5 col-lg-5">
+           <h3>${{shortlistProperty.price}}/month</h3>
+           <h4>{{shortlistProperty.bedroom}} Bed- {{shortlistProperty.bathroom}} Bath</h4>
+           <p>Oakwood Station - 0.3 miles away</p>
+           <p>Listed by<br>{{shortlistProperty.agent_name}}<br>{{shortlistProperty.agent_address}}<br>{{shortlistProperty.agent_phone}}</p>
+           <p><strong>Added 3 Days Ago</strong></p>
+ 
+         </div>
+         <div class="col-md-4 col-lg-4 text-center">
+           <p [innerHtml]="shortlistProperty.description"><a href="#">show more</a></p>
+         </div>
+         <div class="col-md-3 col-lg-3">
+           <a href="#" class="submit-btn mt-20">CALL AGENT</a>
+           <a href="#" class="submit-btn">FREE EXPERT ADVICE</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

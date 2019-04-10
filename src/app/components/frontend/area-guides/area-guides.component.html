@@ -1,0 +1,264 @@
+<!-- start header -->
+<div class="blog-city-guide header">
+	<div class="header-in">
+		<div class="container">
+			<div class="clearfix">
+				<!-- logo -->
+				<div class="logo col-12 col-md-2 col-lg-2">
+					<a routerLink="index"><img src="assets/images/logo.svg" alt="AWASA"></a>
+				</div>
+				<!--logo -->
+				<!-- navigation -->
+				<div class="navigation col-12 col-md-10 col-lg-10">
+					<!-- nav-link -->
+					<div class="nav-link" id="nav-link">
+						<a routerLink="#"><img src="assets/images/ic_nav_link.svg"></a>
+					</div>
+					<!-- nav-link -->
+					<div class="nav-box" id="nav-box">
+						<!-- nav-link -->
+						<div class="nav-link" id="nav-link2">
+							<a routerLink="#"><img src="assets/images/ic_nav_close.svg"></a>
+						</div>
+						<!-- nav-link -->
+						<!-- app_download_link -->
+						<!-- <div class="app_download_link">
+							<ul>
+								<li><a target="_blank"  routerLink="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/assets/images/ic_apple.svg" alt="apple"></a></li>
+								<li><a target="_blank"  routerLink="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_android.svg" alt="android"></a></li>
+							</ul>
+							<span>Get the App</span>
+						</div> -->
+						<div class="app_download_link">
+							<ul>
+								<li><a target="_blank"  routerLink="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+								<li><a target="_blank"  routerLink="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+							</ul>
+						</div>
+						<!-- app_download_link -->
+						<ul>
+							<li><a routerLink="/home-search" title="Search">Search</a></li>
+							<li><a routerLink="/sherpa" title="Sherpa">Sherpa</a></li>
+							<li class="active"><a routerLink="/area-guides" title="Our blog">Our blog</a>
+								<ul>
+									<li><a routerLink="/area-guides" title="City Guide">Area Guides</a></li>
+									<li><a routerLink="/sherpa-tips" title="Sherpa tips">Sherpa Tips</a></li>
+								</ul>
+							</li>
+							<li><a routerLink="/area-guides" title="About">About</a>
+								<ul>
+									<li><a routerLink="/how-it-works" title="How it works">How it Works</a></li>
+									<li><a routerLink="/our-story" title="Our Story">Our Story</a></li>
+								</ul>
+							</li>
+							<li><a routerLink="/login" title="Login" *ngIf="!loggedIn">Log In</a></li>
+							<li><a href="#" (click)="logout($event)" *ngIf="loggedIn" title="Login">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- navigation -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end header -->
+<!-- start banner -->
+<div class="blog-city-guide banner">
+	<!-- search-info -->
+	<div class="search-info">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-6"> 
+					<h2>In The <span>Neighbourhood </span></h2>
+					<p>Not sure which area is right for you?<br>Let our local experts help.</p>
+				</div>
+				<div class="col-12 col-sm-6 col-md-6 img-box">
+					<img src="assets/images/img_20.jpg" alt="image">
+				</div><!-- img-box -->
+			</div>
+		</div>
+	</div>
+	<!-- search-info -->
+</div>
+<!-- end banner -->
+<div class="london-neighbourhoods">
+	<div class="container">
+		<div class="dropdown-list">
+			<select class="select-box" onchange="location = this.value;">
+				<option value="/area-guides"><a routerLink="">London</a></option>
+				<option value="/accommodation-near-lbs"><a routerLink="">Accommodation Near LBS</a></option>
+				<option disabled="disabled">More coming soon</option>
+			</select>
+		</div>
+		<h3 class="mt19">Trending Neighbourhoods</h3>
+		<div class="row">
+			<div class="column col-12 col-md-4 col-lg-4">
+				<div class="img-box">
+					<a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-notting-hill/" ><img src="assets/images/img_18.png" alt="image"></a>
+				</div>
+				<div class="text-box">
+					<h4><a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-notting-hill/" >Notting Hill</a></h4>
+					<p>Notting Hill, known for its artistic and boho vibes, is probably the neighbourhood that most epitomises London’s diversity and eccentricity. It’s also one of the most well-known areas in the city, famous for its Portobello Road market, its yearly street carnival and the stage of novels and romantic comedy Notting Hill starring Hugh Grant and Julia Roberts in 1999.</p>
+				</div>
+			</div><!-- column -->
+			<div class="column col-12 col-md-4 col-lg-4">
+				<div class="img-box">
+					<a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-st-johns-wood-maida-vale/" ><img src="assets/images/img_19.png" alt="image"></a>
+				</div>
+				<div class="text-box">
+					<h4><a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-st-johns-wood-maida-vale/" >St John’s Wood</a></h4>
+					<p>Nestled between Regent’s Park and Primrose Hill and boasting canals and the charms of Little Venice, the St John’s Wood/Maida Vale neighbourhood provides a village atmosphere that appeals to young professionals and families alike.Being well connected to public transport via the Jubilee Line (St John’s Wood station), Bakerloo line (Warwick Avenue & Maida Vale stations) and various bus lines serving Central and North West London, the neighbourhood is ideally located.</p>
+				</div>
+			</div><!-- column -->
+			<div class="column col-12 col-md-4 col-lg-4">
+				<div class="img-box">
+					<a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-canary-wharf/"><img src="assets/images/img_17.jpg" alt="image"></a>
+				</div>
+				<div class="text-box">
+					<h4><a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-canary-wharf/">Canary Wharf</a></h4>
+					<p>Canary Wharf, located in Greater London, is highly regarded as a commercial centre. The 97-acre area has over 1.5 million square metres of retail and office space. Being the second largest financial district, it has some of the tallest and most spectacular buildings to be found in Europe. In fact, the skyline is a sight to behold and looks quite spectacular at night when the buildings are lit up.  </p>
+				</div>
+			</div><!-- column -->
+		</div>
+	</div>
+	<div class="clearfix">
+		<a href="https://avasa.ai/blog/category/in-the-neighbourhood" class="more-btn">Read more posts</a>
+	</div>
+</div>
+<!-- start search-home-box -->
+<div class="search-home-box gap clearfix">
+	<div class="search-info">
+		<div class=" justify-content-md-center">
+			<div class="col-12 ">
+				<h2>Start your search now</h2>
+				
+				<app-search-field></app-search-field>
+				<!-- popular-search -->
+				<div class="popular-search">
+					<h4>Popular searches</h4>
+					<ul>
+						<li><a routerLink="#" data-toggle="modal" data-target="#myModal">2 beds in Marylebone</a></li>
+						<li><a routerLink="#" data-toggle="modal" data-target="#myModal">1 bed in Victoria</a></li>
+						<li><a routerLink="#" data-toggle="modal" data-target="#myModal">3 beds in Wimbledon</a></li>
+						<li><a routerLink="#" data-toggle="modal" data-target="#myModal">Studio near UCL</a></li>
+						<li><a routerLink="#" data-toggle="modal" data-target="#myModal">2 beds in South Kensington</a></li>
+					</ul>
+				</div>
+				<!-- popular-search -->
+			</div>
+		</div>
+	</div>
+</div>	
+<!-- end search-home-box -->
+
+<!-- start marylebone-neighbourhoods  -->
+<!-- <div class="marylebone-neighbourhoods">
+	<div class="container">
+		<h3>Other neigbourhoods close by Marylebone</h3>
+		<div class="column col-12 col-md-3 col-lg-3">
+			<div class="img-box">
+				<img src="assets/images/img_4.png" alt="image">
+			</div>
+			<div class="text-box">
+				<h4>North</h4>
+				<p>Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18</p>
+			</div>
+		</div>
+		<div class="column col-12 col-md-3 col-lg-3">
+			<div class="img-box">
+				<img src="assets/images/img_5.png" alt="image">
+			</div>
+			<div class="text-box">
+				<h4>South</h4>
+				<p>Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00</p>
+			</div>
+		</div>
+		<div class="column col-12 col-md-3 col-lg-3">
+			<div class="img-box">
+				<img src="assets/images/img_6.png" alt="image">
+			</div>
+			<div class="text-box">
+				<h4>East</h4>
+				<p>Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00</p>
+			</div>
+		</div>
+		<div class="column col-12 col-md-3 col-lg-3">
+			<div class="img-box">
+				<img src="assets/images/img_7.png" alt="image">
+			</div>
+			<div class="text-box">
+				<h4>West</h4>
+				<p>Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00<br> Location name, N18 A00</p>
+			</div>
+		</div>
+	</div>
+</div>	 -->
+<!-- end marylebone-neighbourhoods -->
+<!-- Modal -->
+<div class="modal fade comming-soon" id="myModal" role="dialog">
+	<div class="modal-dialog">
+	
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-body">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<img src="assets/images/Coming-Soon.jpg" alt="Coming-Soon">
+		</div>
+	  </div>
+	  
+	</div>
+	</div>
+
+<!-- start footer -->
+<div class="sherpa-services footer clearfix">
+	<div class="container">
+		<div class="footer-logo">
+			<a routerLink="index"><img src="assets/images/logo_white.svg" alt="AWASA"></a>
+		</div>
+		<div class="footer-text clearfix">
+			<p>At Avasa AI, we work to deliver the most transparent and efficient end-to-end solution for rental property search that puts tenants ﬁrst.</p>
+			<p>We support you in ﬁnding properties in neighbourhoods that ﬁt your lifestyle, making the drawn-out, painful process of renting quicker, simpler and hopefully more enjoyable.  </p>
+			<p>Avasa was previously known as The Urban Collective.</p>
+			<!-- app_download_link -->
+			<div class="app_download_link">
+				<ul>
+					<li><a target="_blank"  routerLink="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+					<li><a target="_blank"  routerLink="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+				</ul>
+			</div>
+			<!-- app_download_link -->
+		</div>
+		<div class="footer-link">
+			<h6>ABOUT</h6>
+			<ul>
+				<li><a routerLink="/home-search">Search</a></li>
+				<li><a routerLink="/sherpa-services">Sherpa Services</a></li>
+				<li><a routerLink="/area-guides">Our blog</a></li>
+				<li><a routerLink="/proptech-startup">Our Story</a></li>
+				<li><a routerLink="/how-it-works">Contact us </a></li>
+			</ul>
+		</div>
+		<div class="footer-social-link">
+			<h6>FOLLOW US </h6>
+			<ul>
+				<li><a routerLink="http://facebook.com/AvasaAI" target="_blank"><img src="assets/images/ic_facebook.svg">Facebook</a></li>
+				<li><a routerLink="https://www.instagram.com/avasaai/" target="_blank"><img src="assets/images/ic_instagram.svg">Instagram</a></li>
+				<li><a routerLink="https://twitter.com/AvasaAI" target="_blank"><img src="assets/images/ic_twitter.svg">Twitter</a></li>
+				<li><a routerLink="https://www.linkedin.com/company/the-urban-collective/?viewAsMember=true" target="_blank"><img src="assets/images/ic_linkedin_in.svg">LinkedIn</a></li>
+				<li><a routerLink="https://www.youtube.com/channel/UCdkpG7CiG13GIfuN3efnBFg" target="_blank"><img src="assets/images/ic_youtube.svg">YouTube</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="sherpa-services footer-bot clearfix">
+	<div class="container">
+		<ul>
+			<li><a routerLink="#">Copyright  AVASA.ltd</a></li>
+			<li><a routerLink="/privacy-policy">Privacy Policy</a></li>
+			<li><a routerLink="/terms-of-use">Terms Of Use</a></li>
+			<li><a routerLink="/site-map" target="_blank">Sitemap</a></li>
+		</ul>
+	</div>
+</div>
+<!-- <app-footer></app-footer> -->

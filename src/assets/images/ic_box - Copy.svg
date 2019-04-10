@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="46px" viewBox="0 0 58 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 46 58 46 58 0 0 0"></polygon>
+    </defs>
+    <g id="Avasa-1024" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Sherpa-Pop-Up" transform="translate(-165.000000, -828.000000)">
+            <g id="Group-4" transform="translate(49.000000, 780.000000)">
+                <g id="Group" transform="translate(116.000000, 48.000000)">
+                    <rect id="Rectangle" fill="#49C6DE" fill-rule="nonzero" x="12" y="8" width="34" height="37"></rect>
+                    <g id="Group-6">
+                        <path d="M56.7916667,10.8947368 C56.7916667,9.55831579 55.709,8.47368421 54.375,8.47368421 L3.625,8.47368421 C2.291,8.47368421 1.20833333,9.55831579 1.20833333,10.8947368 L1.20833333,42.3684211 C1.20833333,43.7048421 2.291,44.7894737 3.625,44.7894737 L54.375,44.7894737 C55.709,44.7894737 56.7916667,43.7048421 56.7916667,42.3684211 L56.7916667,10.8947368 Z" id="Stroke-1" stroke="#004D88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-4"></g>
+                        <polygon id="Stroke-3" stroke="#004D88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="12.0833333 44.7894737 45.9166667 44.7894737 45.9166667 8.47368421 12.0833333 8.47368421"></polygon>
+                        <polygon id="Stroke-5" stroke="#004D88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="18.125 8.47368421 39.875 8.47368421 39.875 1.21052632 18.125 1.21052632"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

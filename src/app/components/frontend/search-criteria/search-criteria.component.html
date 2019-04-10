@@ -1,0 +1,566 @@
+<div class="google-map-box">
+   <div #gmap id="map"></div>
+</div>
+
+
+<!-- <div  class="google-map-box">
+	<div  id="map"></div>
+</div> -->
+<!-- google-map-box -->
+<!-- start header -->
+<app-header1></app-header1>
+<!-- end header -->
+<div class="map-column-left"
+   *ngIf="uiState !== 'viewFullDetails' && uiState !== 'searching' && uiState !== 'selectProperty'">
+   <ul *ngIf="uiState==='searchProperty'">
+      <li class="notActive" id="openItem1"><a href="javascipt:void" (click)="openItem('1')">Commute</a></li>
+      <li class="notActive" id="openItem2"><a href="javascipt:void" (click)="openItem('2')">Basic Criteria</a></li>
+      <li class="notActive" id="openItem3"><a href="javascipt:void" (click)="openItem('3')">Advanced Criteria</a></li>
+      <li class="notActive" id="openItem4"><a href="javascipt:void" (click)="openItem('4')">Personalize Your Search</a>
+      </li>
+   </ul>
+   <ul *ngIf="uiState==='viewSelectedListings'">
+      <li class="notActive" *ngIf="listingViewState === 'viewMap'"><a href="javascipt:void"
+            (click)="toggleListingView()">View List</a></li>
+      <li class="notActive" *ngIf="listingViewState === 'viewList'"><a href="javascipt:void"
+            (click)="toggleListingView()">View Map</a></li>
+      <li class="notActive">
+         <a href="javascipt:void" (click)="showEditOptions = !showEditOptions">Edit</a>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="commute" (change)="editSearchCriteria('commute')"> Commute
+         </label>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="filter" (change)="editSearchCriteria('filter')"> Filter
+         </label>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="preferred_area" (change)="editSearchCriteria('preferred_area')"> Preferred Area
+         </label>
+      </li>
+
+      <li class="notActive" *ngIf="listingViewState === 'viewList'">
+         <a href="javascipt:void" (click)="showSortMenu = !showSortMenu">Sort</a>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="highest_rice" (change)="sortListings('highest_price')"> Highest
+            Price
+         </label>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="lowest_rice" (change)="sortListings('lowest_price')"> Lowest
+            Price
+         </label>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="recent" (change)="sortListings('most_recent')"> Most Recent
+         </label>
+      </li>
+   </ul>
+
+</div>
+<div class="map-column-detail" id="sub-item-1" style="display: none;">
+	<form [formGroup]="form"  (ngSubmit)="commuteDetails()" (keydown.enter)="$event.preventDefault()">
+	<div class="map-column-detail-in">
+		<div class="next-prev">
+				<button (click)="openItem(2)" class="submit-btn" type="submit">Next &raquo;</button>
+		</div>
+		<h3>Add to your Commute</h3>
+		
+			<input type="text" placeholder={{this.recentLocationName}} name="location" class="input-box" #search formControlName="search" >
+			<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+				<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+		</agm-map>
+			<!-- <input type="text" placeholder="1 hour, 15mins by public transport" name="transport" class="input-box" >
+			<input type="text" placeholder="Richmond" name="Richmond" class="input-box" > -->
+         <div class="transport-info clearfix form-group">
+            <ul>
+               <li>
+                  <label class="selector" for="a-option"><span class="txtb">Public Transport</span>
+                     <input type="radio" id="a-option" value="public_transport" formControlName="mode">
+                     <span class="check transport"></span>
+                  </label>
+               </li>
+               <li>
+                  <label class="selector" for="b-option"><span class="txtb">Driving</span>
+                     <input type="radio" id="b-option" value="driving" formControlName="mode">
+                     <span class="check driving"></span>
+                  </label>
+               </li>
+               <li>
+                  <label class="selector" for="c-option"><span class="txtb">Walking</span>
+                     <input type="radio" id="c-option" value="walking" formControlName="mode">
+                     <span class="check walking"></span>
+                  </label>
+               </li>
+            </ul>
+         </div>
+
+         <div class="commute-time-col clearfix">
+            <h3>Commute Time*</h3>
+            <div class="commute-time">
+               <a (click)="minusCommuteTime()" class="imgb"><img src="assets/images/minus.svg" alt="minus"></a>
+               <span style="font-size: 13px;">{{this.recentCommuteTime }}</span>
+               <a (click)="plusCommuteTime()" class="imgb"><img src="assets/images/plus.svg" alt="plus"></a>
+            </div>
+         </div>
+         <button type="submit" class="submit-btn">Save</button>
+      </div>
+   </form>
+</div>
+<div class="map-column-detail price-detail" id="sub-item-2" style="display: none;">
+	
+	<div class="map-column-detail-in">
+		<div class="next-prev">
+			<button (click)="openItem(1)" class="submit-btn" >&laquo; Previous</button>
+			<button (click)="openItem(3)" class="submit-btn" >Next &raquo;</button>
+			<!-- <a (click)="openItem(1)" class="previous">&laquo; Previous</a>
+      <a (click)="openItem(3)" class="next">Next &raquo;</a> -->
+
+		</div>
+		<form [formGroup]="basicCriteriaForm"  (ngSubmit)="basicCriteriaDetails()">
+		<h3 class="mb0">Price Range (Per Calendar Month)*</h3>
+		<div class="commute-time-col clearfix">
+			<div class="commute-time">
+				<a (click)="minusMinPrice()" class="imgb"><img src="assets/images/minus.svg" alt="minus"></a>
+				<span class="w85">£{{this.minPrice}} Min</span>
+				<a (click)="plusMinPrice()" class="imgb"><img src="assets/images/plus.svg" alt="plus"></a>
+			</div>
+		</div>
+		<div class="commute-time-col clearfix">
+			<div class="commute-time">
+				<a (click)="minusMaxPrice()" class="imgb"><img src="assets/images/minus.svg" alt="minus"></a>
+				<span class="w85">£{{this.maxPrice}} Max</span>
+				<a (click)="plusMaxPrice()" class="imgb"><img src="assets/images/plus.svg" alt="plus"></a>
+			</div>
+		</div>
+		<h3>No. of Bedrooms*</h3>
+		<div class="range-slider-col clearfix">
+			<input id="ex18b" formControlName="noOfBedrooms" type="text"/>
+			<span class="label">Room & Studios</span>
+			<span class="label pl10" value="1">1</span>
+			<span class="label pl20" value="2">2</span>
+			<span class="label text-right pr10" value="3">3</span>
+			<span class="label text-right"value="4">4</span>
+		</div>
+		<h3 class="mb0">Type of Property*</h3>
+		<div class="transport-info clearfix">
+			<ul>
+				<li>
+					<label class="selector" for="d-option" ><span class="txtb">Home</span>
+					  <input type="radio" id="d-option"  value="home" formControlName="typeOfProperty">
+					  <span class="check home"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="e-option" ><span class="txtb">Flat</span>
+					  <input type="radio" id="e-option"  value="flat" formControlName="typeOfProperty">
+					  <span class="check flat"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="f-option" ><span class="txtb">All</span>
+					  <input type="radio" id="f-option" value="all" formControlName="typeOfProperty">
+					  <span class="check all"></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<h3 class="mb0">Type of Furnishing*</h3>
+		<div class="transport-info furnishing  clearfix">
+			<ul>
+				<li>
+					<label class="selector" for="g-option" ><span class="txtb">Furnished</span>
+					  <input type="radio" id="g-option"  value="furnished" formControlName="typeOfFurnishing">
+					  <span class="check furnished"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="h-option" ><span class="txtb">Semi</span>
+					  <input type="radio" id="h-option" value="semi-furnished" formControlName="typeOfFurnishing">
+					  <span class="check semi"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="i-option" ><span class="txtb">Unfurnished</span>
+					  <input type="radio" id="i-option"  value="unfurnished" formControlName="typeOfFurnishing">
+					  <span class="check unfurnished"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="j-option" ><span class="txtb">All</span>
+					  <input type="radio" id="j-option"  value="all" formControlName="typeOfFurnishing">
+					  <span class="check all"></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<button type="submit" class="submit-btn">Save</button>	
+	</form>
+	</div>
+
+</div>
+<div class="map-column-detail price-detail" id="sub-item-3" style="display: none;">
+	<!-- <pre>Form values: {{advanceCriteriaForm.value | json}}</pre> -->
+	
+	<div class="map-column-detail-in">
+		<div class="next-prev">
+				<button (click)="openItem(2)" class="submit-btn" type="submit">&laquo; Previous</button>
+				<button (click)="openItem(4)" class="submit-btn" type="submit">Next &raquo;</button>
+		</div>
+		<form [formGroup]="advanceCriteriaForm" (ngSubmit)="advanceCriteraiDetails()">
+		<h3 class="mb0">Outdoor Space*</h3>
+		<div class="transport-info clearfix">
+			<ul>
+				<li>
+					<label class="selector" for="k-option" ><span class="txtb">Garden</span>
+					  <input type="radio" id="k-option" value="garden"  formControlName="outdoor">
+					  <span class="check outdoor"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="l-option" ><span class="txtb">Balcony</span>
+					  <input type="radio" id="l-option" value="balcony"  formControlName="outdoor">
+					  <span class="check balcony"></span>
+					</label>
+				</li>
+				<li>
+					<label class="selector" for="m-option" ><span class="txtb">Parking</span>
+					  <input type="radio" id="m-option" value="parking"  formControlName="outdoor">
+					  <span class="check parking"></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<h3>Property Features*</h3>
+	
+		<div class="property-info clearfix" >
+			<ul>
+				<li *ngFor="let data of features">
+					<label class="selector">
+					  	<input type="checkbox" (change)="onChange(data.features, $event.target.checked)">
+	  					<span class="checkmark d-table"><div class="d-table-cell align-middle">{{data.features}}</div></span>
+					</label>
+				</li>
+				
+
+
+
+               <!-- <li>
+					<label class="selector">
+					  	<input type="checkbox" value="new_built" formControlName="propertyFeature">
+	  					<span class="checkmark">New Built</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					  	<input type="checkbox" value="purpose_built" formControlName="propertyFeature">
+	  					<span class="checkmark">Purpose Built</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					 	<input type="checkbox" value="wood_floor" formControlName="propertyFeature">
+	  					<span class="checkmark">Wood Floor</span>
+					</label>
+				</li>
+				<li class="w100"class="w100">
+					<label class="selector">
+					  <input type="checkbox" value="2+bathrooms" formControlName="propertyFeature">
+	  					<span class="checkmark">2+ Bathrooms</span>
+					</label>
+				</li> -->
+               <!-- <li class="w100">
+					<label class="selector">
+					  	<input type="checkbox">
+	  					<span class="checkmark">Two Or More Bathroom</span>
+					</label>
+				</li> -->
+            </ul>
+         </div>
+         <h3>Places Within 5 Minutes Walk*</h3>
+         <div class="property-info clearfix">
+            <ul>
+               <li *ngFor="let data of fiveMinutesWalk">
+                  <label class="selector">
+                     <input type="checkbox" (change)="onChange1(data.features, $event.target.checked)">
+                     <span class="checkmark d-table">
+                        <div class="d-table-cell align-middle">{{data.features}}</div>
+                     </span>
+                  </label>
+               </li>
+               <!-- <li *ngFor="let data of fiveMinutesWalk">
+					<label class="selector">
+					  	<input type="checkbox" (change)="onChange(data.features, $event.target.checked)">
+	  					<span class="checkmark">{{data.features}}</span>
+					</label>
+				</li> -->
+               <!-- <li>
+					<label class="selector">
+					  	<input type="checkbox">
+	  					<span class="checkmark">School</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					  	<input type="checkbox">
+	  					<span class="checkmark">Shopping</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					 	<input type="checkbox">
+	  					<span class="checkmark">Restaurent</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					  <input type="checkbox">
+	  					<span class="checkmark">Gym</span>
+					</label>
+				</li>
+				<li>
+					<label class="selector">
+					  	<input type="checkbox">
+	  					<span class="checkmark">Parking</span>
+					</label>
+				</li> -->
+            </ul>
+         </div>
+			<button type="submit" class="submit-btn">SEARCH NOW</button>
+		</form>
+      </div>
+</div>
+<div class="map-column-detail price-detail" id="sub-item-4" style="display: none;">
+	
+	<div class="map-column-detail-in pt0">
+		<div class="next-prev">
+				<button  (click)="openItem(3)" class="submit-btn" type="submit">&laquo; Previous</button>
+		</div>
+		<form [formGroup]="personalizeSearchForm" (ngSubmit)="personalizeSearch()">
+		<h3>Tell us about you</h3>
+		<div class="property-info clearfix">
+			<ul>
+				<li *ngFor="let status of statuses; let i=index" >
+					<label class="selector">
+					  	<input type="checkbox" [value]="status.id" (change)="onCheckChange($event)" >
+	  					<span class="checkmark d-table"><div class="d-table-cell align-middle">{{status.name}}</div></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+
+		<h3>Areas you like</h3>
+		<div class="property-info clearfix">
+			<ul>
+				<li *ngFor="let area of areas">
+					<label class="selector">
+					  	<input type="checkbox" [value]="area.id" (change)="onCheckChange1($event)">
+	  					<span class="checkmark d-table"><div class="d-table-cell align-middle">{{area.name}}</div></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+
+
+		<h3>I would like to live close to</h3>
+		<div class="property-info clearfix">
+			<ul>
+				<li *ngFor="let preferredAmenity of preferredAmenities">
+					<label class="selector">
+					  	<input type="checkbox" [value]="preferredAmenity.id" (change)="onCheckChange2($event)">
+	  					<span class="checkmark d-table"><div class="d-table-cell align-middle">{{preferredAmenity.name}}</div></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+
+		<h3>Let 's Avoid The Following</h3>
+		<div class="property-info clearfix">
+			<ul>
+				<li *ngFor="let avoidedAmenity of avoidedAmenities">
+					<label class="selector">
+					  	<input type="checkbox" [value]="avoidedAmenity.id" (change)="onCheckChange3($event)">
+	  					<span class="checkmark d-table"><div class="d-table-cell align-middle">{{avoidedAmenity.name}}</div></span>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<button type="submit" class="submit-btn">SEARCH NOW</button>
+	</form>	
+	</div>
+
+</div>
+
+<div class="map-property-list" *ngIf="listingViewState === 'viewMap' && uiState === 'viewSelectedListings'">
+   <div class="owl-carousel owl-theme">
+      <div class="item" *ngFor="let eachListing of selectedZooplaListings" (click)="carouselClickProperty(eachListing)">
+         <!-- <a href="#" class="cross-btn"><i class="fa fa-times"></i></a> -->
+         <div class="imgb"><img src="{{eachListing.image_150_113_url}}" alt="property"></div>
+         <div class="txtb">
+            <h4>{{eachListing.num_bedrooms}} Bed- {{eachListing.num_bathrooms}} Bath</h4>
+            <p><strong>£{{eachListing.price}}/</strong> month
+               <span>Commute Time - {{eachListing.distanceMatrix?.duration.text}}</span>
+            </p>
+            <ul>
+               <li><a (click)="viewFullDetails(eachListing)">Full details</a></li>
+               <li><a (click)="saveListing(eachListing)">Save</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="map-property-list-view" *ngIf="listingViewState === 'viewList' && uiState === 'viewSelectedListings'">
+   <div class="map-property-list-view-in">
+      <div class="property-list-detail property-col-li clearfix" *ngFor="let eachListing of selectedZooplaListings">
+         <div class="img-box">
+            <img src="{{eachListing.image_150_113_url}}" alt="property">
+            <h3 [innerHtml]="eachListing.displayable_address"></h3>
+         </div><!-- img-box -->
+         <div class="txtb">
+            <div class="column-left">
+               <h4><strong>£{{eachListing.price}}/</strong>month</h4>
+               <p class="ic-train" *ngIf="modeOfCommute === 'public_transport'">Commute Time -
+                  {{eachListing.distanceMatrix?.duration.text}}</p>
+               <p class="ic-drive" *ngIf="modeOfCommute === 'driving'">Commute Time -
+                  {{eachListing.distanceMatrix?.duration.text}}</p>
+               <p class="ic-walk" *ngIf="modeOfCommute === 'walking'">Commute Time -
+                  {{eachListing.distanceMatrix?.duration.text}}</p>
+               <p>Listed by</p>
+               <p>{{eachListing.agent_name}}</p>
+               <p>{{eachListing.agent_address}}</p>
+               <p>{{eachListing.agent_phone}}</p>
+               <!-- <p><sub>Added 3 Days Ago</sub></p> -->
+               <p><sub>{{eachListing.last_published_date}}</sub></p>
+            </div>
+            <div class="column-right">
+               <h4>{{eachListing.num_bedrooms}} Bed- {{eachListing.num_bathrooms}} Bath</h4>
+               <p class="ic-train" [innerHtml]="eachListing.displayable_address"></p>
+               <div class="gap">
+                  <div>
+                     <p [innerHtml]="eachListing.short_description"></p>
+                     <!-- <p>detached house available</p>
+							<p>in Oakwood, N14......<a href="#">show more</a></p> -->
+                  </div>
+               </div>
+               <share-buttons [theme]="'modern-dark'"
+                  [include]="['facebook','twitter','linkedin','whatsapp']"
+                  [show]="4"
+                  [url]="eachListing?.details_url"
+                  [description]="'What do you think about this Property? Price: £'+eachListing?.price+' Per Month Location: '+eachListing?.displayable_address"
+               ></share-buttons>
+            </div>
+         </div>
+      </div><!-- property-list-detail -->
+   </div>
+</div>
+
+<div class="map-property-detail" *ngIf="uiState === 'viewFullDetails'">
+   <div class="map-property-detail-in">
+      <button (click)="hideFullDetails()" class="back-arrow"></button>
+      <div class="slider-box">
+         <h3>{{selectedListingDetails.displayable_address}}</h3>
+         <div id="slider" class="flexslider slider ">
+            <ul class="slides">
+               <li>
+                  <img src="{{selectedListingDetails.image_354_255_url}}" />
+               </li>
+               <!-- <li>
+	  	    	    	<img src="images/banner4.jpg" />
+	  	    		</li>
+	  	    		<li>
+	  	    	    	<img src="images/banner5.jpg" />
+	  	    		</li>
+	  	    		<li>
+	  	    	    	<img src="images/banner6.jpg" />
+	  	    		</li> -->
+            </ul>
+         </div>
+         <div id="carousel" class="flexslider thumbnail">
+            <ul class="slides">
+               <li>
+                  <img src="images/banner3.jpg" />
+               </li>
+               <li>
+                  <img src="images/banner4.jpg" />
+               </li>
+               <li>
+                  <img src="images/banner5.jpg" />
+               </li>
+               <li>
+                  <img src="images/banner6.jpg" />
+               </li>
+            </ul>
+         </div>
+      </div><!-- slider-box -->
+      <div class="txtb">
+         <div class="row">
+            <div class="col-md-5 col-lg-5">
+               <h3>${{selectedListingDetails.price}}/month</h3>
+               <h4>{{selectedListingDetails.num_bedrooms}} Bed- {{selectedListingDetails.num_bathrooms}} Bath</h4>
+               <p>Oakwood Station - 0.3 miles away</p>
+               <p>Listed
+                  by<br>{{selectedListingDetails.agent_name}}<br>{{selectedListingDetails.agent_address}}<br>{{selectedListingDetails.agent_phone}}
+               </p>
+               <p><strong>Added 3 Days Ago</strong></p>
+
+            </div>
+            <div class="col-md-4 col-lg-4 text-center">
+               <p [innerHtml]="selectedListingDetails.short_description"><a href="#">show more</a></p>
+            </div>
+            <div class="col-md-3 col-lg-3">
+               <a href="#" class="submit-btn mt-20">CALL AGENT</a>
+               <a href="#" class="submit-btn">FREE EXPERT ADVICE</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<button type="button" class="refine-search-popup" (click)="checkSelectedProperties()"
+   *ngIf="uiState === 'selectProperty' && selectedZooplaRoots && selectedZooplaRoots.length > 0">Continue</button>
+<button type="button" style="display: none;" id="open-modal" data-toggle="modal"
+   data-target="#exampleModal">Continue</button>
+<!-- Modal -->
+<div class="modal fade refine-search-modal" id="exampleModal" tabindex="-1" role="dialog"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <h3>{{this.selectPropertyCount}} Results!</h3>
+            <p>Would you like to narrow down your results?</p>
+            <button type="button" class="btn-modal" (click)="editSearchCriteria('commute')">Refine Search</button>
+            <strong>OR</strong>
+            <button type="button" class="btn-modal bg" (click)="showSelectedPropertiesNow()">Continue</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!-- Loader Spinner-->
+<div id="cover-spin" *ngIf="showLoader"></div>
+
+
+
+
+<!-- start JavaScript -->
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpAKMujv0fHC4TK3EKb7bWcU2cLj-KKKI"></script> -->
+
+<!-- end JavaScript -->
+<!-- <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: 51.5074, lng: 0.1277};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 14, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script> -->
+<!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->

@@ -1,0 +1,62 @@
+<app-profilesidebar></app-profilesidebar>
+  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2" *ngIf="defaultdiv">
+      <div class="row">
+        
+        <div class="setting-detail">
+          <div class="setting-call-detail clearfix">
+            <h3>My Calendar</h3>
+            <div class="card" *ngFor="let item of mycalender" (click)="opendetail(item.sherpaAppointmentId)">
+              <div class="card-body">
+                <div class="sherpa-details-column">
+                  <p><span class="float-right">Mobile: +1 {{item.phone}}</span><strong>Name: </strong><span>{{item.name}}</span></p>
+                  <p><strong>Moving Date: </strong><span>{{item.movingDate}}</span></p>
+                  <!-- <p><span>Schedule Time 18th March 2019, 4:30 pm (GMT + 5:30hrs)</span></p> -->
+                  <a class="btn-see-more" (click)="opendetail(item.sherpaAppointmentId)">See More
+                  </a>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+  </div>
+
+	<div class="avasa-left-panel col-md-2 col-lg-2" *ngIf="detaildiv">
+    <div class="row">
+      <ul>
+        <li><a href="#"><i class="fa fa-user"></i>My profile</a></li>
+        <li><a href="#"><i class="fa fa-info-circle"></i>Account Information</a></li>
+        <li class="active"><a href="#"><i class="fa fa-calendar"></i>My Calender</a></li>
+        <li><a href="#"><i class="fa fa-bell"></i>Notification Centre</a></li>
+        <li><a href="#"><i class="fa fa-sign-in"></i>Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2">
+      <div class="row">
+        
+        <div class="setting-detail">
+          <div class="setting-call-detail clearfix">
+            <h3>My Calendar Detail</h3>
+            <div class="card">
+              <div class="card-body">
+                <div class="sherpa-details-column">
+                  <p><span class="float-right">Mobile: +1{{phone}}</span><strong>Name: </strong><span>{{name}}</span></p>
+                  <p><strong>Moving Date: </strong><span>{{movingDate}}</span></p>
+                  <div class="blue-card">
+                    <p>Schedule Time: 18th March 2019,<br>4:30pm (GMT + 5:30hrs)</p>
+                  </div>
+                  <p><strong>Connecting through:</strong>{{connectvia}}</p>
+                  <p><strong>Preferred Areas:</strong>{{preferredAreas}}</p>
+                  <p><strong>Price Range:</strong> €{{minPrice}} - €{{maxPrice}}</p>
+                  <p><strong>Specifications:</strong>{{maxBedrooms}}</p>
+                  <button class="btn-changes">Reschedule</button>
+                  <button class="btn-changes">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,42 @@
+<div class="admin-header">
+    <div class="row">
+      <!-- logo -->
+      <div class="admin-logo col-6 col-md-2 col-lg-2">
+        <a routerLink ="/" ><img src="assets/images/logo.svg" alt="AWASA"></a>
+      </div>
+      <!--logo -->
+      <!-- admin-nav -->
+      <div class="admin-nav col-6 col-md-10 col-lg-10">
+        <div class="dropdown">
+            <img src="assets/images/user.png" alt="AWASA">
+            <div class="txtb">
+              <span>Approve Admin</span>
+              <a routerLink="/login" (click)="logout($event)" class="edit-btn">Logout</a>
+            </div>
+        </div>
+        <div class="admin-search col-6 col-md-6 col-lg-6">
+          <input type="text" placeholder="" name="search">
+        </div>
+      </div>
+      <!-- admin-nav -->
+    </div>
+  </div>
+  
+  <!-- avasaApp-container -->
+  <div class="avasaApp-container">
+    <!-- avasa-left-panel -->
+    <div class="avasa-left-panel col-md-2 col-lg-2">
+      <div class="row">
+        <ul>
+          <li><a routerLink="/"><i class="fa fa-home"></i>Dashboard</a></li>
+      
+          <li class="active"><a routerLink="/approve-team/user"><i class="fa fa-question-circle"></i>Questions</a></li>
+        
+        </ul>
+      </div>
+    </div>
+    <!-- avasa-left-panel -->
+    <router-outlet></router-outlet>
+  </div>
+  
+  

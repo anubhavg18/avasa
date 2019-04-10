@@ -1,0 +1,79 @@
+
+<app-profilesidebar></app-profilesidebar>
+  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2" *ngIf="defaultdiv">
+      <div class="row">
+        
+        <div class="setting-detail">
+          <div class="setting-call-detail clearfix">
+            <h3>Notification</h3>
+            <div class="card">
+              <!-- <div class="card-body">
+                <div class="notification-column">
+                  <p><i class="fa fa-user" aria-hidden="true"></i>Jitendra Pratap singh</p>
+                   <a href="#" class="btn-decline">Decline </a>
+                    <a href="#" class="btn-decline btn-join">Join</a>
+                </div>
+              </div> -->
+            </div> <!-- sherpa-details-column -->
+            <div class="card" *ngFor="let recoitem of recodata">
+              <div class="card-body">
+                <div class="notification-column">
+                  <div class="imgb">
+                    <img src="{{recoitem.imageUrl}}" alt="AWASA" class="rounded">
+                  </div>
+                  <div class="txtb">
+                    <p>location: {{recoitem.address}},</p>
+                    <!-- <p>Orpington BR6</p> -->
+                    <p class="mt20">Price: £{{recoitem.price}} Per Month</p>
+                    <a class="btn-decline btn-join" (click)="detailpage(recoitem.propertyId,recoitem.id)">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+   <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2" *ngIf="detaildiv">
+      <div class="row">
+        <div class="setting-detail">
+          <div class="setting-call-detail clearfix">
+            <h3>Your Questions Answered</h3>
+            <div class="card">
+              <div class="card-body">
+                <div class="notification-column">
+                  <div class="imgb">
+                    <img src="{{dis_img}}" alt="AWASA" class="rounded">
+                  </div>
+                  <div class="txtb">
+                    <p>location: {{disp_add}},</p>
+                    <!-- <p>Orpington BR6</p> -->
+                    <p class="mt20">Price: £{{rentalprice}} Per Month</p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- sherpa-details-column -->
+
+            <div class="card">
+              <div class="card-body">
+                <div class="your-questions-answered">
+                  <ul *ngFor="let ques of questions">
+                    <li><i class="fa fa-check-square" aria-hidden="true"></i>
+                      {{ques.question}}
+                    </li>
+                    <li>
+                      {{ques.answer}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

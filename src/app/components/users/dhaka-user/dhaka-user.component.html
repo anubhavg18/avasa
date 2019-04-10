@@ -1,0 +1,91 @@
+<!-- avasa-right-panel -->
+
+<!-- <div class="loader" *ngIf="isLoad"></div> -->
+
+<div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2">
+
+    <div class="row">
+
+        <!-- property name list -->
+        <div class="property-name-list col-md-3 col-lg-3">
+            <ul>
+                <!-- <li class="active"><a href="#">Howard Building<span>Strand London</span><span class="number">5</span></a></li> -->
+                <li *ngFor="let Property of properties ; index as userIndex" (click)="currentUserProperty(Property.propertyId)">
+                    <a>{{userIndex +1 }}- {{ Property.name}}<span>{{ Property.address}}</span><span class="number">{{ Property.count}}</span></a>
+
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- property name list -->
+        <!-- About Property -->
+        <div class="about-property col-md-9 col-lg-9">
+            <h3 style="padding-top:0px">About Property</h3>
+            <h4><span>Agent Name: {{ currentPropertyZooplaData.agent_name}}</span> Phone no:{{ currentPropertyZooplaData.agent_phone}}</h4>
+            <!-- property-info -->
+            <div class="property-info">
+                <div class="row">
+                    <div class="col-md-7 col-lg-7">
+                        <div class="img-box">
+                            <img src={{currentPropertyZooplaData.image_150_113_url}} alt="Property Image" class="rounded">
+                            <p><a href={{currentPropertyZooplaData.details_url}} target="blank">More Details</a>Added 4 days ago</p>
+                        </div>
+                        <div class="txtb">
+                            <p>Name: <strong>{{ currentPropertyZooplaData.category}}</strong></p>
+                            <p>Locality: <strong>{{ currentPropertyZooplaData.displayable_address}}</strong></p>
+                            <p>Rent: <strong>£ {{ currentPropertyZooplaData.rental_prices.per_month}}/ month</strong></p>
+                            <p>Specification: <strong> {{  currentPropertyZooplaData.num_bedrooms }}beds/ {{ currentPropertyZooplaData.num_bathrooms }} Bathroom</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-5">
+                        <div class="property-detail">
+                            <p>{{currentPropertyZooplaData.short_description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- property-info -->
+            <!-- property questions -->
+            <div class="property-questions clearfix">
+                <h3>Questions</h3>
+                <div class="row">
+
+                    <div class="col-md-4 col-lg-4" *ngFor="let user of currentProperty ; index as userIndex">
+                        <div class="questions-detail">
+
+                            <h4><span>{{userIndex+ 1 }}. {{ user.name}} </span>asked:</h4>
+                            <div class="column" *ngFor="let currentPropertyQuestion of user.questions">
+                                <p>{{currentPropertyQuestion.question}}</p>
+                                <textarea rows="4" cols="50" id="{{currentPropertyQuestion }}" name="{{currentPropertyQuestion}}" [(ngModel)]="currentPropertyQuestion.answer"></textarea>
+                                <div class="" *ngIf="currentPropertyQuestion.extraInfo != []">
+                                    <p>{{currentPropertyQuestion.extraInfo}}</p>
+                                    <textarea rows="4" cols="50" id="{{currentPropertyQuestion }}" name="{{currentPropertyQuestion}}" [(ngModel)]="currentPropertyQuestion.options"></textarea>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-send" (click)="answerSubmit(user, userIndex)">
+                                Submit
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- property questions -->
+        </div>
+        <!-- About Property -->
+
+        <div class="container" style="width: 250px; margin-top:50px;">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link">Pages</a></li>
+                    <li class="page-item" *ngFor="let totalPropertiePages of totalPropertiesPages ; index as propertiesIndex" (click)="nextPageProperties(propertiesIndex)"><a class="page-link">{{ propertiesIndex + 1 }}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- avasa-right-panel -->

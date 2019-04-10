@@ -1,0 +1,284 @@
+<app-header></app-header>
+<!-- start banner -->
+<div class="banner" >
+	<div class="video">
+		<video autoplay muted loop id="myVideo">
+			<source src="assets/images/banner.mov" type="video/mp4">
+		</video>
+	</div>
+	<!-- search-info -->
+	<div class="search-info">
+		<div class="row justify-content-md-center">
+			<div class="col-12">
+				<h2 itemprop="name">Find a rental home to match your lifestyle. <br>Without the hassle!</h2>
+				<app-search-field></app-search-field>
+			</div>
+		</div>
+	</div>
+	<!-- search-info -->
+	<!-- popular-searches -->
+	<div class="popular-searches" itemscope itemtype="http://schema.org/SearchResultsPage">
+		<h3 itemprop="name">Popular searches</h3>
+		<ul itemscope itemtype="http://schema.org/lastReviewed">
+			<!-- <li><a href="search">2 bed in Hoxton</a></li>
+			<li><a href="search.html">2 bed in Putney</a></li>
+			<li><a href="search.html ">3 bed in Chiswick</a></li> -->
+			<!-- <li><a href="#" data-toggle="modal" data-target="#myModal">2 beds in Marylebone</a></li> -->
+			<li><a href="https://avasa.ai/imperial-college" >Imperial College</a></li>
+			<li><a href="rent/1-bed-in-victoria.html" data-toggle="modal" data-target="#myModal" >1 bed in Victoria</a></li>
+			<li><a href="rent/3-beds-in-wimbledon.html"data-toggle="modal" data-target="#myModal" >3 beds in Wimbledon</a></li>
+			<li><a href="rent/studio-near-ucl.html" data-toggle="modal" data-target="#myModal" >Studio near UCL</a></li>
+			<li><a href="rent/2-beds-in-south-kensington.html" data-toggle="modal" data-target="#myModal" >2 beds in South Kensington</a></li>
+		</ul>
+	</div>
+	<!-- popular-searches -->
+	<div class="social-link-banner">
+		<div class="app_download_link">
+			<ul>
+				<li itemscope itemtype="http://schema.org/installUrl"><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+				<li itemscope itemtype="http://schema.org/installUrl"><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end banner -->
+<!-- start client-logo -->
+<div class="client-logo">
+	<h2>As featured on</h2>
+	<div class="client-logo-in">
+		<ul class="clearfix">
+			<!-- <li><a href="#"><img src="images/client_logo_1.svg"></a></li>
+			<li><a href="#"><img src="images/client_logo_2.svg"></a></li>
+			<li><a href="#"><img src="images/client_logo_3.svg"></a></li>
+			<li><a href="#"><img src="images/client_logo_4.svg"></a></li>
+			<li><a href="#"><img src="images/client_logo_5.svg"></a></li>
+			<li><a href="#"><img src="images/client_logo_6.svg"></a></li> -->
+			<!-- <li><a href="#" target="_blank" class="client-logo1"></a></li> -->
+			<li><a href="http://theurbancollective.io/about-us/#myCarousel" target="_blank" class="client-logo2"></a></li>
+			<li><a href="https://www.youtube.com/watch?v=SP1xBZOrZE8&t=2s" target="_blank" class="client-logo3"></a></li>
+			<li><a href="https://thefintechtimes.com/start-profiles-urban-collectiveurbanco/" target="_blank" class="client-logo4"></a></li>
+			<li><a href="http://vergemagazine.co.uk/ending-apartment-hunting-anxiety/" target="_blank" class="client-logo5"></a></li>
+			<li><a href="https://www.thesun.co.uk/money/4409807/buyers-renters-mortgages-agreements-negotiations-property-sun-savers-rewards-club-deals-offers/" target="_blank" class="client-logo6"></a></li>
+			<li><a href="http://www.hamhigh.co.uk/property/urban-collective-london-rental-property-app-prop-tech-sherpa-service-1-5102031" target="_blanck" class="client-logo7"></a></li>
+		</ul>
+	</div>
+</div>
+<!-- client-logo -->
+<!-- start works-detail-list -->
+<div class="works-detail-list" itemscope itemtype="http://schema.org/CreativeWork">
+	<h3 itemprop="name">How it works</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-4 col-lg-4">
+				<div class="column ">
+					<div class="img-box">
+						<div>
+							<img src="assets/images/ic_train.svg">
+						</div>
+					</div>
+					<h4 itemprop="name">Personalise your home search</h4>
+					<p itemprop="description">Based on commute times and lifestyle criteria for all sharers or family members</p>
+					<a routerLink="/home-search" class="search-btn">Begin Search </a>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 col-lg-4">
+				<div class="column ">
+					<div class="img-box">
+						<div>
+							<img src="assets/images/icon_home_like_selected.svg" width="59px" height="62px">
+						</div>
+					</div>
+					<h4 itemprop="name">View, rate & secure your home with your tribe</h4>
+					<p itemprop="description">Collaborating with your loved ones in real-time, for quicker decision-making</p>
+					<a routerLink="/home-search" class="search-btn" >Begin Search</a>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 col-lg-4">
+				<div class="column">
+					<div class="tag"></div>
+					<div class="img-box">
+						<div>
+							<img src="assets/images/ic_local.png" width="40px;">
+						</div>
+					</div>
+					<h4 itemprop="name">Get a dedicated local expert to search for you</h4>
+					<p itemprop="description">From evaluating your needs to negotiating the best deal and assistance with settling-in</p>
+					<h4 class="pt0">Save up to £2,000</h4>
+					<a routerLink="/sherpa-services" class="search-btn">Find a Sherpa</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end works-detail-list -->
+<!-- start company-stats -->
+<div class="company-stats">
+	<ul>
+		<li>
+			<img src="assets/images/ic_users.svg">
+			<h4>15,000+</h4>
+			<p>Users</p>
+		</li>
+		<li>
+			<img src="assets/images/ic_rating.svg">
+			<h4>5 <img src="assets/images/ic_star_unselect2.svg"></h4>
+			<p>Rating</p>
+		</li>
+		<li>
+			<span class="net-score">
+				NPS<span>9.7</span>
+			</span>
+			<p>Net promoter <br>score</p>
+		</li>
+		<li>
+			<img src="assets/images/ic_sherpa_services.svg">
+			<h4>£2,000</h4>
+			<p>Average saving using <br>Sherpa Service </p>
+		</li>
+		<li>
+			<img src="assets/images/ic_total_value.svg">
+			<h4>£1.75m</h4>
+			<p>Total rental value <br>for tenants</p>
+		</li>
+	</ul>
+</div>
+<!-- end company-stats -->
+<!-- start testimonial -->
+<div class="testimonial" itemscope itemtype="http://schema.org/Review">
+	<div class="container">
+		<div class="testimonial-in">
+			<h3 itemprop="name">See what our customers think?</h3>
+			<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<!-- <li><a href="#"><img src="images/ic_star_unselect.svg"></a></li> -->
+						</ul>
+						<p>Killed it. Truly a great experience that I would recommend to anyone I know looking for a flat in London!
+						   <span itemprop="author">Tracy & Chris - Professionals</span>
+						</p>
+					</div>
+					<div class="carousel-item">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+						</ul>
+						<p itemprop="reviewBody">Terrific service that provided peace of mind knowing that I had experts within the London rental market on my side of the table! Great service that was worth every penny. 
+						   <span itemprop="author">Matthew - MBA student</span>
+						</p>
+					</div>
+					<div class="carousel-item">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+						</ul>
+						<p itemprop="reviewBody">Love that you can search according to your lifestyle criteria.  Found this especially useful as we are new to London. Really saves you time by selecting listings relevant to you. 
+						   <span itemprop="author">Chrys – Procurement, FMCG</span>
+						</p>
+					</div>
+					<div class="carousel-item">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+						</ul>
+						<p itemprop="reviewBody">Saved me a lot of time searching online and dealing with estate agents! I viewed 5 properties I really liked - an amazing score compared to my previous home hunting experience!  I’ve already recommended the service to a colleague.
+						   <span itemprop="author">Lars – CEO, Fintech</span>
+						</p>
+					</div>
+					<div class="carousel-item">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+						</ul>
+						<p itemprop="reviewBody">Bespoke service, trained and expert team, an innovative service very helpful when you are on the tenant side... worth 100% of the fees. Would definitely recommend to my friends, family, colleagues...
+						   <span itemprop="author">Aurélie – Marketing, Luxury</span>
+						</p>
+					</div>
+					<div class="carousel-item">
+						<ul itemprop="reviewRating">
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+							<li><a href="#"><img src="assets/images/ic_star.svg"></a></li>
+						</ul>
+						<p itemprop="reviewBody">Excellent experience, delivered me my dream London apartment, frankly, which is really shaping my experience. 
+						   <span itemprop="author">Maeve, MBA student</span>
+						</p>
+					</div>
+				</div>
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+					<li data-target="#myCarousel" data-slide-to="4"></li>
+					<li data-target="#myCarousel" data-slide-to="5"></li>
+				</ol>
+				<!-- <ol>
+					<li><a href="#"></a></li>
+					<li><a href="#" class="active"></a></li>
+					<li><a href="#"></a></li>
+				</ol> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end testimonial -->
+<!-- start blog-column -->
+<div class="blog-column clearfix" id="our-blog" itemscope itemtype="http://schema.org/Blog">
+	<div class="container">
+		<h3 itemprop="name">Our Blog</h3>
+		<ul>
+			<li itemscope itemtype="http://schema.org/blogPost">
+				<div class="row justify-content-md-center">
+					<div class="col-12 col-md-6 col-lg-5">
+						<div class="img-box"><a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-earls-court/"><img src="assets/images/img_blog2.png"></a></div>
+					</div>
+					<div class="col-12 col-md-5 col-lg-5">
+						<div class="text-box">
+							<h4><a href="https://avasa.ai/blog/2019/02/25/in-the-neighbourhood-earls-court/" >Neighbourhood: Earl’s Court</a></h4>
+							<p>Once called 'bedsit land' due to its popularity amongst students, today's Earl's Court is home to young and ambitious city workers.</p>
+							<a routerLink="area-guides" class="more-btn">More area guides</a>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li itemscope itemtype="http://schema.org/blogPost">
+				<div class="row justify-content-md-center">
+					<div class="col-12 col-md-6 col-lg-5">
+						<div class="img-box"><a href="https://avasa.ai/blog/2019/02/25/top-5-tips-for-finding-a-pet-friendly-rental-property/" ><img src="assets/images/img_blog1.png"></a></div>
+					</div>
+					<div class="col-12 col-md-5 col-lg-5">
+						<div class="text-box">
+							<h4><a href="https://avasa.ai/blog/2019/02/25/top-5-tips-for-finding-a-pet-friendly-rental-property/" >Top 5 tips for finding a pet-friendly rental property</a></h4>
+							<p>What you need to know before you start looking for a rental property if you are a pet owner. </p>
+							<a routerLink="sherpa-tips" class="more-btn" >More Sherpa tips</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- end blog-column -->
+
+<app-footer></app-footer>

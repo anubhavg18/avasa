@@ -1,0 +1,86 @@
+<!-- header -->
+<div class="admin-header position-relative setting-info">
+  <div class="row">
+    <!-- logo -->
+    <div class="admin-logo col-6 col-md-2 col-lg-2">
+      <a routerLink="/" ><img src="assets/images/logo.svg" alt="AWASA"></a>
+    </div>
+    <!--logo -->
+    <!-- admin-nav -->
+    <div class="admin-nav col-6 col-md-10 col-lg-10">
+      <!-- navigation -->
+        <div class="navigation col-12">
+          <!-- nav-link -->
+          <div class="nav-link" id="nav-link">
+            <a href="#"><img src="assets/images/ic_nav_link.svg"></a>
+          </div>
+          <!-- nav-link -->
+          <div class="nav-box" id="nav-box">
+            <!-- nav-link -->
+            <div class="nav-link" id="nav-link2">
+              <a href="#"><img src="assets/images/ic_nav_close.svg"></a>
+            </div>
+            <!-- nav-link -->
+            <!-- app_download_link -->
+            <!-- <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="images/ic_apple.svg" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="images/ic_android.svg" alt="android"></a></li>
+              </ul>
+              <span>Get the App</span>
+            </div> -->
+            <div class="user-info">
+              <ul>
+                <li><a href="#"><i class="fa fa-bookmark"></i></a></li>
+                <li>
+                    <div class="dropdown">
+                        <span>
+                          <a href="#"><i class="fa fa-bell"><span class="badge">6</span></i></a>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="imgb"><img src="https://picsum.photos/200/300"></a></li>
+              </ul>
+            </div>
+            <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+              </ul>
+            </div>
+            <!-- app_download_link -->
+            <ul>
+              <li><a routerLink="/home-search" title="Search">Search</a></li>
+              <li><a routerLink="/sherpa-services" title="Sherpa">Sherpa Services</a></li>
+              <li><a href="#blog" title="Our blog">Our blog</a>
+                <ul>
+                  <li><a routerLink="/area-guides" title="City Guide">Area Guides</a></li>
+                  <li><a routerLink="/sherpa-tips" title="Sherpa tips">Sherpa Tips</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="About">About</a>
+                <ul>
+                  <li><a routerLink="/how-it-works" title="How it works">How it Works</a></li>
+                  <li><a routerLink="/proptech-startup" title="Our Story">Our Story</a></li>
+                </ul>
+              </li>
+              <li><a routerLink="/login" title="Login" *ngIf="!loggedIn">Log In</a></li>
+              <li><a routerLink="/my-shorlist" *ngIf="loggedIn">My Shortlist</a></li>
+              <li><a  (click)="logout($event)" *ngIf="loggedIn">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- navigation -->
+    </div>
+    <!-- admin-nav -->
+  </div>
+</div>
+<!-- header -->

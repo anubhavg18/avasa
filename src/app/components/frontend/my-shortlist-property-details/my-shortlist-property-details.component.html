@@ -1,0 +1,229 @@
+
+<app-header2></app-header2>
+<!-- Review Property Details -->
+<div class="review-property-details" *ngIf="isDataAvailable">
+  <div class="container">
+    <!-- main-heading -->
+    <div class="main-heading">
+      <div class="total-rating">
+        <a href="#" data-toggle="modal" data-target="#myModal">
+          <img src="assets/images/ic_star_rating.svg" alt="avasa ai">{{propertyDetails.avgRating}}
+        </a>
+      </div>
+      <h2>{{propertyDetails.zooplaJsonData.displayable_address}}<i><img src="assets/images/ic_share.svg" alt="AWASA"></i></h2>
+    </div>
+    <!-- main-heading -->
+    <!-- property location-->
+    <div class="property-location clearfix">
+      <div class="imgb">
+        <img src="{{propertyDetails.zooplaJsonData.image_645_430_url}}" alt="AWASA">
+        <p>See Location<span>{{propertyDetails.zooplaJsonData.last_published_date}}</span></p>
+      </div>
+      <div class="txtb">
+        <p><strong>£{{propertyDetails.zooplaJsonData.price}}/<span>month</span></strong><samp>{{propertyDetails.zooplaJsonData.num_bedrooms}} Bed - {{propertyDetails.zooplaJsonData.num_bathrooms}} Bath</samp></p>
+        <p>{{propertyDetails.displayable_address}}</p>
+        <p>Waterloo Station - 0.12 miles away</p>
+        <p><img src="assets/images/ic_public_transport.svg" alt="AWASA"> Kingdom Street - 25 minutes away</p>
+      </div>
+    </div>
+    <!-- property location -->
+    <!-- property location map -->
+    <div class="property-location-map clearfix">
+      <div class="map-column">
+          <!-- <div #gmap id="map"></div> -->
+           
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3394589670334!2d77.31226191504979!3d28.589591492774037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce4f433319771%3A0x6b290eb5bc4991b6!2s91springboard+Sector+1+Noida!5e0!3m2!1sen!2sin!4v1554116464970!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe> -->
+        <div class="google-map-box">
+          <div #gmap id="map"></div>
+       </div>
+        <p>Waterloo Station - 0.12 miles away</p>
+      </div>
+      <div class="map-column-btn">
+        <button class="btn">Call Agent</button>
+        <button class="btn">Free Expert Advise</button>
+      </div>
+    </div>
+    <!-- property location map -->
+    <!-- property discription -->
+    <div class="property-discription">
+      <p>Description: {{propertyDetails.zooplaJsonData.description}}</p>
+    </div>
+    <!-- property discription -->
+  </div>
+  <!-- property moreinfo -->
+  <div class="property-moreinfo clearfix" *ngIf="floorPlansExist">
+    <div class="container">
+      <h3>More Information:</h3>
+      <div class="toggle-box">
+        <h4 id="openItem1" (click)="myFunction()"><a href="javascipt:void">Floor Plans <i class="fa fa-angle-down" ></i></a></h4>
+        <div class="txtb" id="sub-item-1" style="display: none;">
+          <img src="{{propertyDetails.zooplaJsonData.floor_plan}}" alt="floor_plan">
+        </div>
+        <!-- <h4 id="openItem2"><a href="javascipt:void" onclick="openItem('2')">Floor Plans 2 <i class="fa fa-angle-down" ></i></a></h4>
+        <div class="txtb" id="sub-item-2" style="display: none;">
+          <img src="images/img_floor_plan.jpg" alt="floor_plan">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- property moreinfo -->
+  <!-- property-comments -->
+  <div class="property-comments clearfix">
+    <div class="container">
+      <button class="btn" data-toggle="modal" data-target="#myModal2">Add comment</button>
+      <h3>Comments:</h3>
+      <div class="txtb">
+        <h4>Andy Robinson said:</h4>
+        <p>It has a very good bathroom and bedroom. Love the garden. Could be better in terms of location.</p>
+        <h4>Rating: 3.5/5  <img src="assets/images/ic_star_rating3.svg" alt="rating"></h4>
+      </div><!-- txtb -->
+      <div class="txtb">
+        <h4>Sanjay Raj said:</h4>
+        <p>The bathroom was very clean and well kept. Bedrooms were big and spacious. It was a great stay.</p>
+        <h4>Rating: 4.5/5 <img src="assets/images/ic_star_rating3.svg" alt="rating"></h4>
+      </div><!-- txtb -->
+      <div class="comments-list">
+        <ul>
+          <li>GOOD SIZE</li>
+          <li>LOWER GROUND</li>
+          <li>GOOD PRICE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- property-comments -->
+  <!-- property-signature -->
+  <div class="property-signature">
+    <div class="container">
+      <p>Listed By</p>
+      <p>{{propertyDetails.zooplaJsonData.agent_name}}<br>{{propertyDetails.zooplaJsonData.agent_address}}</p>
+      <p>{{propertyDetails.zooplaJsonData.agent_phone}}</p>
+    </div>
+  </div>
+  <!-- property-signature -->
+</div>
+<!-- Review Property Details -->
+
+<app-footer></app-footer>
+
+
+<!-- The Modal -->
+<div class="modal review-property-modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4>How would you rate this property?</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="rating-column">
+          <ul>
+            <li><a href="#"><img src="assets/images/ic_star_rating.svg" alt="rating"></a></li>
+            <li><a href="#"><img src="assets/images/ic_star_rating2.svg" alt="rating"></a></li>
+            <li><a href="#"><img src="assets/images/ic_star_rating2.svg" alt="rating"></a></li>
+            <li><a href="#"><img src="assets/images/ic_star_rating2.svg" alt="rating"></a></li>
+            <li><a href="#"><img src="assets/images/ic_star_rating2.svg" alt="rating"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn">Rate</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal review-property-modal modal2" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4>Tag your property with tags!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <ul>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Good Layout</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Good Size</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Good Location</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Garden</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Lift</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Bad Layout</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Bad Size</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Bad Location</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">No Life</span>
+              </label>
+            </li>
+            <li>
+              <label class="selector">
+                <input type="checkbox">
+                  <span class="checkmark">Far Out</span>
+              </label>
+            </li>
+          </ul>
+          <h4>Comment:</h4>
+          <textarea placeholder="Eg: The window is not clean or the rooms are too small," class="textarea"></textarea>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn">Save your Comment</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

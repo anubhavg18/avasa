@@ -1,0 +1,138 @@
+<app-profilesidebar></app-profilesidebar>
+
+  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2">
+      <div class="row">
+        <div class="setting-detail">
+          <form >
+            <div class="about-me-column clearfix">
+              <h3>About Me</h3>
+              <h4>Tell us about you:</h4>
+              <div class="column gap">
+                <h3>Profession:</h3>
+                <select [(ngModel)]='selectedOption1' name="first">
+                  <option value="1">Student</option>
+                  <option value="2">Professional</option>
+                </select>
+              </div>
+              <div class="column">
+                <h3>Looking for a house as:</h3>
+                <select [(ngModel)]='selectedOption2' name="second">
+                  <option value="3">Single</option>
+                  <option value="4">Couple</option>
+                </select>
+              </div><!-- column -->
+              <div class="column">
+                <h3>Family:</h3>
+                <select [(ngModel)]='selectedOption3' name="third">
+                  <option value="5">With Kids</option>
+                  <option value="6">Expat</option>
+                </select>
+              </div><!-- column -->
+              <div class="column">
+                <h3>Londener</h3>
+                <select [(ngModel)]='selectedOption4' name="fourth">
+                  <option value="8">Yes </option>
+                  <option value="7">New to the city!</option>
+                </select>
+              </div><!-- column -->
+              <div class="clearfix"></div>
+              <div class="areas-column ">
+                <h4>Areas you Like:</h4>
+                <ul>
+                  <li *ngFor="let ch of checkboxes">
+                    <label class="selector">
+                       <input [(ngModel)]="ch.selected" ng-checked="ch.selected==1" type="checkbox" value={{ch.id}} id={{ch.id}}  name="num">
+                        <span class="checkmark">{{ch.name}}</span>
+                    </label>
+                  </li>
+
+                </ul>
+              </div>
+            </div><!-- about-me -->
+            <div class="basic-column clearfix">
+              <h3>Basic</h3>
+              <h4>Price Range per calender month:</h4>
+              <div class="range-slider-col clearfix">
+                <div class="commute-time-col clearfix">
+                  <div class="commute-time">
+                    <div class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmin()"></div>
+                    <span>{{minval}}$ Min</span>
+                    <div class="imgb" ><img src="assets/images/plus.svg" alt="plus" (click)="incmin()"></div>
+                  </div>
+                </div>
+                <div class="commute-time-col clearfix">
+                  <div class="commute-time">
+                    <div class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmax()"></div>
+                    <span>{{maxval}}$ Max</span>
+                    <div class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmax()"></div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- basic-column -->
+            <div class="Specifications-column clearfix">
+              <h4>Specifications of the house:</h4>
+              <div class="column gap">
+                <h3>Minimum Bedrooms:</h3>
+                <select [(ngModel)]='minbedroom' name="minbedroom">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div class="column gap">
+                <h3>Maximum Bedrooms:</h3>
+                <select [(ngModel)]='maxbedroom' name="maxbedroom">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div class="column">
+                <h3>Type of property:</h3>
+                <select [(ngModel)]='propertytype' name="propertytype">
+                  <option value="House">House</option>
+                  <option vlaue="Flat">Flat</option>
+                  <option vlaue="All">All</option>
+                </select>
+              </div>
+              <div class="column">
+                <h3>Furnishing:</h3>
+                <select [(ngModel)]='furnishing' name="furnishing">
+                  <option value="Furnished" >Furnished</option>
+                  <option vlaue="Expat">Semi Furnished</option>
+                  <option vlaue="Expat">Unfurnished</option>
+                  <option vlaue="Expat">All</option>
+                </select>
+              </div>
+              <div class="column">
+                <h3>Outdoor Space:</h3>
+                <select [(ngModel)]='outdoorspace' name="outdoorspace">
+                  <option value="Parking">Parking </option>
+                  <option value="Garden">Garden</option>
+                  <option value="Balcony">Balcony</option>
+                </select>
+              </div><!-- column -->
+            </div><!-- Specifications-column -->
+            <div class="about-me-column clearfix">
+              <h3>Advanced</h3>
+              <h4>Property Features:</h4>
+              <div class="areas-column ">
+                <ul>
+                  <li *ngFor="let pre of prefrencebox">
+                    <label class="selector">
+                       <input [(ngModel)]="pre.selected" type="checkbox" value={{pre.name}} id={{pre.name}}  name="num">
+                        <span class="checkmark">{{pre.name}}</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button (click)="updateform()" class="btn-changes">Make Changes</button>
+          </form>
+        </div>
+      </div>
+  </div>

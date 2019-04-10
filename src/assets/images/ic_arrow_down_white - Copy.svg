@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="7px" viewBox="0 0 10 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>bullseye copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7.72171875,11.3878418 L4.10921873,7.54956054 C3.85953123,7.28426757 3.85953123,6.85528319 4.10921873,6.59281249 L4.70953123,5.95498046 C4.95921873,5.68968749 5.36296874,5.68968749 5.60999999,5.95498046 L8.170625,8.67564453 L10.73125,5.95498046 C10.9809375,5.68968749 11.3846875,5.68968749 11.6317188,5.95498046 L12.2320313,6.59281249 C12.4817188,6.85810546 12.4817188,7.28708984 12.2320313,7.54956054 L8.61953125,11.3878418 C8.37515625,11.6531348 7.97140625,11.6531348 7.72171875,11.3878418 Z" id="path-1"></path>
+    </defs>
+    <g id="Avasa-1024" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Blog-City-Guide" transform="translate(-956.000000, -642.000000)">
+            <g id="angle-down" transform="translate(953.000000, 637.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g></g>
+                <g id="🎨-color" stroke-width="1" fill-rule="evenodd" mask="url(#mask-2)" fill="#F5F5F6" fill-opacity="0.899999976">
+                    <rect id="🎨-Color" x="0" y="0" width="16.32" height="17.34"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

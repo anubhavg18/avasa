@@ -1,0 +1,163 @@
+<!-- <div class="mt-4 col-8 offset-2">
+    <div class="card">
+        <div class="card-header">
+            Signup Here
+        </div>
+        <div class="card-body">
+            <form #loginForm=ngForm (ngSubmit)="register()">
+
+                <div class="alert alert-danger" [hidden]="!error">
+            {{ error }}
+          </div> -->
+                <!-- <div class="form-group row"> -->
+                    <!-- <label for="inputNme" class="col-sm-2 col-form-label">Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="name" name="firstName" class="form-control" id="inputName" placeholder="Full Name" [(ngModel)]="form.firstName" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password" [(ngModel)]="form.password" required>
+                    </div> -->
+                <!-- </div> -->
+
+<!-- 
+
+                <div class="form-group row">
+
+                    <div class="col-sm-10 offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign Up</button>
+
+                        <a routerLink="/login" class="btn btn-info float-right">Sign in</a>
+                    </div>
+
+                </div>
+                
+                <button  class="loginBtn loginBtn--facebook" (click)="socialSignIn('facebook')">Sign up with Facebook</button>
+              <button  class="loginBtn loginBtn--google" (click)="socialSignIn('google')">Sign up with Google</button>
+            </form>
+        </div>
+
+    </div> -->
+<!-- </div>  -->
+
+<!-- <div class="alert alert-danger alert-dismissible fade show col-md-3" [hidden]="!error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong></strong>{{this.error}}
+  </div> -->
+
+  <!-- <div class="alert alert-danger" [hidden]="!error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ this.error }}
+  </div> -->
+
+
+
+  <div class="body-bg ">
+	<!-- start header -->
+	<div class="header">
+		<div class="header-in">
+			<div class="container-fluid">
+				<div class="clearfix">
+					<!-- logo -->
+					<div class="logo col-12 col-md-2 col-lg-2">
+						<a routerLink="/"><img src="assets/images/logo.svg" alt="AWASA"></a>
+					</div>
+					<!--logo -->
+					<!-- navigation -->
+					<div class="navigation col-12 col-md-10 col-lg-10">
+						<!-- nav-link -->
+						<div class="nav-link" id="nav-link">
+							<a href="#"><img src="assets/images/ic_nav_link.svg"></a>
+						</div>
+						<!-- nav-link -->
+						<div class="nav-box" id="nav-box">
+							<!-- nav-link -->
+							<div class="nav-link" id="nav-link2">
+								<a href="#"><img src="assets/images/ic_nav_close.svg"></a>
+							</div>
+							<div class="app_download_link">
+								<ul>
+									<li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+									<li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+								</ul>
+							</div>
+							<!-- app_download_link -->
+							<ul>
+								<li><a routerLink="/home-search" title="Search">Search</a></li>
+								<li><a routerLink="/sherpa" title="Sherpa">Sherpa</a></li>
+								<li><a routerLink="#blog" title="Our blog">Our blog</a>
+									<ul>
+										<li><a routerLink="/area-guides" title="City Guide">Area Guides</a></li>
+										<li><a routerLink="/sherpa-tips" title="Sherpa tips">Sherpa Tips</a></li>
+									</ul>
+								</li>
+								<li><a href="#" title="About">About</a>
+									<ul>
+										<li><a routerLink="/how-it-works" title="How it works">How it Works</a></li>
+										<li><a routerLink="/proptech-startup" title="Our Story">Our Story</a></li>
+									</ul>
+								</li>
+								<li><a routerLink="/login" title="Login">Log In</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- navigation -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	<!-- start login-box -->
+	<div class="login-box">
+		<div class="profile-pic">
+			<img src="assets/images/ic_profile2.jpg" alt="profile">
+		</div>
+		<h3><a routerLink="/login" >Sign In </a>or <a routerLink="/register" class="active">Sign Up</a></h3>
+		<form [formGroup]="registerForm" (ngSubmit)="register()">
+			<input type="text" placeholder="Username" formControlName="username" class="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autocomplete="off">
+			 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+				<div *ngIf="f.username.errors.required">User Name is required</div>
+			 </div>
+
+			<input type="text" placeholder="Email" formControlName="email" class="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="off">
+			<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+				<div *ngIf="f.email.errors.required">Email is required</div>
+			</div>
+
+			<input type="password" placeholder="Password" formControlName="password" class="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="off">
+			<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+				<div *ngIf="f.password.errors.required">Password is required</div>
+			</div>
+
+		<button type="submit" class="btn">Continue</button>
+			<button  class="loginBtn loginBtn--facebook" (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+            <button  class="loginBtn loginBtn--google" (click)="socialSignIn('google')">Sign in with Google</button>
+		</form>
+	</div>
+	<!-- end login-box -->
+</div>
+
+<!-- modal -->
+<div class="modal fade comming-soon" id="myModal" role="dialog">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-body">
+    	<button type="button" class="close" data-dismiss="modal">&times;</button>
+    	<img src="assets/images/Coming-Soon.jpg" alt="Coming-Soon">
+    </div>
+  </div>
+  
+</div>
+</div>
+<notifier-container></notifier-container>
