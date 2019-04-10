@@ -1,0 +1,179 @@
+<div class="google-map-box">
+  <div #gmap id="map"></div>
+</div>
+
+<div class="map-column-left"
+   *ngIf="uiState !== 'viewFullDetails' && uiState !== 'searching' && uiState !== 'selectProperty'">
+   <!-- <ul *ngIf="uiState==='searchProperty'">
+      <li class="notActive" id="openItem1"><a  (click)="openItem('1')">Commute</a></li>
+      <li class="notActive" id="openItem2"><a  (click)="openItem('2')">Basic Criteria</a></li>
+      <li class="notActive" id="openItem3"><a  (click)="openItem('3')">Advanced Criteria</a></li>
+      <li class="notActive" id="openItem4"><a  (click)="openItem('4')">Personalize Your Search</a>
+      </li>
+   </ul> -->
+   <ul *ngIf="uiState==='viewSelectedListings'">
+      <li class="notActive" *ngIf="listingViewState === 'viewMap'"><a 
+            (click)="toggleListingView()">View List</a></li>
+      <li class="notActive" *ngIf="listingViewState === 'viewList'"><a 
+            (click)="toggleListingView()">View Map</a></li>
+      <li class="notActive">
+         <a  (click)="showEditOptions = !showEditOptions">Edit</a>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="commute" (change)="editSearchCriteria('commute')"> Commute
+         </label>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="filter" (change)="editSearchCriteria('filter')"> Filter
+         </label>
+         <label *ngIf="showEditOptions">
+            <input type="radio" name="editradiogroup" value="preferred_area" (change)="editSearchCriteria('preferred_area')"> Preferred Area
+         </label>
+      </li>
+
+      <li class="notActive" *ngIf="listingViewState === 'viewList'">
+         <a  (click)="showSortMenu = !showSortMenu">Sort</a>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="highest_rice" (change)="sortListings('highest_price')"> Highest
+            Price
+         </label>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="lowest_rice" (change)="sortListings('lowest_price')"> Lowest
+            Price
+         </label>
+         <label *ngIf="showSortMenu">
+            <input type="radio" name="radiogroup" value="recent" (change)="sortListings('most_recent')"> Most Recent
+         </label>
+      </li>
+   </ul>
+
+</div>
+
+<div class="map-property-list-view" *ngIf="listingViewState === 'viewList' && uiState === 'viewSelectedListings'">
+  <div class="map-property-list-view-in">
+     <div class="property-list-detail property-col-li clearfix" *ngFor="let eachListing of selectedZooplaListings">
+        <div class="img-box">
+           <img src="{{eachListing.image_150_113_url}}" alt="property">
+           <h3 [innerHtml]="eachListing.displayable_address"></h3>
+        </div><!-- img-box -->
+        <div class="txtb">
+           <div class="column-left">
+              <h4><strong>£{{eachListing.price}}/</strong>month</h4>
+              <p class="ic-train" *ngIf="modeOfCommute === 'public_transport'">Commute Time -
+                 {{eachListing.distanceMatrix?.duration.text}}</p>
+              <p class="ic-drive" *ngIf="modeOfCommute === 'driving'">Commute Time -
+                 {{eachListing.distanceMatrix?.duration.text}}</p>
+              <p class="ic-walk" *ngIf="modeOfCommute === 'walking'">Commute Time -
+                 {{eachListing.distanceMatrix?.duration.text}}</p>
+              <p>Listed by</p>
+              <p>{{eachListing.agent_name}}</p>
+              <p>{{eachListing.agent_address}}</p>
+              <p>{{eachListing.agent_phone}}</p>
+              <!-- <p><sub>Added 3 Days Ago</sub></p> -->
+              <p><sub>{{eachListing.last_published_date}}</sub></p>
+           </div>
+           <div class="column-right">
+              <h4>{{eachListing.num_bedrooms}} Bed- {{eachListing.num_bathrooms}} Bath</h4>
+              <p class="ic-train" [innerHtml]="eachListing.displayable_address"></p>
+              <div class="gap">
+                 <div>
+                    <p [innerHtml]="eachListing.short_description"></p>
+                    <!-- <p>detached house available</p>
+             <p>in Oakwood, N14......<a href="#">show more</a></p> -->
+                 </div>
+              </div>
+              <share-buttons [theme]="'modern-dark'"
+                 [include]="['facebook','twitter','linkedin','whatsapp']"
+                 [show]="4"
+                 [url]="eachListing?.details_url"
+                 [description]="'What do you think about this Property? Price: £'+eachListing?.price+' Per Month Location: '+eachListing?.displayable_address"
+              ></share-buttons>
+           </div>
+           <ul>
+            <li><a (click)="viewFullDetails(eachListing)">Full details</a></li>
+            <li><a (click)="saveListing(eachListing)">Save</a></li>
+         </ul>
+        </div>
+     </div><!-- property-list-detail -->
+  </div>
+</div>
+
+
+<div class="map-property-detail" *ngIf="uiState === 'viewFullDetails'">
+  <div class="map-property-detail-in">
+     <button (click)="hideFullDetails()" class="back-arrow"></button>
+     <div class="slider-box">
+        <h3>{{selectedListingDetails.displayable_address}}</h3>
+        <div id="slider" class="flexslider slider ">
+           <ul class="slides">
+              <li>
+                 <img src="{{selectedListingDetails.image_354_255_url}}" />
+              </li>
+              <!-- <li>
+                 <img src="images/banner4.jpg" />
+             </li>
+             <li>
+                 <img src="images/banner5.jpg" />
+             </li>
+             <li>
+                 <img src="images/banner6.jpg" />
+             </li> -->
+           </ul>
+        </div>
+        <div id="carousel" class="flexslider thumbnail">
+           <ul class="slides">
+              <li>
+                 <img src="images/banner3.jpg" />
+              </li>
+              <li>
+                 <img src="images/banner4.jpg" />
+              </li>
+              <li>
+                 <img src="images/banner5.jpg" />
+              </li>
+              <li>
+                 <img src="images/banner6.jpg" />
+              </li>
+           </ul>
+        </div>
+     </div><!-- slider-box -->
+     <div class="txtb">
+        <div class="row">
+           <div class="col-md-5 col-lg-5">
+              <h3>£{{selectedListingDetails.price}}/month</h3>
+              <h4>{{selectedListingDetails.num_bedrooms}} Bed- {{selectedListingDetails.num_bathrooms}} Bath</h4>
+              <p>Oakwood Station - 0.3 miles away</p>
+              <p>Listed
+                 by<br>{{selectedListingDetails.agent_name}}<br>{{selectedListingDetails.agent_address}}<br>{{selectedListingDetails.agent_phone}}
+              </p>
+              <p><strong>Added 3 Days Ago</strong></p>
+
+           </div>
+           <div class="col-md-4 col-lg-4 text-center">
+              <p [innerHtml]="selectedListingDetails.short_description"><a href="#">show more</a></p>
+           </div>
+           <div class="col-md-3 col-lg-3">
+              <a href="#" class="submit-btn mt-20">CALL AGENT</a>
+              <a href="#" class="submit-btn">FREE EXPERT ADVICE</a>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+<div class="map-property-list" *ngIf="listingViewState === 'viewMap' && uiState === 'viewSelectedListings'">
+  <div class="owl-carousel owl-theme">
+     <div class="item" *ngFor="let eachListing of selectedZooplaListings" (click)="carouselClickProperty(eachListing)">
+        <!-- <a href="#" class="cross-btn"><i class="fa fa-times"></i></a> -->
+        <div class="imgb"><img src="{{eachListing.image_150_113_url}}" alt="property"></div>
+        <div class="txtb">
+           <h4>{{eachListing.num_bedrooms}} Bed- {{eachListing.num_bathrooms}} Bath</h4>
+           <p><strong>£{{eachListing.price}}/</strong> month
+              <span>Commute Time - {{eachListing.distanceMatrix?.duration.text}}</span>
+           </p>
+           <ul>
+              <li><a (click)="viewFullDetails(eachListing)">Full details</a></li>
+              <li><a (click)="saveListing(eachListing)">Save</a></li>
+           </ul>
+        </div>
+     </div>
+  </div>
+</div>

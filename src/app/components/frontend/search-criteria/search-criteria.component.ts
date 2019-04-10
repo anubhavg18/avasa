@@ -14,6 +14,8 @@ import { Observable } from 'rxjs';
 import { forEach } from '@angular/router/src/utils/collection';
 import { PropertyDetailsService } from 'src/app/services/property-details.service';
 import { ShortlistService } from 'src/app/services/shortlist.service';
+import { Store, select } from '@ngrx/store';
+import { Increment, Decrement, Reset,UpdateForm } from './search-criteria.actions';
 declare var $: any;
 declare const google: any;
 @Component({
@@ -35,14 +37,15 @@ export class SearchCriteriaComponent implements OnInit {
    public lat: number;
    public long: number;
    public loggedIn: boolean;
-
+public totalPropertyCount:number;
+public totalZooplaApiCount:number=0;
    public recentLatitude: number = 51.509865;
    public recentLongitude: number = -0.118092;
    public recentLocationName: string = 'Long Acre, London, UK';
    public recentCommuteTime: any = '1 hour and 15 minutes';
    public recentCommuteTimeInSec: any = 4500;
-public modeOfCommute:any = 'public_transport';
-public maxCommuteTime:any;
+   public modeOfCommute:any = 'public_transport';
+   public maxCommuteTime:any;
    public statuses: any;
    public areas: any;
    public preferredAmenities: any;
@@ -68,18 +71,18 @@ public maxCommuteTime:any;
    primaryCommute: any;
    public propertyList: any = [];
    public uiState: string = 'searchProperty';
+   public listingViewState = 'viewMap';
    selectPropertyCount: number = 0;
    public selectedZooplaRoots: any = [];
    public selectedZooplaListings: any = [];
    public selectedListingDetails: any = {};
    public mapMarkers = [];
-   public listingViewState = 'viewMap';
    bounds: any;
    center: any;
    showSortMenu = false;
    showEditOptions = false;
    searchIdObj: any;
-
+   count$: Observable<object>;
    showLoader = false;
    public timetaken = {
       arrival_time: new Date(),
@@ -109,9 +112,12 @@ public maxCommuteTime:any;
             ]
          }
       }
+      
    }
 
+
    constructor(
+      private store: Store<{ searchCriteria: object }>,
       private searchService: SearchService,
       private searchCriteriaService: SearchCriteriaService,
       private myListingService: ShortlistService,
@@ -142,15 +148,15 @@ public maxCommuteTime:any;
          preferredAmenity: new FormArray([]),
          avoidedAmenity: new FormArray([]),
       });
-      // this.advanceCriteriaForm = this.formBuilder.group({
-      //   outdoor: ['', Validators.required],
-      //   propertyFeature: this.formBuilder.array([]),
-      // });
+      this.advanceCriteriaForm = this.formBuilder.group({
+        outdoor: ['', Validators.required],
+        propertyFeature: this.formBuilder.array([]),
+      });
 
-      this.searchService.currentMessage.subscribe(
-         (data) => this.mapData(data),
-         (error) => console.log(error),
-      );
+      // this.searchService.currentMessage.subscribe(
+      //    (data) => this.mapData(data),
+      //    (error) => console.log(error),
+      // );
 
       this.searchCriteriaService.amenityPreferences().subscribe(
          (data) => this.amenitiesData(data),
@@ -161,117 +167,50 @@ public maxCommuteTime:any;
          (data) => this.areaData(data),
          (error) => console.log(error),
       );
+      this.count$ = this.store.pipe(select('searchCriteria'));
+         this.count$.subscribe(res=>{
+            this.mapData(res['searchCriteria']);
+         });
+
+      this.count$ = this.store.pipe(select('searchCriteria'));
+         this.count$.subscribe(res=>{
+       
+         this.form = this.formBuilder.group({
+            mode: [res['commute']['modeOfCommute'], Validators.required],
+            search: ['', Validators.required],
+         });
+
+         this.basicCriteriaForm = this.formBuilder.group({
+            typeOfFurnishing: [res['basic criteria']['furnishType'], Validators.required],
+            typeOfProperty: [res['basic criteria']['houseType'], Validators.required],
+            noOfBedrooms: ['', Validators.required],
+         });
+         this.minPrice=Number([res['basic criteria']['minPrice']]);
+         this.maxPrice=Number([res['basic criteria']['maxPrice']]);
+         // this.recentCommuteTime = this.searchCriteriaService.maxCommuteTimeInWord(res['commute']['maxCommuteTime']);
+
+       
+         
+         // this.recentLocationName=res['commute']['destination'];
+         // this.recentLatitude=res['commute']['destLatitude'];
+         // this.recentLongitude=res['commute']['destLongitude'];
+         console.log([res['basic criteria']['maxPrice']])
+      })
 
    }
 
-   onCheckChange(event) {
-      const formArray: FormArray = this.personalizeSearchForm.get('status') as FormArray;
-    
-      /* Selected */
-      if(event.target.checked){
-        // Add a new control in the arrayForm
-        formArray.push(new FormControl(event.target.value));
-      }
-      /* unselected */
-      else{
-        // find the unselected element
-        let i: number = 0;
-    
-        formArray.controls.forEach((ctrl: FormControl) => {
-          if(ctrl.value == event.target.value) {
-            // Remove the unselected element from the arrayForm
-            formArray.removeAt(i);
-            return;
-          }
-    
-          i++;
-        });
-      }
-    }
 
-    onCheckChange1(event) {
-      const formArray: FormArray = this.personalizeSearchForm.get('areas') as FormArray;
-    
-      /* Selected */
-      if(event.target.checked){
-        // Add a new control in the arrayForm
-        formArray.push(new FormControl(event.target.value));
-      }
-      /* unselected */
-      else{
-        // find the unselected element
-        let i: number = 0;
-    
-        formArray.controls.forEach((ctrl: FormControl) => {
-          if(ctrl.value == event.target.value) {
-            // Remove the unselected element from the arrayForm
-            formArray.removeAt(i);
-            return;
-          }
-    
-          i++;
-        });
-      }
-    }
-
-    onCheckChange2(event) {
-      const formArray: FormArray = this.personalizeSearchForm.get('preferredAmenity') as FormArray;
-    
-      /* Selected */
-      if(event.target.checked){
-        // Add a new control in the arrayForm
-        formArray.push(new FormControl(event.target.value));
-      }
-      /* unselected */
-      else{
-        // find the unselected element
-        let i: number = 0;
-    
-        formArray.controls.forEach((ctrl: FormControl) => {
-          if(ctrl.value == event.target.value) {
-            // Remove the unselected element from the arrayForm
-            formArray.removeAt(i);
-            return;
-          }
-    
-          i++;
-        });
-      }
-    }
-
-    onCheckChange3(event) {
-      const formArray: FormArray = this.personalizeSearchForm.get('avoidedAmenity') as FormArray;
-    
-      /* Selected */
-      if(event.target.checked){
-        // Add a new control in the arrayForm
-        formArray.push(new FormControl(event.target.value));
-      }
-      /* unselected */
-      else{
-        // find the unselected element
-        let i: number = 0;
-    
-        formArray.controls.forEach((ctrl: FormControl) => {
-          if(ctrl.value == event.target.value) {
-            // Remove the unselected element from the arrayForm
-            formArray.removeAt(i);
-            return;
-          }
-    
-          i++;
-        });
-      }
-    }
 
 
 
    commuteDetails() {
+      
       this.modeOfCommute = this.form.value.mode;
       let modeOfCommute= this.form.value.mode;;
       this.maxCommuteTime = this.recentCommuteTimeInSec;
        let maxCommuteTime = this.recentCommuteTimeInSec;
-     
+      
+      //  this.store.dispatch(new UpdateForm({"pub":"zxc111111","pub2":"zxc2222222","pub3":"zxc333333","pub4":"zxc444444"}));
       if(this.long){
          this.recentLocationName = this.name;
          this.recentLongitude = this.long;this.recentLatitude = this.lat;
@@ -282,6 +221,7 @@ public maxCommuteTime:any;
          };
         
          this.primaryCommute = commute;
+
       }
       
     
@@ -290,9 +230,10 @@ public maxCommuteTime:any;
       let commute: commute = {
          destination: this.recentLocationName,
          modeOfCommute: this.modeOfCommute, maxCommuteTime: maxCommuteTime,
-         destLatitude: this.recentLongitude, destLongitude: this.recentLongitude, primaryCommute: 1
+         destLatitude: this.recentLatitude, destLongitude: this.recentLongitude, primaryCommute: 1
       };
       this.primaryCommute = commute;
+      this.store.dispatch(new UpdateForm({"commute":this.primaryCommute}));
       // console.log(commute)
       this.timetaken.targets.target0.travel_time = parseInt(maxCommuteTime);
       this.timetaken.travel_time = parseInt(maxCommuteTime);
@@ -306,17 +247,20 @@ public maxCommuteTime:any;
       }
       if (this.recentLongitude) {
          this.timetaken.targets.target0.coords.push(this.recentLongitude);
+         
       }
       console.log(this.recentLatitude);
       console.log(this.recentLongitude);
-
+      
       this.openItem(2);
    }
 
    callZooplaApi(res) {
       // console.log(res);
+     
       for (let intersections = 0; intersections <= res.results.intersections1.length - 1; intersections++) {
          // console.log('j');
+         this.totalZooplaApiCount=this.totalZooplaApiCount+1;
          let intersections1 = res.results.intersections1;
          let array_length = intersections1.length;
 
@@ -327,23 +271,49 @@ public maxCommuteTime:any;
             const data = JSON.stringify(res);
             const zooplaListingModel = ConvertZoopla.toZooplaListingModel(data);
             this.propertyList[intersections] = zooplaListingModel;
+            this.store.dispatch(new UpdateForm({"zoopla":zooplaListingModel}));
+            
+            console.log(zooplaListingModel.listing.length)
             if (zooplaListingModel.listing.length > 0) {
+               this.totalZooplaApiCount=this.totalZooplaApiCount-1;
                this.plotLocationsToMap(zooplaListingModel, intersections, zooplaListingModel.listing.length.toString())
+               this.totalPropertyCount=this.totalPropertyCount+zooplaListingModel.listing.length;
             }
-
+            else{
+               this.totalZooplaApiCount=this.totalZooplaApiCount-1;
+               // this.openModelForNoProperty();
+           
+            }
+           
          },
             error => {
+               this.totalZooplaApiCount=this.totalZooplaApiCount-1;
                console.log('IN failure, ', error)
+               // setTimeout(() => {
+               // this.openModelForNoProperty();
+            // }, 3000);
+            this.checkIsLastApi(this.totalZooplaApiCount);
 
             }
          );
-
+   
+         // this.checkIsLastApi(this.totalZooplaApiCount);
       }
-      //Pans out map
+
       setTimeout(() => {
          this.map.setZoom(11);
          this.showLoader = false;
       }, 3000);
+      //Pans out map
+      
+   }
+
+   public checkIsLastApi(totalZooplaApiCount){
+      if(totalZooplaApiCount==0){
+         console.log(totalZooplaApiCount)
+         this.openModelForNoProperty();
+      }
+
    }
 
    public plotLocationsToMap(property: any, index: number, title: string) {
@@ -428,7 +398,7 @@ public maxCommuteTime:any;
       let lon_min: String = data.envelope.min_lon;
       let lat_max: String = data.envelope.max_lat;
       let lon_max: String = data.envelope.max_lon;
-      let ZOOPLA_API_DEV_KEY = "5gdsqq79cbhfxr8kdgqez233";
+      let ZOOPLA_API_DEV_KEY = "4ka8x2a4nz5weccjpzumekn9";
 
       let minimum_beds: String = this.minBedrooms;
       let maximum_beds: String = this.maxBedrooms;
@@ -465,8 +435,12 @@ public maxCommuteTime:any;
       let data = $('#ex18b').data('slider').getValue();
       this.minBedrooms = data[0];
       this.maxBedrooms = data[1];
-      let minPrice = this.minPrice
-      let maxPrice = this.maxPrice;
+      let basicCriteria={
+         minBedrooms: this.minBedrooms,maxBedrooms:this.maxBedrooms,
+         furnishType:this.furnishType,houseType:this.houseType,minPrice:this.minPrice,maxPrice:this.maxPrice
+      }
+      
+      this.store.dispatch(new UpdateForm({"basic criteria":basicCriteria}));
       this.openItem(3);
    }
 
@@ -496,7 +470,10 @@ public maxCommuteTime:any;
          "5minPlaces": this.propertyfiveMinutesWalk
       }
       
-
+      let advanceCriteria={
+         outdoor:this.outdoorSpaces,propertyFeatures:this.propertyFeatures,fiveminPlaces:this.propertyfiveMinutesWalk
+      }
+      this.store.dispatch(new UpdateForm({"Advance Criteria":advanceCriteria}));
 
       this.searchCriteriaService.searchCriteria(Commute).subscribe((res: Response) => {
          console.log("Search Criteria Response ", res);
@@ -508,9 +485,9 @@ public maxCommuteTime:any;
    }
 
    personalizeSearch() {
-      this.uiState = 'searching';
-      this.showLoader = true;
-      this.openItem(5);
+      // this.uiState = 'searching';
+      // this.showLoader = true;
+      // this.openItem(5);
       let areas = this.personalizeSearchForm.value.areas;
       let status = this.personalizeSearchForm.value.status;
       let preferredAmenities=this.personalizeSearchForm.value.status;
@@ -520,12 +497,17 @@ public maxCommuteTime:any;
       this.searchCriteriaService.updateAreaPreferences(area);
       this.searchCriteriaService.updateAmenityPreferences(data);
 
-      this.searchCriteriaService.timeMap(this.timetaken).subscribe((res: Response) =>
-         this.callZooplaApi(res));
+      this.store.dispatch(new UpdateForm({"personalizeSearch":data}));
+      this.store.dispatch(new UpdateForm({"timeTravelData":this.timetaken}));
+      this.searchCriteriaService.timeMap(this.timetaken);
+      this.router.navigateByUrl('/preferred-area');
+   //   this.router.navigate(['/login']);
+      // .subscribe((res: Response) =>
+      // this.callZooplaApi(res));
    }
 
    mapData(data) {
-      console.log(data)
+      
       this.recentLatitude = data.commuteLatitude;
       this.recentLongitude = data.commuteLongitude;
       this.recentLocationName = data.commuteLocation;
@@ -703,6 +685,7 @@ public maxCommuteTime:any;
    }
 
    checkSelectedProperties() {
+      // if(this.selectPropertyCount>0){
       // console.log('Check slelected properties called')
       if (this.selectPropertyCount && this.selectPropertyCount < 100) {
          this.showSelectedPropertiesNow();
@@ -710,6 +693,10 @@ public maxCommuteTime:any;
          this.openModal();
       }
    }
+   // else{
+   //    this.openModal();
+   // }
+   // }
 
    public showSelectedPropertiesNow() {
       this.closeModal();
@@ -724,6 +711,7 @@ public maxCommuteTime:any;
                var marker = this.plotPropertyToMap(eachListing, '');
                eachListing.marker = marker;
                this.selectedZooplaListings.push(eachListing);
+               
                // console.log(marker);
                // console.log('date within range', eachListing.last_published_date)
             }
@@ -818,6 +806,14 @@ public maxCommuteTime:any;
    }
 
    plotPropertyToMap(eachListing, title = 'demo') {
+      // var image = '/assets/images/map-marker.svg'
+      console.log(eachListing);
+      var icon = {
+         url: '/assets/images/map-marker.svg', // url
+         scaledSize: new google.maps.Size(50, 50), // scaled size
+         origin: new google.maps.Point(0,0), // origin
+         anchor: new google.maps.Point(0, 0) // anchor
+     };
       var marker = new google.maps.Marker({
          position: {
             lat: eachListing.latitude,
@@ -826,8 +822,14 @@ public maxCommuteTime:any;
             // lng: property.min_lon
          },
          // map: this.gmapElement.nativeElement,
-         // icon: image,
-         label: title,
+         icon: icon,
+         // label: {
+         //    text: eachListing.price,
+         //    color: 'white',
+         //    fontSize: '15px',
+         //    fontWeight: 'bold'
+         //  },
+          title:'£'+eachListing.price+'/month'
       });
       marker.set('obj', eachListing);
       marker.set('clickStatus', false);
@@ -1007,10 +1009,12 @@ public maxCommuteTime:any;
             if (eachProp.listing.length > 0) {
                this.plotLocationsToMap(eachProp, index, eachProp.listing.length.toString())
             }
+            
          })
       } else {
          this.uiState = 'searchProperty';
          this.closeModal();
+         this.closeModal1();
          this.selectedZooplaRoots = [];
          this.selectedZooplaListings = [];
          this.selectedListingDetails = [];
@@ -1039,8 +1043,10 @@ public maxCommuteTime:any;
          }, 100);
          if(type==='commute'){
             this.openItem('1');
+          
          } else if (type==='filter'){
-            this.openItem('2')
+            this.openItem('2');
+           
          }
       }
 
@@ -1124,10 +1130,21 @@ public maxCommuteTime:any;
       let element: HTMLElement = document.getElementById('open-modal') as HTMLElement;
       element.click();
    }
+
+   openModelForNoProperty(){
+      let element: HTMLElement = document.getElementById('open-modal1') as HTMLElement;
+      element.click();
+   }
    closeModal() {
       let element: HTMLElement = document.getElementById('close-modal') as HTMLElement;
       element.click();
    }
+   closeModal1() {
+      let element: HTMLElement = document.getElementById('close-modal1') as HTMLElement;
+      element.click();
+   }
+
+  
 
    initialiseMapListingCarousel() {
       $(document).ready(function () {
@@ -1166,4 +1183,103 @@ public maxCommuteTime:any;
          })
       });
    }
+   onCheckChange(event) {
+      const formArray: FormArray = this.personalizeSearchForm.get('status') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+    
+          i++;
+        });
+      }
+    }
+
+    onCheckChange1(event) {
+      const formArray: FormArray = this.personalizeSearchForm.get('areas') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+    
+          i++;
+        });
+      }
+    }
+
+    onCheckChange2(event) {
+      const formArray: FormArray = this.personalizeSearchForm.get('preferredAmenity') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+    
+          i++;
+        });
+      }
+    }
+
+    onCheckChange3(event) {
+      const formArray: FormArray = this.personalizeSearchForm.get('avoidedAmenity') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+    
+          i++;
+        });
+      }
+    }
 }

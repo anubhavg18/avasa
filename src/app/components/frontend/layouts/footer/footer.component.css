@@ -1,0 +1,11 @@
+.footer-logo {
+    float: left;
+    margin: 0 25px 0 0;
+}
+.footer-logo a {
+    background: url(../../../../../assets/images/logo_footer.svg) center top;
+    background-size:88px 104px;
+    width: 88px;
+    height:104px;
+    float: left;
+}

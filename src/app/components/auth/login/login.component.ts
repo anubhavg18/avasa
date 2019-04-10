@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
 			// console.log(this.loginForm);
 			this.form.email=this.f.email.value;
 			this.form.password=this.f.password.value;
-	    this.loginService.login(this.form).subscribe(
+	        this.loginService.login(this.form).subscribe(
 				data => this.handleResponse(data),
 				// error=>console.log(error),
 				error => this.notifier.notify('error',error.error.Comments),
@@ -93,7 +93,8 @@ export class LoginComponent implements OnInit {
 				
 				if(data.Result.userRole==0){
 					this.Auth.changeAuthStatus(true);
-					this.router.navigateByUrl('/home-search');
+					this.router.navigate(['home-search'], {queryParams: { registered: 'true' } });
+					// this.router.navigateByUrl('/home-search');
 				}
 				else if(data.Result.userRole==1){
 					this.Auth.changeAuthStatus(true);

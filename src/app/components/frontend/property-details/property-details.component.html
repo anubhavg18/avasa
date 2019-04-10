@@ -5,13 +5,19 @@
   <div class="container">
     <!-- main-heading -->
     <div class="main-heading">
-      <div class="total-rating">
+      <!-- <div class="total-rating">
         <a href="#" data-toggle="modal" data-target="#myModal">
           <img src="assets/images/ic_star_rating.svg" alt="AWASA">3.5
         </a>
-      </div>
+      </div> -->
       <h2>{{propertyDetails.displayable_address}}<i><img src="assets/images/ic_share.svg" alt="AWASA"></i></h2>
-    </div>
+      <share-buttons [theme]="'modern-dark'"
+      [include]="['facebook','twitter','linkedin','whatsapp']"
+      [show]="4"
+      [url]="eachListing?.details_url"
+      [description]="'What do you think about this Property? Price: £'+eachListing?.price+' Per Month Location: '+eachListing?.displayable_address"
+   ></share-buttons>
+   </div>
     <!-- main-heading -->
     <!-- property location-->
     <div class="property-location clearfix">
@@ -68,7 +74,7 @@
   </div>
   <!-- property moreinfo -->
   <!-- property-comments -->
-  <div class="property-comments clearfix">
+  <!-- <div class="property-comments clearfix">
     <div class="container">
       <button class="btn" data-toggle="modal" data-target="#myModal2">Add comment</button>
       <h3>Comments:</h3>
@@ -76,13 +82,15 @@
         <h4>Andy Robinson said:</h4>
         <p>It has a very good bathroom and bedroom. Love the garden. Could be better in terms of location.</p>
         <h4>Rating: 3.5/5  <img src="assets/images/ic_star_rating3.svg" alt="rating"></h4>
-      </div><!-- txtb -->
-      <div class="txtb">
+      </div> -->
+      <!-- txtb -->
+      <!-- <div class="txtb">
         <h4>Sanjay Raj said:</h4>
         <p>The bathroom was very clean and well kept. Bedrooms were big and spacious. It was a great stay.</p>
         <h4>Rating: 4.5/5 <img src="assets/images/ic_star_rating3.svg" alt="rating"></h4>
-      </div><!-- txtb -->
-      <div class="comments-list">
+      </div> -->
+      <!-- txtb -->
+      <!-- <div class="comments-list">
         <ul>
           <li>GOOD SIZE</li>
           <li>LOWER GROUND</li>
@@ -90,7 +98,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- property-comments -->
   <!-- property-signature -->
   <div class="property-signature">

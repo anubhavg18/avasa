@@ -1,0 +1,182 @@
+<div class="admin-header position-relative setting-info">
+  <div class="row">
+    <!-- logo -->
+    <div class="admin-logo col-6 col-md-2 col-lg-2">
+      <a href="index.html" ><img src="../../../../assets/images/logo.svg" alt="AWASA"></a>
+    </div>
+    <!--logo -->
+    <!-- admin-nav -->
+    <div class="admin-nav col-6 col-md-10 col-lg-10">
+      <!-- navigation -->
+        <div class="navigation col-12">
+          <!-- nav-link -->
+          <div class="nav-link" id="nav-link">
+            <a href="#"><img src="../../../../assets/images/ic_nav_link.svg"></a>
+          </div>
+          <!-- nav-link -->
+          <div class="nav-box" id="nav-box">
+            <!-- nav-link -->
+            <div class="nav-link" id="nav-link2">
+              <a href="#"><img src="../../../../assets/images/ic_nav_close.svg"></a>
+            </div>
+            <!-- nav-link -->
+            <!-- app_download_link -->
+            <!-- <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="images/ic_apple.svg" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="images/ic_android.svg" alt="android"></a></li>
+              </ul>
+              <span>Get the App</span>
+            </div> -->
+            <div class="user-info">
+              <ul>
+                <li><a href="#"><i class="fa fa-bookmark"></i></a></li>
+                <li>
+                    <div class="dropdown">
+                        <span>
+                          <a href="#"><i class="fa fa-bell"><span class="badge">6</span></i></a>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="imgb"><img src="https://picsum.photos/200/300"></a></li>
+              </ul>
+            </div>
+            <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="../../../../assets/images/ic_app_store.png" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="../../../../assets/images/ic_google_play.png" alt="android"></a></li>
+              </ul>
+            </div>
+            <!-- app_download_link -->
+            <ul>
+              <li><a href="home-search.html" title="Search">Search</a></li>
+              <li><a href="sherpa.html" title="Sherpa">Sherpa Services</a></li>
+              <li class="active"><a href="#blog" title="Our blog">Our blog</a>
+                <ul>
+                  <li><a href="area-guides.html" title="City Guide">Area Guides</a></li>
+                  <li><a href="sherpa-tips.html" title="Sherpa tips">Sherpa Tips</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="About">About</a>
+                <ul>
+                  <li><a href="how-it-works.html" title="How it works">How it Works</a></li>
+                  <li><a href="proptech-startup.html" title="Our Story">Our Story</a></li>
+                </ul>
+              </li>
+              <li><a routerLink="/logout" title="Logout" data-toggle="modal" data-target="#myModal">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- navigation -->
+    </div>
+    <!-- admin-nav -->
+  </div>
+</div>
+
+<!-- header END here -->
+
+
+
+<div class="ask-question-box">
+  <!-- property-info -->
+  <div class="avasa-right-panel clearfix">
+    <div class="about-property container ">
+      <h3>Ask a Question!</h3>
+      <div class="property-info">
+        <div class="row">
+          <div class="col-md-7 col-lg-7">
+            <div class="img-box">
+              <img src="../../../../assets/images/marylebone-pub.jpg" alt="AWASA" class="rounded">
+              <p><a href="#">See Location</a>Added 4 days ago</p>
+            </div>
+            <div class="txtb">
+              <p>Name: <strong>Howard Building</strong></p>
+              <p>Locality: <strong>Strand London</strong></p>
+              <p>Rent: <strong>£3922/month</strong></p>
+              <a href="#" class="btn-back">Go back to Explore</a>
+            </div>
+          </div>
+          <div class="col-md-5 col-lg-5">
+            <div class="property-detail">
+              <p>Description: Howard building is a glorious four floor building in the middle of Strand London. It has a parking facility and is pet friendly. It has a shopping plaza which is 100 m away and has 3 commute spots around it including the rail.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- property-info -->
+    </div>
+  </div>
+  <!-- property-info -->
+  <!-- ask-question-column1 -->
+  <div class="ask-question-column1 clearfix">
+    <div class="container">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <ul>
+          <li>
+            <label class="selector">
+              <input type="checkbox" formControlName="available">
+              <span class="checkmark">Is it still available?</span>
+            </label>
+          </li>
+          <li>
+            <label class="selector">
+              <input type="checkbox" formControlName="property">
+              <span class="checkmark">What size is the property?</span>
+            </label>
+          </li>
+          <li>
+            <label class="selector">
+              <input type="checkbox" formControlName="floor" >
+              <span class="checkmark">Is the property lower ground floor?</span>
+            </label>
+          </li>
+          <li>
+            <label class="selector">
+              <input type="checkbox" (click)="pet($event)" formControlName="petvalue" >
+              <span class="checkmark">Is the property pet friendly?</span>
+            </label>
+            <div *ngIf = "!isPet">
+              <textarea  class="form-control textarea" placeholder="Write something..."  #pet formControlName="petQu" [ngClass]="{ 'is-invalid': submitted && petError  }" ></textarea>
+              <!-- <div *ngIf="petError">
+                <h6><code>Please fill the Question Field</code></h6>
+              </div> -->
+              <div *ngIf="submitted && petError" class="invalid-feedback">
+                  <div>Please add the question/comment</div>
+                </div>
+          </div>
+          </li>
+          <li>
+            <label class="selector">
+              <input type="checkbox" formControlName="glazing"  >
+              <span class="checkmark">Are the windows double or single glazing?</span>
+            </label>
+          </li>
+          <li>
+            <label class="selector">
+              <input type="checkbox"  (click)="others($event)" formControlName="othersvalue" >
+              <span class="checkmark">Others:</span>
+            </label>
+            <div *ngIf = "!isOthers">
+              <textarea  class="form-control textarea" placeholder="Write something..."  #others formControlName="othersQu" [ngClass]="{ 'is-invalid': submitted && othersError }" ></textarea>
+              <!-- <div *ngIf="othersError">
+                  <h6><code>Please fill the Question Field</code></h6>
+                </div> -->
+                <div *ngIf="submitted && othersError" class="invalid-feedback">
+                    <div>Please add the question/comment</div>
+                  </div>
+            </div>
+          </li>
+        </ul>
+        <button type = "submit" class="btn-send">Send</button>
+      </form>
+    </div>
+  </div>
+  <!-- ask-question-column1 -->
+</div>

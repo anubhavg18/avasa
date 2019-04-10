@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .search-box .column-search button {
   float: left;
-  line-height: 49px;
+  line-height: 39px;
   border:none;
   border-right: #E6E5E7 1px solid;
   cursor: pointer;
@@ -352,6 +352,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
   border-right: #E6E5E7 1px solid;
   font-family: 'Conv_FontsFree-Net-ProximaNova-Regular' !important;
+  background: #fff !important;
 }
 .search-box input:focus,
 .search-box .column-min select:focus {
@@ -587,7 +588,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
   border-radius: 5px;
   padding:43px 20% 83px 20%; 
-  min-height: 375px;
+  min-height: 399px;
   margin-bottom: 30px;
   position: relative;
 }
@@ -1061,16 +1062,23 @@ h1, h2, h3, h4, h5, h6 {
   margin: -7px 0 32px 0;
   text-align: center;
 }
-.sherpa-services.footer {
+.sherpa-services .footer {
    background: #014d89;
 }
 .sherpa-services .footer-text p,
-.sherpa-services.footer li a,
-.sherpa-services.footer h6 {
+.sherpa-services .footer li a,
+.sherpa-services .footer h6 {
   color: #fff;
 }
-.sherpa-services.footer-bot {
+.sherpa-services .footer-bot {
   background: #49c6de;
+}
+.sherpa-services .footer-logo a {
+  background: url(assets/images/logo_white.svg) center top !important;
+  background-size:88px 104px !important;
+  width:88px;
+  height:104px;
+  float:left;
 }
 
 /* blog-city-guide page */

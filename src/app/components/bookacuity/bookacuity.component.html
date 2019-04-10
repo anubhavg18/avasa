@@ -1,0 +1,201 @@
+<link href="assets/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
+<div class="admin-header position-relative setting-info">
+  <div class="row">
+    <!-- logo -->
+    <div class="admin-logo col-6 col-md-2 col-lg-2">
+      <a href="index.html" ><img src="assets/images/logo.svg" alt="AWASA"></a>
+    </div>
+    <div class="admin-nav col-6 col-md-10 col-lg-10">
+      <!-- navigation -->
+        <div class="navigation col-12">
+          <!-- nav-link -->
+          <div class="nav-link" id="nav-link">
+            <a href="#"><img src="assets/images/ic_nav_link.svg"></a>
+          </div>
+          <!-- nav-link -->
+          <div class="nav-box" id="nav-box">
+            <!-- nav-link -->
+            <div class="nav-link" id="nav-link2">
+              <a href="#"><img src="assets/images/ic_nav_close.svg"></a>
+            </div>
+            <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="assets/images/ic_app_store.png" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="assets/images/ic_google_play.png" alt="android"></a></li>
+              </ul>
+            </div>
+            <ul>
+              <li><a href="home-search.html" title="Search">Search</a></li>
+              <li><a href="sherpa.html" title="Sherpa">Sherpa Services</a></li>
+              <li class="active"><a href="#blog" title="Our blog">Our blog</a>
+                <ul>
+                  <li><a href="area-guides.html" title="City Guide">Area Guides</a></li>
+                  <li><a href="sherpa-tips.html" title="Sherpa tips">Sherpa Tips</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="About">About</a>
+                <ul>
+                  <li><a href="how-it-works.html" title="How it works">How it Works</a></li>
+                  <li><a href="proptech-startup.html" title="Our Story">Our Story</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="Login" data-toggle="modal" data-target="#myModal">Log In</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- navigation -->
+    </div>
+    <!-- admin-nav -->
+  </div>
+</div>
+
+<div class="contact-form-box" *ngIf="defaultdiv">
+  <div class="container">
+    <h3>Contact Form</h3>
+  </div>
+  <form>
+    <div class="container">
+      <div class="input-box">
+        <input type="text" name="fisrtname" [(ngModel)]="firstname" class="input" placeholder="First Name" required>
+      </div>
+      <div class="input-box">
+        <input type="text" name="lastname" [(ngModel)]="lastname" class="input" placeholder="Last Name" required>
+      </div>
+      <div class="input-box">
+        <input type="text" name="email" [(ngModel)]="email" class="input" placeholder="Email id" required>
+      </div>
+      <div class="input-box">
+        <select [(ngModel)]="contact" name="selectname" (change)="onChange()">
+          <option value="Skype">Skype</option>
+          <option value="Whatup">What's up</option>
+          <option value="Phone Number">Phone Number</option>
+        </select>
+      </div>
+
+      <div class="input-box" *ngIf="openwhatsup">
+        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="What's up">
+      </div>
+
+      <div class="input-box" *ngIf="openskype">
+        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="Skype">
+      </div>
+
+      <div class="input-box" *ngIf="openphone">
+        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="Phone">
+      </div>
+
+       <div class="input-box">
+        <input type="date" name="datetime" [(ngModel)]="datetime" class="input" placeholder="Date">
+      </div>
+
+      <div class="input-box">
+        <input type="text" name="input" [(ngModel)]="location" class="input" placeholder="Location">
+      </div>
+      <h3>Price range per calendra month<span>*</span></h3>
+      <div class="input-box clearfix">
+        <div class="commute-time-col clearfix">
+          <div class="commute-time">
+            <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmin()"></a>
+            <span>{{minval}}$ Min</span>
+            <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmin()"></a>
+          </div>
+        </div>
+        <div class="commute-time-col clearfix">
+          <div class="commute-time">
+            <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmax()"></a>
+            <span>{{maxval}}$ Max</span>
+            <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmax()"></a>
+          </div>
+        </div>
+      </div>
+      <h3 class="pt0">Number of bedrooms<span>*</span></h3>
+      <div class="input-box">
+        <select [(ngModel)]="numberbed" name="numberbed">
+        <option value="1 bedroom">1 Room & Studios</option>
+        <option value="2 bedrooms">2 Room & Studios</option>
+        <option value="3 bedrooms">3 Room & Studios</option>
+        <option value="4 bedrooms">4 Room & Studios</option>
+      </select>
+        
+      </div>
+      <div class="input-box">
+        <button class="btn" (click)="saveform()">SAVE</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="book-your-call" *ngIf="opendiv">
+  <div class="main-title">
+    <div class="container">
+      <h3>Book Time Slot!</h3>
+    </div>
+  </div>
+  <div class="book-your-call-info">
+    <div class="container">
+      <h3>Choose Date:</h3>
+      <div class="calendar-info">
+        <a href="#" class="btn-prev"><i class="fa fa-angle-left"></i></a>
+        <h4>2 April 2019</h4>
+        <a href="#" class="btn-next"><i class="fa fa-angle-right"></i></a>
+        <div class="table-box">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th *ngFor="let data of datedata">
+                  <label class="selector" for="{{data.date}}-option" ><span>{{data.date | date: 'EEE'}}</span>
+                  <input type="radio" class="radio1" id="{{data.date}}-option" name="selectorDate">
+                  <span class="check" (click)="scheduledata(data)">{{data.date | date: 'dd'}}</span>
+                  </label>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="calendar-info">
+        <ul class="date-selector">
+          <li *ngFor="let selected of selecteddata; index as i">
+            <label for="option-{{i}}" >
+              <input type="radio" [(ngModel)]="selectedtime" class="radio2" id="option-{{i}}" [value]="selected.time" name="selectorTime">
+              <span class="checkmark">{{selected.time | date: 'h:mm a'}}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <button class="btn-book" (click)="updatedata()">Book</button>
+    </div>
+  </div>
+</div>
+
+
+ <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2" *ngIf="acuitydetail">
+      <div class="row"> 
+        <div class="setting-detail">
+          <div class="setting-call-detail clearfix">
+            <h3>My Calendar Detail</h3>
+            <div class="card">
+              <div class="card-body">
+                <div class="sherpa-details-column">
+                  <p><span class="float-right">Mobile: +1{{phone}}</span><strong>Name: </strong><span>{{name}} {{lastname}}</span></p>
+                  <p><strong>Moving Date: </strong><span>{{movingDate}}</span></p>
+                  <div class="blue-card">
+                    <!-- <p>Schedule Time: 18th March 2019,<br>4:30pm (GMT + 5:30hrs)</p> -->
+                  </div>
+                  <p><strong>Connecting through:</strong>{{connectvia}}</p>
+                  <p><strong>Preferred Areas:</strong>{{preferredAreas}}</p>
+                  <p><strong>Price Range:</strong> €{{minPrice}} - €{{maxPrice}}</p>
+                  <p><strong>Specifications:</strong>{{maxBedrooms}}</p>
+                  <button class="btn-changes" (click)="Rescheduleappontment()">Reschedule</button>
+                  <button class="btn-changes" (click)="cancelappontment()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+<script type="text/javascript" src="assets/js/bootstrap-slider.js"></script>

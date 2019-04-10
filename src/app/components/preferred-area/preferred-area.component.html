@@ -1,0 +1,51 @@
+<div class="google-map-box">
+  <div #gmap id="map"></div>
+</div>
+
+<button type="button" class="refine-search-popup" (click)="checkSelectedProperties()">Continue</button>
+<button type="button" style="display: none;" id="open-modal" data-toggle="modal"
+   data-target="#exampleModal">Continue</button>
+<!-- Modal -->
+<div class="modal fade refine-search-modal" id="exampleModal" tabindex="-1" role="dialog"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <h3>{{this.selectPropertyCount}} Results!</h3>
+            <p>Would you like to narrow down your results?</p>
+            <button type="button" class="btn-modal" routerLink="/search-criteria">Refine Search</button>
+            <strong>OR</strong>
+            <button type="button" class="btn-modal bg" (click)="showSelectedPropertiesNow()">Continue</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<button type="button" style="display: none;" id="open-modal1" data-toggle="modal"
+	data-target="#exampleModal1">Continue</button>
+
+	<div class="modal fade refine-search-modal" id="exampleModal1" tabindex="-1" role="dialog"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal1">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <h3>Oops!!</h3>
+            <p>We are not able to find commutes, Please review destination</p>
+            <button type="button" class="btn-modal " data-dismiss="modal" aria-label="Close" id="close-modal1" routerLink="/search-criteria">Refine Search</button>
+            <!-- <strong>OR</strong>
+            <button type="button" class="btn-modal bg" (click)="showSelectedPropertiesNow()">Continue</button> -->
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<div id="cover-spin" *ngIf="showLoader"></div>

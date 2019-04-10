@@ -28,7 +28,15 @@ export class MyShortlistPropertyDetailsComponent implements OnInit {
    
     this.propertyId=propertyIdInArray[2];
     
-    
+    setTimeout(() => {
+      var mapProp = {
+        center:
+           new google.maps.LatLng(51.509865, -0.118092),
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    }, 1000);
    }
 
 
@@ -36,15 +44,10 @@ export class MyShortlistPropertyDetailsComponent implements OnInit {
     this.shortlistService.getShortlistedPropertyDetails(this.propertyId).subscribe(
       // (data)=>this.getPropertyDetailsData(data),
       (data)=>this.getPropertyDetailsData(data),
+      
       (error)=>console.log(error)
     ); 
-    var mapProp = {
-      center:
-         new google.maps.LatLng(51.509865, -0.118092),
-      zoom: 7,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-   };
-   this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+
    
   }
 
@@ -68,8 +71,8 @@ export class MyShortlistPropertyDetailsComponent implements OnInit {
   
   var marker = new google.maps.Marker({
     position: {
-       lat: Number(data.Result.zooplaJsonData.latitude),
-       lng: Number(data.Result.zooplaJsonData.longitude)
+       lat: Number(this.propertyDetails.zooplaJsonData.latitude),
+       lng: Number(this.propertyDetails.zooplaJsonData.longitude)
     },
    //  map: this.gmapElement.nativeElement,
    //  icon: image,

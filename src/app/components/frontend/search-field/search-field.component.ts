@@ -4,6 +4,9 @@ import { Commutes, Convert, commute } from 'src/app/models/search-parameter';
 import { MapsAPILoader } from '@agm/core';
 import {SearchService} from 'src/app/services/search.service';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { Increment, Decrement, Reset,UpdateForm } from '../search-criteria/search-criteria.actions';
+import { Observable } from 'rxjs';
 declare const google: any;
 
 @Component({
@@ -25,7 +28,8 @@ export class SearchFieldComponent implements OnInit {
   public long: number;
   searchForm: FormGroup;
   submitted = false;
-  
+  count$: Observable<object>;
+
 public name1:string='15 minutes';
   // commuteTime=[
   //   {name:'15 minutes',send:'15'},
@@ -44,14 +48,15 @@ public name1:string='15 minutes';
        ];
 
      public searchCriteria={
-      commutesTime:null,
-      commuteLocation:null,
-      commuteLatitude:null,
-      commuteLongitude:null
+      commutesTime:15,
+      commuteLocation:"London, UK",
+      commuteLatitude:51.5073509,
+      commuteLongitude:-0.12775829999998223
      }  
 
   
-  constructor(private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,private searchService:SearchService,private router:Router) {
+  constructor(private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,
+    private searchService:SearchService,private router:Router,private store: Store<{ searchCriteria: object }>) {
     this.searchForm = this.formBuilder.group({
       maxCommuteTime: ['15 minutes', Validators.required],
       search: ['', Validators.required],
@@ -117,6 +122,7 @@ public name1:string='15 minutes';
     this.searchCriteria.commuteLatitude=this.lat;
     this.searchCriteria.commuteLongitude=this.long;
     // console.log(this.searchCriteria)
+    this.store.dispatch(new UpdateForm({"searchCriteria":this.searchCriteria}));
     this.searchService.changeMessage(this.searchCriteria);
     this.router.navigateByUrl('/search-criteria');;
   }

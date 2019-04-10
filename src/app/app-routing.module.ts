@@ -41,7 +41,7 @@ import { PrivatePolicyComponent } from './components/private-policy/private-poli
 import { SherpaRecoComponent } from './components/sherpa-reco/sherpa-reco.component';
 import { TermConditionComponent } from './components/term-condition/term-condition.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { BookacuityComponent } from './components/bookacuity/bookacuity.component';
 import { from } from 'rxjs';
 import { DialogUserLayoutsComponent } from './components/users/dialog-flow-users/dialog-user-layouts/dialog-user-layouts.component';
 import { SearchCriteriaComponent } from './components/frontend/search-criteria/search-criteria.component';
@@ -50,7 +50,11 @@ import { PropertyNearImperialComponent } from './components/frontend/property-ne
 import { MyShortlistComponent } from './components/frontend/my-shortlist/my-shortlist.component';
 import { PropertyDetailsComponent } from './components/frontend/property-details/property-details.component';
 import { MyShortlistPropertyDetailsComponent } from './components/frontend/my-shortlist-property-details/my-shortlist-property-details.component';
+import { PreferredAreaComponent } from './components/preferred-area/preferred-area.component';
+import { PropertyListingComponent } from './components/frontend/property-listing/property-listing.component';
 
+import { AskQuestionComponent } from './components/frontend/ask-question/ask-question.component';
+import { AskQuestionFormComponent } from './components/frontend/ask-question-form/ask-question-form.component';
 
 
 
@@ -118,10 +122,16 @@ const routes: Routes = [
   { path: 'home-sherpa-pop-up', component: HomeSherpaPopUpComponent, pathMatch: 'full'},
   { path: 'mobile-app', component: MobileAppComponent, pathMatch: 'full'},
   { path: 'my-shortlist', component: MyShortlistComponent,canActivate: [AfterLoginService],data: {role: 0}},
-
+  
   { path: 'property-details/:listing_id', component: PropertyDetailsComponent, pathMatch: 'full'},
   { path: 'my-shortlist/:propertyId', component: MyShortlistPropertyDetailsComponent, pathMatch: 'full'},
+  
   { path: 'imperial-college', component: PropertyNearImperialComponent, pathMatch: 'full'},
+  { path: 'preferred-area', component: PreferredAreaComponent, pathMatch: 'full'},
+  { path: 'property-listing', component: PropertyListingComponent, pathMatch: 'full'},
+  { path: 'ask-question', component: AskQuestionComponent,canActivate: [AfterLoginService],data: {role: 0}},
+  { path: 'ask-question-form', component: AskQuestionFormComponent,canActivate: [AfterLoginService],data: {role: 0}},
+  { path: 'bookacuity', component: BookacuityComponent,canActivate: [AfterLoginService],data: {role: 0}},
   { path: '**', redirectTo: '' },
   
  

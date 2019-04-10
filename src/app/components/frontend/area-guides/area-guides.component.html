@@ -38,7 +38,7 @@
 						<!-- app_download_link -->
 						<ul>
 							<li><a routerLink="/home-search" title="Search">Search</a></li>
-							<li><a routerLink="/sherpa" title="Sherpa">Sherpa</a></li>
+							<li><a routerLink="/sherpa" title="Sherpa">Sherpa Services</a></li>
 							<li class="active"><a routerLink="/area-guides" title="Our blog">Our blog</a>
 								<ul>
 									<li><a routerLink="/area-guides" title="City Guide">Area Guides</a></li>
@@ -86,7 +86,7 @@
 		<div class="dropdown-list">
 			<select class="select-box" onchange="location = this.value;">
 				<option value="/area-guides"><a routerLink="">London</a></option>
-				<option value="/accommodation-near-lbs"><a routerLink="">Accommodation Near LBS</a></option>
+				<option value="/accommodation-near-lbs"><a routerLink="">LBS</a></option>
 				<option disabled="disabled">More coming soon</option>
 			</select>
 		</div>
@@ -197,7 +197,6 @@
 <!-- Modal -->
 <div class="modal fade comming-soon" id="myModal" role="dialog">
 	<div class="modal-dialog">
-	
 	  <!-- Modal content-->
 	  <div class="modal-content">
 		<div class="modal-body">
@@ -210,10 +209,11 @@
 	</div>
 
 <!-- start footer -->
-<div class="sherpa-services footer clearfix">
+<div class="sherpa-services">
+<div class="footer clearfix">
 	<div class="container">
 		<div class="footer-logo">
-			<a routerLink="index"><img src="assets/images/logo_white.svg" alt="AWASA"></a>
+			<a routerLink="index"></a>
 		</div>
 		<div class="footer-text clearfix">
 			<p>At Avasa AI, we work to deliver the most transparent and efficient end-to-end solution for rental property search that puts tenants ﬁrst.</p>
@@ -251,7 +251,8 @@
 	</div>
 </div>
 
-<div class="sherpa-services footer-bot clearfix">
+
+<div class="footer-bot clearfix">
 	<div class="container">
 		<ul>
 			<li><a routerLink="#">Copyright  AVASA.ltd</a></li>
@@ -260,5 +261,6 @@
 			<li><a routerLink="/site-map" target="_blank">Sitemap</a></li>
 		</ul>
 	</div>
+</div>
 </div>
 <!-- <app-footer></app-footer> -->

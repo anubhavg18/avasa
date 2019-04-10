@@ -63,5 +63,42 @@ export class ProfileService {
     return this.http.get('userPreferences');
   }
 
+  public getdatedata(appointid,month,calendarid,timezone){
+    const params = new HttpParams()
+      .set('appointmentTypeID',appointid)
+      .set('month',month)
+      .set('calendarID',calendarid)
+      .set('timezone',timezone)
+      return this.http.get('availabilityDates', {params});
+  }
+
+   public getscheduledata(appointid,month,calendarid,timezone,date){
+    const params = new HttpParams()
+      .set('appointmentTypeID',appointid)
+      .set('month',month)
+      .set('calendarID',calendarid)
+      .set('timezone',timezone)
+      .set('date',date)
+      return this.http.get('availabilityTimes', {params});
+  }
+
+  public postscheduledata(data){
+    return this.http.post('appointments', data);
+    // .subscribe(data => {
+    //   console.log(data);
+    // },(error =>{
+    //   console.log(error);
+    // }));
+  }
+
+  public cancelappontment(id){
+      let data ={"cancelNote":"Postpended"}
+      return this.http.put('appointments/cancel/'+id, data);
+  }
+
+  public rescheduledata(id,date){
+    let data ={"datetime": date}
+      return this.http.put('appointments/reschedule/'+id, data);
+  } 
 
 }

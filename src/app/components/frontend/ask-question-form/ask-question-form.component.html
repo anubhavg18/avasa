@@ -1,0 +1,290 @@
+<div class="admin-header position-relative setting-info">
+  <div class="row">
+    <!-- logo -->
+    <div class="admin-logo col-6 col-md-2 col-lg-2">
+      <a href="index.html" ><img src="../../../../assets/images/logo.svg" alt="AWASA"></a>
+    </div>
+    <!--logo -->
+    <!-- admin-nav -->
+    <div class="admin-nav col-6 col-md-10 col-lg-10">
+      <!-- navigation -->
+        <div class="navigation col-12">
+          <!-- nav-link -->
+          <div class="nav-link" id="nav-link">
+            <a href="#"><img src="../../../../assets/images/ic_nav_link.svg"></a>
+          </div>
+          <!-- nav-link -->
+          <div class="nav-box" id="nav-box">
+            <!-- nav-link -->
+            <div class="nav-link" id="nav-link2">
+              <a href="#"><img src="../../../../assets/images/ic_nav_close.svg"></a>
+            </div>
+            <!-- nav-link -->
+            <!-- app_download_link -->
+            <!-- <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="images/ic_apple.svg" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="images/ic_android.svg" alt="android"></a></li>
+              </ul>
+              <span>Get the App</span>
+            </div> -->
+            <div class="user-info">
+              <ul>
+                <li><a href="#"><i class="fa fa-bookmark"></i></a></li>
+                <li>
+                    <div class="dropdown">
+                        <span>
+                          <a href="#"><i class="fa fa-bell"><span class="badge">6</span></i></a>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                          <li>
+                            <p>Your questions regarding Hayward Building have been answered <a href="#" style="padding-left: 10px;">View</a></p>
+                          </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="imgb"><img src="https://picsum.photos/200/300"></a></li>
+              </ul>
+            </div>
+            <div class="app_download_link">
+              <ul>
+                <li><a target="_blank"  href="https://itunes.apple.com/gb/app/urbanco/id1250754314?mt=8&__hssc=157679013.9.1499435970955&__hstc=157679013.491ad065b4b918b71da45d1dbdfec8b0.1499428732458.1499428732458.1499435970955.2&__hsfp=1188821749&hsCtaTracking=e7778a35-3118-4d5a-b74d-f9189dbb38c1%7Cbf95b683-b052-4355-ae86-07d2b07c1644"><img src="../../../../assets/images/ic_app_store.png" alt="apple"></a></li>
+                <li><a target="_blank"  href="https://play.google.com/store/apps/details?id=com.urbancollective"><img src="../../../../assets/images/ic_google_play.png" alt="android"></a></li>
+              </ul>
+            </div>
+            <!-- app_download_link -->
+            <ul>
+              <li><a href="home-search.html" title="Search">Search</a></li>
+              <li><a href="sherpa.html" title="Sherpa">Sherpa Services</a></li>
+              <li class="active"><a href="#blog" title="Our blog">Our blog</a>
+                <ul>
+                  <li><a href="area-guides.html" title="City Guide">Area Guides</a></li>
+                  <li><a href="sherpa-tips.html" title="Sherpa tips">Sherpa Tips</a></li>
+                </ul>
+              </li>
+              <li><a href="#" title="About">About</a>
+                <ul>
+                  <li><a href="how-it-works.html" title="How it works">How it Works</a></li>
+                  <li><a href="proptech-startup.html" title="Our Story">Our Story</a></li>
+                </ul>
+              </li>
+              <li><a routerLink="/logout" title="Logout" data-toggle="modal" data-target="#myModal">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- navigation -->
+    </div>
+    <!-- admin-nav -->
+  </div>
+</div>
+
+<!-- header END here -->
+
+
+<div class="ask-question-box">
+  <div class="container">
+    <h3>Ask a Question</h3>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="ask-question-form">
+      <div class="main-title">
+        <div class="container">
+          <h3>All fields are mandatory</h3>
+        </div>
+      </div><!-- main-title -->
+     
+      <div class="container">
+        <div class="input-box">
+          <input type="text" class="form-control input" placeholder="Name" #name formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
+        </div>
+        <div class="input-box">
+          <input type="text" class="form-control input" placeholder="Email" #email formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
+        </div>
+        <div class="input-box">
+          <input type="text" class="form-control input"  placeholder="Phone Number" #phone formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Phone number is required</div>
+          </div>
+        </div>
+      </div><!-- container -->
+      <div class="main-title">
+        <div class="container">
+          <h3>Occupation</h3>
+        </div>
+      </div><!-- main-title -->
+      <div class="container">
+        <div class="input-box mb5">
+          <label class="selector" for="a-option" >
+            <input type="radio" id="a-option" value="student" formControlName="occupation"  >
+            <span class="checkmark d-table" (click)="student($event)"><span class="d-table-cell align-middle">Student</span></span>
+            <!-- <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+              <div *ngIf="f.occupation.errors.required">occupation is Required</div>
+            </div> -->
+          </label>
+          <label class="selector" for="b-option" >
+              <input type="radio" id="b-option" value="professional" formControlName="occupation" > 
+              <span class="checkmark d-table" (click)="professional($event)"><span class="d-table-cell align-middle">Professional</span></span>
+              <!-- <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+                <div *ngIf="f.occupation.errors.required">occupation is Required</div>
+              </div> -->
+            </label>
+          <label class="selector" for="c-option">
+            <input type="radio" id="c-option" value="business" formControlName="occupation"  >
+            <span class="checkmark d-table" (click)="business($event)" ><span class="d-table-cell align-middle">Business</span></span>
+            <!-- <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+              <div *ngIf="f.occupation.errors.required">occupation is Required</div>
+            </div> -->
+          </label>
+          <label class="selector" for="d-option">
+            <input type="radio"  id="d-option" value="others" formControlName="occupation">
+            <span class="checkmark d-table" (click)="others($event)"><span class="d-table-cell align-middle">Others</span></span>
+            <!-- <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
+              <div *ngIf="f.occupation.errors.required">occupation is Required</div>
+            </div> -->
+          </label>
+       
+        </div>
+        <div *ngIf="isstudent">
+        <div class="input-box">
+          <input type="text"  class="form-control input" placeholder="Name of the University" formControlName="university" [ngClass]="{ 'is-invalid': submitted && f.university.errors }">
+          <div *ngIf="submitted && f.university.errors" class="invalid-feedback">
+            <div *ngIf="f.university.errors.required">University name is required</div>
+          </div>
+        </div>
+        
+        </div>
+        <div *ngIf="isprofessional">
+        <div class="input-box">
+          <input type="text"  class="form-control input" placeholder="Your job title" formControlName="job_title" [ngClass]="{ 'is-invalid': submitted && f.job_title.errors }">
+          <div *ngIf="submitted && f.job_title.errors" class="invalid-feedback">
+            <div *ngIf="f.job_title.errors.required">Job title is required</div>
+          </div>
+        </div>
+        
+      </div>
+      <div *ngIf="isbusiness">
+        <div class="input-box">
+          <input type="text"  class=" form-control input" placeholder="Your job title" formControlName="job_title" [ngClass]="{ 'is-invalid': submitted && f.job_title.errors }">
+          <div *ngIf="submitted && f.job_title.errors" class="invalid-feedback">
+            <div *ngIf="f.job_title.errors.required">Job title is required</div>
+          </div>
+        </div>
+       
+      </div>
+      <div *ngIf="isothers">
+       <div class="input-box">
+          <input type="text"  class=" form-control input" placeholder="Other" formControlName="pleaseSpecify" [ngClass]="{ 'is-invalid': submitted && f.pleaseSpecify.errors }">
+          <div *ngIf="submitted && f.pleaseSpecify.errors" class="invalid-feedback">
+            <div *ngIf="f.pleaseSpecify.errors.required">occupation  is required</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-box">
+        <input type="text" class="form-control input" placeholder="No. Of occupants" formControlName="occupants" [ngClass]="{ 'is-invalid': submitted && f.occupants.errors }">
+        <div *ngIf="submitted && f.occupants.errors" class="invalid-feedback">
+              <div *ngIf="f.occupants.errors.required">Occupants is required</div>
+            </div>
+      </div>
+
+      </div><!-- container -->
+      <div class="main-title">
+        <div class="container">
+          <h3>Your annual household income is more than £35850</h3>
+        </div>
+      </div><!-- main-title -->
+      <div class="container">
+        <div class="input-box mb5">
+          <label class="selector" for="e-option">
+            <input type="radio"  id="e-option"  value="yes" formControlName="income">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle">Yes</span></span>
+          </label>
+          <label class="selector" for="f-option">
+            <input type="radio"  id="f-option" value="guarantor" formControlName="income">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle">I have a guarantor</span></span>
+          </label>
+          <label class="selector" for="g-option">
+            <input type="radio"  id="g-option" value="6 months rent upfront" formControlName="income">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle">Willing to pay 6 months rent upfront</span></span>
+          </label>
+          <label class="selector" for="h-option">
+            <input type="radio"  id="h-option"  value="others" formControlName="income">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle">Others</span></span>
+          </label>
+        </div>
+        <div class="input-box">
+          <input type="date" class=" form-control input" placeholder="Target moving date" formControlName= "moving_date" [ngClass]="{ 'is-invalid': submitted && f.moving_date.errors }">
+          <div *ngIf="submitted && f.moving_date.errors" class="invalid-feedback">
+            <div *ngIf="f.moving_date.errors.required">Moving date is required</div>
+          </div>
+        </div>
+      </div><!-- container -->
+      <div class="main-title">
+        <div class="container">
+          <h3>Duration of lease is required</h3>
+        </div>
+      </div><!-- main-title -->
+      <div class="container">
+        <div class="input-box mb5 clearfix">
+          <label class="selector" for="i-option">
+            <input type="radio" id="i-option" value="less_1_year" formControlName= "duration">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle" >Less than 1 year</span></span>
+          </label>
+          <label class="selector" for="j-option">
+            <input type="radio" id="j-option" value="more_1_year" formControlName= "duration">
+            <span class="checkmark d-table"><span class="d-table-cell align-middle" >1 year or more</span></span>
+          </label>
+        </div>
+        <div class="input-box clearfix ">
+          <button  type = "submit" class="btn-book refine-search-popup" data-toggle="modal" data-target="#exampleModal" >NEXT</button>
+        </div>
+      </div><!-- container -->
+    </div><!-- ask-question-form -->
+  </form>
+</div>
+<!-- avasaApp-container -->
+
+
+<!-- Modal -->
+
+<!-- 
+    <button type="button"  class="refine-search-popup" data-toggle="modal" data-target="#exampleModal">Continue</button> -->
+    <!-- Modal -->
+    <div *ngIf="modalsubmit">
+    <div class="modal fade refine-search-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 style="color:green;">Request Confirmation </h4>
+            <h5><p>Great! we will call the estate agents and get the answers for you asap!</p></h5>
+            <h5><p>Would you also like us to book viewings assuming that you are happy with the answers?</p></h5>
+            <button type="button" class="btn-modal"(click)= "viewSubmit()">Yes</button>
+            <strong>OR</strong>
+            <button type="button" class="btn-modal bg" (click)= "finalSubmit()">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+<!-- start JavaScript -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>	
+<script type="text/javascript" src="../../../../assets/js/script.js"></script>
+<script type="text/javascript" src="../../../../assets/js/bootstrap.min.js"></script>
+
+

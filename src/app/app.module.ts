@@ -84,6 +84,15 @@ import { PropertyDetailsComponent } from './components/frontend/property-details
 import { Header2Component } from './components/frontend/layouts/header2/header2.component';
 import { MyShortlistPropertyDetailsComponent } from './components/frontend/my-shortlist-property-details/my-shortlist-property-details.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PreferredAreaComponent } from './components/preferred-area/preferred-area.component';
+import { PropertyListingComponent } from './components/frontend/property-listing/property-listing.component';
+import { AskQuestionComponent } from './components/frontend/ask-question/ask-question.component';
+import { AskQuestionFormComponent } from './components/frontend/ask-question-form/ask-question-form.component';
+import { BookacuityComponent } from './components/bookacuity/bookacuity.component';
+// import { environment } from '../environments/environment';
 
 
 
@@ -164,7 +173,12 @@ export function getAuthServiceConfigs() {
     ProfilesidebarComponent,
     PropertyDetailsComponent,
     Header2Component,
-    MyShortlistPropertyDetailsComponent
+    MyShortlistPropertyDetailsComponent,
+    PreferredAreaComponent,
+    PropertyListingComponent,
+    AskQuestionComponent,
+    AskQuestionFormComponent,
+    BookacuityComponent
   
   
     
@@ -193,7 +207,9 @@ export function getAuthServiceConfigs() {
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFireDatabaseModule,
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    ShareButtonsModule.forRoot()
+    ShareButtonsModule.forRoot(),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }), 
   ],
   providers: [
 	{ provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },

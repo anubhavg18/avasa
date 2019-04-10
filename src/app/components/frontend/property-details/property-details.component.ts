@@ -1,6 +1,9 @@
 /// <reference types="@types/googlemaps" />
 import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core';
 import { PropertyDetailsService } from 'src/app/services/property-details.service';
+import { Store, select } from '@ngrx/store';
+import { Increment, Decrement, Reset,UpdateForm } from '../search-criteria/search-criteria.actions';
+import { Observable } from 'rxjs';
 declare var $: any;
 declare const google: any;
 
@@ -16,14 +19,18 @@ propertyLongitude:any;
 public floorPlansExist:boolean=false;
 @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
+  count$: Observable<object>;
+  constructor(public PropertyDetailsService:PropertyDetailsService,private store: Store<{ searchCriteria: object }>) {
+    // this.PropertyDetailsService.currentMessage.subscribe(
+    //   (data)=>this.getPropertyDetailsData(data),
 
-  constructor(public PropertyDetailsService:PropertyDetailsService) {
-    this.PropertyDetailsService.currentMessage.subscribe(
-      (data)=>this.getPropertyDetailsData(data),
 
-
-    );
-    console.log(this.propertyDetails)
+    // );
+    // console.log(this.propertyDetails)
+    this.count$ = this.store.pipe(select('searchCriteria'));
+    this.count$.subscribe(res=>{
+    this.getPropertyDetailsData(res['property details'])
+ })
    }
 
   ngOnInit() {
@@ -34,6 +41,16 @@ public floorPlansExist:boolean=false;
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+   var marker = new google.maps.Marker({
+    position: {
+       lat: Number(this.propertyLatitude),
+       lng: Number( this.propertyLongitude)
+    },
+    map: this.gmapElement.nativeElement,
+   //  icon: image,
+//  label: title,
+ });
+ marker.setMap(this.map);
 
   }
 
@@ -56,6 +73,7 @@ public floorPlansExist:boolean=false;
     if(this.propertyDetails.floor_plan){
        this.floorPlansExist=true;
     }
-
+    
   }
+
 }
