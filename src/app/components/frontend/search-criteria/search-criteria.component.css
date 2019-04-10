@@ -87,6 +87,9 @@
    padding: 54px 0 20px 25px;
    overflow: inherit !important;
 }
+.map-column-detail .ng-invalid {
+  height: 100%;
+}
 .map-column-detail-in {
    padding: 0 25px 25px 0;
    overflow: auto;
