@@ -613,7 +613,12 @@
    .map-property-list .txtb li a {
       color: #eaf8fc;
    }
-   
+   .map-property-list .txtb li .btn {
+     background: #eaf8fc;
+     color: #000;
+     padding: 4px;
+     font-size: 12px;
+   }
    .map-column-detail .property-info li {
       width: 50%;
       float: left;
