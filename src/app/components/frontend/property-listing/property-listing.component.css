@@ -700,21 +700,20 @@
     left: 360px;
     z-index: 2;
     box-shadow: rgba(162, 162, 162, .37) 8px 5px 5px;
-
 }
 .map-property-list-view-in {
-    padding: 0;
-    overflow: auto;
-    height: 100%;
+  padding: 0;
+  overflow: auto;
+  height: 100%;
 }
 .map-property-list-view .property-list-detail {
 	margin-bottom: 50px;
 }
 .map-property-list-view .img-box {
 	background: #004d87;
-    padding: 15px;
+  padding: 15px;
 	width: 200px;
-	min-height: 180px;
+	min-height: 193px;
 	float: left;
 	border-radius: 5px;
 	text-align: center;
@@ -741,11 +740,13 @@
 }
 .map-property-list-view .column-left ,
 .map-property-list-view .column-right {
-	width: 50%;
+	width: 30%;
 	float: left;
 }
 .map-property-list-view .column-right {
 	text-align: right;
+  width: 70%;
+  float: right;
 }
 .map-property-list-view .txtb h4 {
 	font-size: 14px;
@@ -759,17 +760,37 @@
 	font-size: 13px;
 	margin: 0;
 	color: #fff;
-	line-height: 14px;
+  line-height: 14px;
 }
 .map-property-list-view .txtb .gap {
-	min-height: 76px;
-	display: table;
-	width: 100%;
+	/* min-height: 76px; */
+	/* display: table; */
+  width: 100%;
+  height: 60px;
+  overflow: auto;
+}
+.map-property-list-view .txtb {
+  position: relative;
+}
+.map-property-list-view .txtb .list {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 1;
+}
+.map-property-list-view .txtb .list li {
+  float:left;
+  margin-left: 5px;
+}
+.map-property-list-view .txtb .list li .btn {
+  background: #eaf8fc;
 }
 .map-property-list-view .txtb .gap div {
-	display: table-cell;
-	vertical-align: bottom;
-	text-align: right;
+	/* display: table-cell; */
+	/* vertical-align: bottom; */
+  text-align: justify;
+  padding-left: 30px;
+  height: 100%;
 }
 .map-property-list-view .txtb p a {
 	color: #49c6de;

@@ -87,9 +87,9 @@
                  [description]="'What do you think about this Property? Price: £'+eachListing?.price+' Per Month Location: '+eachListing?.displayable_address"
               ></share-buttons>
            </div>
-           <ul>
-            <li><a (click)="viewFullDetails(eachListing)">Full details</a></li>
-            <li><a (click)="saveListing(eachListing)">Save</a></li>
+           <ul class="list">
+            <li><a (click)="viewFullDetails(eachListing)" class="btn">Full details</a></li>
+            <li><a (click)="saveListing(eachListing)" class="btn">Save</a></li>
          </ul>
         </div>
      </div><!-- property-list-detail -->
