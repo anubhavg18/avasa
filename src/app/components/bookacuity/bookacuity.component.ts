@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile/profile.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Router} from '@angular/router'
+
 declare var $: any;
 
 @Component({
@@ -9,12 +12,14 @@ declare var $: any;
 })
 export class BookacuityComponent implements OnInit {
 
-  constructor(private profileService:ProfileService) {
+  constructor(private profileService:ProfileService,private formBuilder: FormBuilder,private router: Router) {
     this.minval = 100;
     this.maxval = 100;
     this.defaultdiv = 'defaultdiv';
-   }
 
+   }
+  registerForm: FormGroup;
+  submitted = false;
   contactdata:any;
   datedata: any;
   selecteddata: any;
@@ -44,8 +49,34 @@ export class BookacuityComponent implements OnInit {
   maxBedrooms:any;
   appointmentid:any;
   reschude: any;
+  openbutton: any;
 
-  ngOnInit() {}
+  ngOnInit() {
+     this.registerForm = this.formBuilder.group({
+            firstName: ['', [Validators.required]],
+            lastname: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            contact: ['', [Validators.required]],
+            datetime: ['', [Validators.required]],
+            location: ['', [Validators.required]],
+            numberbed: ['', [Validators.required]],
+            contactdata:['', [Validators.required, Validators.minLength(6), Validators.maxLength(14)]]
+        });
+  }
+
+  get f() { return this.registerForm.controls; }
+
+   datevalidate(e){
+     var today = new Date();
+     today.setDate(today.getDate() + 7);
+     var date_from = new Date(e);
+      if (today >= date_from){
+        alert('Please select a valid date');
+        this.registerForm.controls['datetime'].setValue(null);
+      }else{
+        
+      }
+   }
 
   scheduledata(data){
       let	appointid = '6530539';
@@ -59,17 +90,37 @@ export class BookacuityComponent implements OnInit {
   }
 
  saveform(){
-    let  appointid = '6530539';
-    let  month = this.datetime ;
-    let  calendarid = '2802650';
-    let  timezone = 'Europe/London' ;
+    this.submitted = true;
+    if(this.registerForm.invalid) {
+            return;
+      }else{
+         this.name = this.registerForm.value.firstName+' '+this.registerForm.value.lastname;
+         this.firstname = this.registerForm.value.firstName;
+         this.lastname = this.registerForm.value.lastname;
+         this.location = this.registerForm.value.location;
+         this.email = this.registerForm.value.email;
+         this.contact = this.registerForm.value.contact;
+         this.datetime = convert(this.registerForm.value.datetime);
+         this.numberbed = this.registerForm.value.numberbed;
+         this.contactdata = this.registerForm.value.contactdata;
+        let  appointid = '6530539';
+        let  month = this.datetime ;
+        let  calendarid = '2802650';
+        let  timezone = 'Europe/London' ;
+         this.profileService.getdatedata(appointid,month,calendarid,timezone).subscribe(res => {
+           this.datedata = res;
+        });
+         this.defaultdiv = '';
+         this.opendiv = 'opendiv';
+         this.updatedata;
+    }
 
-     this.profileService.getdatedata(appointid,month,calendarid,timezone).subscribe(res => {
-       this.datedata = res;
-    });
-     this.defaultdiv = '';
-     this.opendiv = 'opendiv';
-     this.updatedata;
+    function convert(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [ date.getFullYear(), mnth, day ].join("-");
+    }
   }
 
   updatedata(){
@@ -91,32 +142,36 @@ export class BookacuityComponent implements OnInit {
 
   ]
      }
-
     if(this.reschude == 'reschude'){
-      this.profileService.rescheduledata(this.appointmentid,this.selectedtime).subscribe(res => {
-        this.appointmentid = res['id']
-        this.phone = res['phone'];
-        this.name = res['firstName'];
-        this.movingDate = this.datetime;
-        this.connectvia = this.contact;
-        this.preferredAreas = this.location;
-        this.minPrice = this.minval;
-        this.maxPrice = this.maxval;
-        this.maxBedrooms = this.numberbed;
-    });
+    //   this.profileService.rescheduledata(this.appointmentid,this.selectedtime).subscribe(res => {
+    //     this.appointmentid = res['id']
+    //     this.phone = res['phone'];
+    //     this.name = this.name;
+    //     this.movingDate = this.datetime;
+    //     this.connectvia = this.contact;
+    //     this.preferredAreas = this.location;
+    //     this.minPrice = this.minval;
+    //     this.maxPrice = this.maxval;
+    //     this.maxBedrooms = this.numberbed;
+    //     this.contactdata = this.contactdata;
+    // });
     alert("Your appointment is rescheduled");
     }else{
-      this.profileService.postscheduledata(data).subscribe(res => {
-        this.appointmentid = res['id']
-        this.phone = res['phone'];
-        this.name = res['firstName'];
-        this.movingDate = this.datetime;
-        this.connectvia = this.contact;
-        this.preferredAreas = this.location;
-        this.minPrice = this.minval;
-        this.maxPrice = this.maxval;
-        this.maxBedrooms = this.numberbed;
-    });
+
+    //   this.profileService.postscheduledata(data).subscribe(res => {
+    //     console.log(res);
+    //     this.firstname = this.firstname;
+    //     this.appointmentid = res['id'];
+    //     this.phone = res['phone'];
+    //     this.name = this.name;
+    //     this.movingDate = this.datetime;
+    //     this.connectvia = this.contact;
+    //     this.preferredAreas = this.location;
+    //     this.minPrice = this.minval;
+    //     this.maxPrice = this.maxval;
+    //     this.maxBedrooms = this.numberbed;
+    //     this.contactdata = this.contactdata;
+    // });
     }
     this.reschude = '';
     this.defaultdiv = '';
@@ -135,7 +190,7 @@ export class BookacuityComponent implements OnInit {
     }
   }
   decmax(){
-    if(this.maxval>100){
+    if(this.maxval>100 && this.maxval > this.minval+100){
       this.maxval = this.maxval -100;
     }
   }
@@ -144,16 +199,16 @@ export class BookacuityComponent implements OnInit {
   }
 
 
-  onChange(){
-    if(this.contact == 'Whatup'){
+  onChange(e){
+    if(e == 'Whatup'){
       this.openwhatsup = 'openwhatsup';
       this.openskype = '';
       this.openphone='';
-    }else if(this.contact == 'Skype'){
+    }else if(e == 'Skype'){
       this.openskype = 'openskype';
       this.openphone='';
       this.openwhatsup = '';
-    }else if(this.contact == 'Phone Number'){
+    }else if(e == 'Phone Number'){
      this.openphone = 'openphone';
      this.openwhatsup = '';
      this.openskype = '';
@@ -168,10 +223,16 @@ export class BookacuityComponent implements OnInit {
     });
   }
   Rescheduleappontment(){
+    this.openbutton = '';
+    this.selecteddata = '';
     this.defaultdiv = '';
     this.opendiv = 'opendiv';
     this.acuitydetail = '';
     this.reschude = 'reschude';
+  }
+
+  openbook(){
+    this.openbutton ='openbutton';
   }
 
 

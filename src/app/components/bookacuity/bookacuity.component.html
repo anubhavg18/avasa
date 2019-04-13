@@ -53,76 +53,171 @@
   <div class="container">
     <h3>Contact Form</h3>
   </div>
-  <form>
-    <div class="container">
-      <div class="input-box">
-        <input type="text" name="fisrtname" [(ngModel)]="firstname" class="input" placeholder="First Name" required>
-      </div>
-      <div class="input-box">
-        <input type="text" name="lastname" [(ngModel)]="lastname" class="input" placeholder="Last Name" required>
-      </div>
-      <div class="input-box">
-        <input type="text" name="email" [(ngModel)]="email" class="input" placeholder="Email id" required>
-      </div>
-      <div class="input-box">
-        <select [(ngModel)]="contact" name="selectname" (change)="onChange()">
-          <option value="Skype">Skype</option>
-          <option value="Whatup">What's up</option>
-          <option value="Phone Number">Phone Number</option>
-        </select>
-      </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="saveform()">
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="firstName" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
+              </mat-form-field>
+              
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="email" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.pattern">Enter a Valid Email </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field class="example-full-width" *ngIf="openwhatsup">
+              <input matInput formControlName="contactdata" placeholder="WhatsApp Number" [ngClass]="{ 'is-invalid': submitted && f.contactdata.errors }"/>
+              <div *ngIf="submitted && f.contactdata.errors" class="invalid-feedback">
+                  <div *ngIf="f.contactdata.errors.required">WhatsApp is required</div>
+                  <div *ngIf="f.contactdata.errors.minlength">minlength number will be 6</div>
+                  <div *ngIf="f.contactdata.errors.maxlength">Max number will be 14</div>
+              </div>
+            </mat-form-field>
 
-      <div class="input-box" *ngIf="openwhatsup">
-        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="What's up">
-      </div>
+            <mat-form-field class="example-full-width" *ngIf="openskype">
+              <input matInput formControlName="contactdata" placeholder="Skype Id" [ngClass]="{ 'is-invalid': submitted && f.contactdata.errors }"/>
+              <div *ngIf="submitted && f.contactdata.errors" class="invalid-feedback">
+                  <div *ngIf="f.contactdata.errors.required">Skype Id is required</div>
+              </div>
+            </mat-form-field>
 
-      <div class="input-box" *ngIf="openskype">
-        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="Skype">
-      </div>
+            <mat-form-field class="example-full-width" *ngIf="openphone">
+              <input matInput formControlName="contactdata" placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.contactdata.errors }"/>
+              <div *ngIf="submitted && f.contactdata.errors" class="invalid-feedback">
+                  <div *ngIf="f.contactdata.errors.required">Phone Number is required</div>
+                  <div *ngIf="f.contactdata.errors.minlength">minlength number will be 6</div>
+                  <div *ngIf="f.contactdata.errors.maxlength">Max number will be 14</div>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" >
+              <input matInput formControlName="location" placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+              <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                  <div *ngIf="f.location.errors.required">Location is required</div>
+              </div>
+            </mat-form-field>
+            </div>
 
-      <div class="input-box" *ngIf="openphone">
-        <input type="text" name="contactdata" [(ngModel)]="contactdata" class="input" placeholder="Phone">
-      </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="lastname" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                </div>
+              </mat-form-field>
 
-       <div class="input-box">
-        <input type="date" name="datetime" [(ngModel)]="datetime" class="input" placeholder="Date">
-      </div>
+              <mat-form-field>
+                <mat-label>Mode of contact</mat-label>
+                <select matNativeControl formControlName="contact" [ngClass]="{ 'is-invalid': submitted && f.contact.errors }" (change)="onChange($event.target.value)">
+                    <option value="Skype">Skype</option>
+                    <option value="Whatup">WhatsApp</option>
+                    <option value="Phone Number">Phone Number</option>
+                </select>
+                <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                    <div *ngIf="f.contact.errors.required">Contact Type is required</div>
+                </div>
+              </mat-form-field>
 
-      <div class="input-box">
-        <input type="text" name="input" [(ngModel)]="location" class="input" placeholder="Location">
-      </div>
-      <h3>Price range per calendra month<span>*</span></h3>
-      <div class="input-box clearfix">
-        <div class="commute-time-col clearfix">
-          <div class="commute-time">
-            <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmin()"></a>
-            <span>{{minval}}$ Min</span>
-            <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmin()"></a>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" formControlName="datetime" placeholder="Date" class="input" (dateChange)="datevalidate($event.target.value)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            
+            <!-- <div class="input-box">
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="f.firstName.errors.required">First Name is required</div>
+              </div>
+            </div> -->
+
+            
+
+            <!-- <div class="input-box">
+                <label>Last Name</label>
+                <input type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"/>
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                </div>
+            </div> -->
+            
+            <!-- <div class="input-box">
+            <label>Email</label>
+              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.pattern">Enter a Valid Email </div>
+              </div>
+            </div> -->
+
+            
+
+            
+
+            
+
+            <div class="col-md-12">
+              <h4>Price range per calendra month<span>*</span></h4>
+              <div class="input-box clearfix">
+                <div class="commute-time-col clearfix">
+                  <div class="commute-time">
+                    <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmin()"></a>
+                    <span>{{minval}}$ Min</span>
+                    <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmin()"></a>
+                  </div>
+                </div>
+                <div class="commute-time-col clearfix">
+                  <div class="commute-time">
+                    <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmax()"></a>
+                    <span>{{maxval}}$ Max</span>
+                    <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmax()"></a>
+                  </div>
+                </div>
+              </div>
+              <h4 class="pt0">Number of bedrooms<span>*</span></h4>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field>
+                  <mat-label>Select Bedrooms</mat-label>
+                  <select matNativeControl formControlName="numberbed" [ngClass]="{ 'is-invalid': submitted && f.numberbed.errors }">
+                      <option value="1 bedroom">1 Room & Studios</option>
+                      <option value="2 bedroom">2 Room & Studios</option>
+                      <option value="3 bedroom">3 Room & Studios</option>
+                      <option value="4 bedroom">4 Room & Studios</option>
+                  </select>
+                  
+              </mat-form-field>
+            </div>
+            <!-- <div class="input-box">
+            <select placeholder="Select Bedrooms" formControlName="numberbed" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numberbed.errors }">
+              <option value="1 bedroom">1 Room & Studios</option>
+              <option value="2 bedrooms">2 Room & Studios</option>
+              <option value="3 bedrooms">3 Room & Studios</option>
+              <option value="4 bedrooms">4 Room & Studios</option>
+            </select>
+              <div *ngIf="submitted && f.numberbed.errors" class="invalid-feedback">
+                  <div *ngIf="f.numberbed.errors.required">Bedrooms is required</div>
+              </div>
+            </div> -->
+            <div class="col-md-12">
+              <div class="input-box text-left">
+                <button class="btn" >SAVE</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="commute-time-col clearfix">
-          <div class="commute-time">
-            <a class="imgb"><img src="assets/images/minus.svg" alt="minus" (click)="decmax()"></a>
-            <span>{{maxval}}$ Max</span>
-            <a class="imgb"><img src="assets/images/plus.svg" alt="plus" (click)="incmax()"></a>
-          </div>
-        </div>
-      </div>
-      <h3 class="pt0">Number of bedrooms<span>*</span></h3>
-      <div class="input-box">
-        <select [(ngModel)]="numberbed" name="numberbed">
-        <option value="1 bedroom">1 Room & Studios</option>
-        <option value="2 bedrooms">2 Room & Studios</option>
-        <option value="3 bedrooms">3 Room & Studios</option>
-        <option value="4 bedrooms">4 Room & Studios</option>
-      </select>
-        
-      </div>
-      <div class="input-box">
-        <button class="btn" (click)="saveform()">SAVE</button>
+        </form>
       </div>
     </div>
-  </form>
+  </div>
 </div>
 
 
@@ -134,10 +229,10 @@
   </div>
   <div class="book-your-call-info">
     <div class="container">
-      <h3>Choose Date:</h3>
+      <!-- <h3>Choose Date:</h3> -->
       <div class="calendar-info">
         <a href="#" class="btn-prev"><i class="fa fa-angle-left"></i></a>
-        <h4>2 April 2019</h4>
+        <h4>{{datetime| date: 'd, MMMM, y'}}</h4>
         <a href="#" class="btn-next"><i class="fa fa-angle-right"></i></a>
         <div class="table-box">
           <table class="table">
@@ -158,17 +253,16 @@
         <ul class="date-selector">
           <li *ngFor="let selected of selecteddata; index as i">
             <label for="option-{{i}}" >
-              <input type="radio" [(ngModel)]="selectedtime" class="radio2" id="option-{{i}}" [value]="selected.time" name="selectorTime">
+              <input type="radio" [(ngModel)]="selectedtime" class="radio2" id="option-{{i}}" [value]="selected.time" (click)="openbook()" name="selectorTime">
               <span class="checkmark">{{selected.time | date: 'h:mm a'}}</span>
             </label>
           </li>
         </ul>
       </div>
-      <button class="btn-book" (click)="updatedata()">Book</button>
+      <button class="btn-book" *ngIf="openbutton" (click)="updatedata()">Book</button>
     </div>
   </div>
 </div>
-
 
  <div class="avasa-right-panel col-md-10 offset-md-2 col-lg-10 offset-lg-2" *ngIf="acuitydetail">
       <div class="row"> 
@@ -178,17 +272,19 @@
             <div class="card">
               <div class="card-body">
                 <div class="sherpa-details-column">
-                  <p><span class="float-right">Mobile: +1{{phone}}</span><strong>Name: </strong><span>{{name}} {{lastname}}</span></p>
+                  <p>
+                    <span class="float-right">{{contact}}: {{contactdata}}</span>
+                    <strong>Name: </strong><span>{{name}}</span></p>
                   <p><strong>Moving Date: </strong><span>{{movingDate}}</span></p>
                   <div class="blue-card">
-                    <!-- <p>Schedule Time: 18th March 2019,<br>4:30pm (GMT + 5:30hrs)</p> -->
+                    <p>Schedule Time: {{datetime}}</p>
                   </div>
                   <p><strong>Connecting through:</strong>{{connectvia}}</p>
                   <p><strong>Preferred Areas:</strong>{{preferredAreas}}</p>
                   <p><strong>Price Range:</strong> €{{minPrice}} - €{{maxPrice}}</p>
                   <p><strong>Specifications:</strong>{{maxBedrooms}}</p>
-                  <button class="btn-changes" (click)="Rescheduleappontment()">Reschedule</button>
-                  <button class="btn-changes" (click)="cancelappontment()">Cancel</button>
+                  <button class="btn btn-changes" (click)="Rescheduleappontment()">Reschedule</button>
+                  <button class="btn btn-changes" (click)="cancelappontment()">Cancel</button>
                 </div>
               </div>
             </div>

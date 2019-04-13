@@ -220,7 +220,7 @@
 .book-your-call .main-title {
     background: #33709f;
     height: auto !important;
-    padding: 40px 0 40px 0 !important;
+    padding: 20px 0 20px 0 !important;
     text-align: left;
 }
 .book-your-call .main-title h3 {
@@ -252,8 +252,11 @@
 .book-your-call .calendar-info {
 	background-color: #ccf2fb;
 	border-radius: 15px;
-	padding: 25px 0;
+	padding: 0 0 0 0;
 	margin-bottom: 25px;
+}
+.book-your-call .calendar-info .date-selector {
+	padding: 0 0 0 0 !important;
 }
 .book-your-call .calendar-info h4 {
     font-size: 36px;
@@ -281,7 +284,7 @@
     border: none !important;
 }
 .book-your-call .table-box {
-	padding: 20px 0 0 0;
+	padding: 0 0 0 0;
 }
 .book-your-call .table-box .table {
 	margin-bottom: 0 !important;
@@ -320,7 +323,7 @@
 }
 .book-your-call .date-selector li {
 	display: inline-block;
-	margin: 5px 10px;
+	margin: 10px 10px 5px;
 	min-width: 20%;
 }
 .book-your-call .date-selector li label {
@@ -373,21 +376,25 @@
     font-size: 16px;
 }
 .example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-
-  .contact-form-box h3 {
+	display: flex;
+	flex-direction: column;
+}
+.example-container > * {
+	width: 100%;
+}
+.contact-form-box h3,
+.contact-form-box h4 {
 	font-size: 43px;
-    text-align: left;
-    color: #004d87;
-    padding: 25px 0 20px 0;
-    font-weight: 400;
-    width: 100%;
+	text-align: left;
+	color: #004d87;
+	padding: 25px 0 20px 0;
+	font-weight: 400;
+	width: 100%;
+	margin: 0 !important;
+}
+.contact-form-box h4 {
+	font-size: 27px;
+	padding: 0;
 }
 .contact-form-box h3.pt0 {
 	padding-top: 0;
@@ -397,7 +404,7 @@
 }
 .contact-form-box .input-box {
     width: 70%;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 .contact-form-box .input-box .input,
 .contact-form-box .input-box select {
@@ -416,8 +423,8 @@
 }
 .contact-form-box .input-box .commute-time-col .imgb, 
 .contact-form-box .input-box .commute-time-col .imgb img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 .contact-form-box .input-box .commute-time-col span {
     font-size: 20px;
@@ -455,6 +462,55 @@
 	width: 200px;
 	text-align: center;
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+	/*left: 50%;
+	transform: translateX(-50%);*/
+}
+
+
+/* angular material css */
+.mat-input-element {
+    caret-color: #004d87;
+    line-height: 25px;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+	color: #004d87 !important;
+}
+
+
+/* My Calender Detail */
+.setting-detail {
+	width: 100%;
+	padding: 25px;
+}
+.setting-call-detail .blue-card {
+	padding: 20px;
+	border-radius: 40px;
+	background: #cbf2f9;
+	width: 50%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.setting-call-detail .blue-card p {
+	font-size:18px;
+	line-height: 20px;
+	margin: 0;
+	font-weight: 600;
+}
+.avasa-right-panel .setting-detail .btn-changes {
+	background: #014c85;
+	font-size: 20px;
+	color: #fff;
+	line-height: 47px;
+	border-radius: 8px;
+	padding: 0 20px;
+	border: none;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+.setting-call-detail p {
+font-size: 18px;
+line-height: 25px;
+color: #4a4a4a;
+margin-bottom: 10px;
 }

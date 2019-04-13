@@ -12,7 +12,7 @@ import { environment } from './../environments/environment';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { HttpConfigInterceptor} from './interceptor/httpconfig.interceptor';
 import { RegisterComponent } from './components/auth/register/register.component';
-
+import { MatDatepickerModule, MatNativeDateModule,MatIconModule} from '@angular/material';
 import { FooterComponent } from './components/frontend/layouts/footer/footer.component';
 import { HeaderComponent } from './components/frontend/layouts/header/header.component';
 import { HomePageComponent } from './components/frontend/home-page/home-page.component';
@@ -210,6 +210,9 @@ export function getAuthServiceConfigs() {
     ShareButtonsModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }), 
+    MatDatepickerModule,
+        MatNativeDateModule,
+        MatIconModule, 
   ],
   providers: [
 	{ provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },

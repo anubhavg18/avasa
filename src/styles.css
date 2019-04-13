@@ -3221,3 +3221,31 @@ body,html {
 .mobile-app-content .app_download_link li:before {
 	display: none;
 }
+
+
+/* angular material css */
+.example-form {
+	min-width: 150px;
+	max-width: 500px;
+	width: 100%;
+}
+.example-full-width,
+.mat-form-field {
+	width: 100%;
+}
+.mat-input-element {
+    caret-color: #004d87;
+    line-height: 20px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label {
+	font-size: 16px !important;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+	color: #004d87 !important;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+	background-color: #004d87 !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon{
+  width: 1.8em !important;
+}
